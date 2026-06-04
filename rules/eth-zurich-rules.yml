@@ -1,0 +1,64 @@
+---
+# Spectral ruleset for the ETH Library API Platform.
+# Encodes patterns observed across the six published OpenAPI 3.0 specs
+# (discovery, ethorama, geo, persons, research-collection, vector).
+formats:
+  - oas3
+rules:
+  eth-info-title-required:
+    description: API must declare an info.title.
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+
+  eth-server-on-library-host:
+    description: Production server URL should be on the api.library.ethz.ch host.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://api\\.library\\.ethz\\.ch/"
+
+  eth-apikey-query-security-scheme:
+    description: >-
+      The platform authenticates with an apiKey security scheme passed in the
+      query string as "apikey". Specs should define this scheme.
+    severity: warn
+    given: $.components.securitySchemes[*]
+    then:
+      - field: type
+        function: pattern
+        functionOptions:
+          match: "^apiKey$"
+      - field: in
+        function: pattern
+        functionOptions:
+          match: "^query$"
+      - field: name
+        function: pattern
+        functionOptions:
+          match: "^apikey$"
+
+  eth-operations-have-200-response:
+    description: GET operations should document a 200 response.
+    severity: warn
+    given: $.paths[*].get.responses
+    then:
+      field: "200"
+      function: truthy
+
+  eth-operation-has-summary-or-description:
+    description: Each operation should have a summary or description.
+    severity: info
+    given: $.paths[*][get,post,put,delete]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: [summary]
+            - required: [description]

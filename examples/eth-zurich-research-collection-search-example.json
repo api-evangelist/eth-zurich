@@ -1,0 +1,36 @@
+{
+  "query": "open data",
+  "page": {
+    "number": 0,
+    "size": 20,
+    "totalPages": 5,
+    "totalElements": 100
+  },
+  "_embedded": {
+    "searchResult": {
+      "_embedded": {
+        "objects": [
+          {
+            "name": "Open research data at ETH Zurich",
+            "id": "a1b2c3d4-0000-0000-0000-000000000001",
+            "handle": "20.500.11850/000001",
+            "metadata": {
+              "dc.title": [
+                { "value": "Open research data at ETH Zurich" }
+              ],
+              "dc.contributor.author": [
+                { "value": "Mustermann, Erika" }
+              ],
+              "dc.date.issued": [
+                { "value": "2025-01-15" }
+              ],
+              "dc.identifier.uri": [
+                { "value": "https://research-collection.ethz.ch/handle/20.500.11850/000001" }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

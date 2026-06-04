@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/eth-zurich/main/json-schema/eth-zurich-research-collection-item-schema.json",
+  "title": "ETH Research Collection Item",
+  "description": "A single research output (object) returned by the ETH Research Collection API V2 /discover/search/objects endpoint. Schema derived from the published OpenAPI 3.0.3 specification (research-collection-v2.yaml).",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Title of the object."
+    },
+    "id": {
+      "type": "string",
+      "description": "Internal identifier of the research object."
+    },
+    "handle": {
+      "type": "string",
+      "description": "Persistent handle of the research object."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Dublin Core metadata for the research object.",
+      "properties": {
+        "dc.title": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/MetadataValue" }
+        },
+        "dc.contributor.author": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/MetadataValue" }
+        },
+        "dc.date.issued": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": { "type": "string", "format": "date" }
+            }
+          }
+        },
+        "dc.identifier.uri": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/MetadataValue" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MetadataValue": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string" }
+      }
+    }
+  }
+}

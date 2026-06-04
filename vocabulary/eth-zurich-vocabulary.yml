@@ -1,0 +1,93 @@
+---
+vocabulary:
+  name: ETH Library API Platform Vocabulary
+  description: >-
+    Controlled vocabulary of the core concepts and object types exposed across
+    the ETH Library API Platform (Discovery, ETHorama, Geo, Persons, Research
+    Collection, Vector). Terms are drawn directly from the published OpenAPI 3.0
+    specifications in the eth-library/opendata-apis repository.
+  version: "1.0.0"
+  terms:
+    - term: resource
+      definition: >-
+        A bibliographic item (book, image, series, journal, or other material)
+        held by the ETH Library and returned by the Discovery API /resources
+        endpoint.
+      tags: [discovery, bibliographic]
+    - term: mmsid
+      definition: >-
+        The Alma MMS identifier used by the Discovery API to address a single
+        bibliographic resource via /resources/{mmsid}.
+      tags: [discovery, identifier]
+    - term: content-item
+      definition: >-
+        A digitized document item from platforms such as E-Pics, E-Rara,
+        E-Periodica, E-Manuscripta and the Research Collection, exposed by the
+        ETHorama API.
+      tags: [ethorama, digitization]
+    - term: dossier
+      definition: >-
+        A curated thematic collection of georeferenced content items in the
+        ETHorama and Geo APIs.
+      tags: [ethorama, geo]
+    - term: poi
+      definition: >-
+        A point of interest (place) with geographic coordinates, exposed by the
+        ETHorama and Geo APIs.
+      tags: [geo, geospatial]
+    - term: route
+      definition: >-
+        An ordered sequence of points of interest forming a geographic route in
+        the ETHorama and Geo APIs.
+      tags: [ethorama, geo]
+    - term: place
+      definition: >-
+        A georeferenced location returned by the Geo and Vector APIs, available
+        in plain JSON and GeoJSON representations.
+      tags: [geo, vector, geojson]
+    - term: geojson
+      definition: >-
+        The GeoJSON encoding used by the Geo API /places/geojson endpoints to
+        represent place geometry and properties.
+      tags: [geo, geojson, format]
+    - term: person
+      definition: >-
+        An authority record about a person, enriched from sources including
+        Wikidata, Metagrid, DNB Entityfacts and beacon.findbuch, served by the
+        Persons API.
+      tags: [persons, authority]
+    - term: enrichment
+      definition: >-
+        The Persons API operation that aggregates and returns enriched person
+        information from external authority sources.
+      tags: [persons, authority]
+    - term: item
+      definition: >-
+        A research output (publication or research data record) in the Research
+        Collection API, addressable by id and persistent handle.
+      tags: [research-collection, repository]
+    - term: handle
+      definition: >-
+        The persistent Handle System identifier (prefix/suffix) assigned to
+        Research Collection items and communities.
+      tags: [research-collection, identifier]
+    - term: community
+      definition: >-
+        A top-level or nested organizational grouping of collections in the
+        Research Collection repository hierarchy.
+      tags: [research-collection, repository]
+    - term: collection
+      definition: >-
+        A grouping of related items within a community in the Research
+        Collection repository.
+      tags: [research-collection, repository]
+    - term: bitstream
+      definition: >-
+        A binary file (e.g. PDF) attached to a Research Collection item,
+        retrievable with its access policy.
+      tags: [research-collection, file]
+    - term: apikey
+      definition: >-
+        The free, registration-based API key passed as the "apikey" query
+        parameter to authenticate every ETH Library API Platform request.
+      tags: [platform, authentication]

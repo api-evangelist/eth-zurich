@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/eth-zurich/main/json-structure/eth-zurich-research-collection-item-structure.json",
+  "name": "ETHResearchCollectionItem",
+  "description": "JSON Structure for a research output object from the ETH Research Collection API V2, derived from research-collection-v2.yaml.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "description": "Title of the object." },
+    "id": { "type": "string", "description": "Internal identifier." },
+    "handle": { "type": "string", "description": "Persistent handle." },
+    "metadata": {
+      "type": "object",
+      "description": "Dublin Core metadata.",
+      "properties": {
+        "dc.title": {
+          "type": "array",
+          "items": { "type": { "$ref": "#/$defs/MetadataValue" } }
+        },
+        "dc.contributor.author": {
+          "type": "array",
+          "items": { "type": { "$ref": "#/$defs/MetadataValue" } }
+        },
+        "dc.date.issued": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": { "type": "string", "format": "date" }
+            }
+          }
+        },
+        "dc.identifier.uri": {
+          "type": "array",
+          "items": { "type": { "$ref": "#/$defs/MetadataValue" } }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "MetadataValue": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "string" }
+      }
+    }
+  }
+}

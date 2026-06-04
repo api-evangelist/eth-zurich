@@ -1,0 +1,56 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "eth": "https://developer.library.ethz.ch/vocab#",
+    "@vocab": "https://developer.library.ethz.ch/vocab#",
+
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+
+    "institution": {
+      "@id": "schema:CollegeOrUniversity",
+      "@type": "@id"
+    },
+
+    "ResearchCollectionItem": "eth:ResearchCollectionItem",
+    "id": "schema:identifier",
+    "handle": {
+      "@id": "schema:identifier",
+      "@type": "schema:PropertyValue"
+    },
+    "metadata": "eth:metadata",
+    "title": "schema:name",
+    "author": {
+      "@id": "schema:author",
+      "@type": "@id"
+    },
+    "dateIssued": {
+      "@id": "schema:datePublished",
+      "@type": "schema:Date"
+    },
+    "uri": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+
+    "place": "schema:Place",
+    "poi": {
+      "@id": "eth:pointOfInterest",
+      "@type": "schema:Place"
+    },
+    "geo": "schema:geo",
+    "latitude": "schema:latitude",
+    "longitude": "schema:longitude",
+
+    "person": "schema:Person",
+    "resource": "schema:CreativeWork",
+    "collection": "schema:Collection",
+    "community": "eth:community"
+  },
+  "@type": "CollegeOrUniversity",
+  "name": "ETH Zurich – Swiss Federal Institute of Technology",
+  "url": "https://ethz.ch/en/",
+  "description": "Public science and technology university whose ETH Library API Platform exposes open bibliographic, georeferenced, person-authority, and research-output data via six OpenAPI 3.0 REST APIs."
+}

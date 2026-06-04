@@ -1,0 +1,14 @@
+{
+  "_request": {
+    "method": "GET",
+    "url": "https://api.library.ethz.ch/discovery/v1/resources",
+    "query": {
+      "q": "open data",
+      "limit": 10
+    },
+    "headers": {
+      "X-API-Key": "<your-api-key>"
+    }
+  },
+  "_note": "The Discovery API documents its /resources endpoint and query parameters in the OpenAPI spec but does not publish a typed response object schema; this example shows the documented request shape. Replace <your-api-key> with a key obtained from https://developer.library.ethz.ch."
+}

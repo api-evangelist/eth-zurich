@@ -44,6 +44,8 @@ apis:
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
+      - type: OpenAPI
+        url: openapi/eth-zurich-discovery.yaml
   - aid: eth-zurich:ethorama
     name: ETH Library ETHorama API
     description: >-
@@ -59,6 +61,8 @@ apis:
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
+      - type: OpenAPI
+        url: openapi/eth-zurich-ethorama.yaml
   - aid: eth-zurich:geo
     name: ETH Library Geo Information API
     description: >-
@@ -74,6 +78,8 @@ apis:
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
+      - type: OpenAPI
+        url: openapi/eth-zurich-geo.yaml
   - aid: eth-zurich:persons
     name: ETH Library Persons API
     description: >-
@@ -89,6 +95,8 @@ apis:
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
+      - type: OpenAPI
+        url: openapi/eth-zurich-persons.yaml
   - aid: eth-zurich:research-collection
     name: ETH Zurich Research Collection API
     description: >-
@@ -107,6 +115,10 @@ apis:
         url: https://eth-library.github.io/opendata-apis/
       - type: OAI-PMH
         url: https://research-collection.ethz.ch/oai/openaire_data
+      - type: OpenAPI
+        url: openapi/eth-zurich-research-collection-v1.yaml
+      - type: OpenAPI
+        url: openapi/eth-zurich-research-collection-v2.yaml
   - aid: eth-zurich:vector
     name: ETH Library Vector API
     description: >-
@@ -121,6 +133,8 @@ apis:
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
+      - type: OpenAPI
+        url: openapi/eth-zurich-vector.yaml
 common:
   - type: Website
     url: https://ethz.ch/en/
@@ -146,6 +160,20 @@ common:
     url: finops/eth-zurich-finops.yml
   - type: Review
     url: review.yml
+  - type: JSONSchema
+    url: json-schema/eth-zurich-research-collection-item-schema.json
+  - type: JSONStructure
+    url: json-structure/eth-zurich-research-collection-item-structure.json
+  - type: x-example
+    url: examples/eth-zurich-research-collection-search-example.json
+  - type: x-example
+    url: examples/eth-zurich-discovery-resources-example.json
+  - type: Spectral
+    url: rules/eth-zurich-rules.yml
+  - type: Vocabulary
+    url: vocabulary/eth-zurich-vocabulary.yml
+  - type: JSON-LD
+    url: json-ld/eth-zurich-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
