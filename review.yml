@@ -1,0 +1,54 @@
+---
+name: ETH Zurich – Swiss Federal Institute of Technology
+description: ETH Zurich – Swiss Federal Institute of Technology public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/eth-zurich/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 4
+    summary: >-
+      ETH Zurich has a genuine, well-documented public API footprint driven by
+      the ETH Library. The ETH Library API Platform (Apigee-managed) exposes six
+      OpenAPI 3.0 REST APIs — Discovery, ETHorama, Geo, Persons, Research
+      Collection (v1/v2) and Vector — all behind a free one-time registration
+      for an API key via developer.library.ethz.ch. The Swagger docs, the
+      developer portal, the eth-library GitHub org (~40 repos including the
+      opendata-apis OpenAPI specs), the Research Collection OAI-PMH endpoint,
+      and the opendata.swiss organization page all resolve live (HTTP 200). No
+      official ETH-published course/timetable or SIS API was found; the VVZ
+      catalogue APIs that exist are unofficial community projects and were not
+      cataloged. LinkedIn returns HTTP 999 (standard bot block) but the school
+      page exists. No fabricated endpoints — only confirmed, live resources are
+      listed.
+    endpoints:
+      - url: https://developer.library.ethz.ch
+        status: 200
+        note: ETH Library Developer Portal; free registration for API keys.
+      - url: https://eth-library.github.io/apiplatform-swagger/
+        status: 200
+        note: OpenAPI/Swagger docs for all six platform APIs (OAS3).
+      - url: https://eth-library.github.io/opendata-apis/
+        status: 200
+        note: Published OpenAPI specifications (GitHub Pages).
+      - url: https://github.com/eth-library/opendata-apis
+        status: 200
+        note: Source repo for the OpenAPI specs.
+      - url: https://github.com/eth-library
+        status: 200
+        note: Official ETH Library GitHub organization (~40 repos).
+      - url: https://library.ethz.ch/en/archiving-and-digitising/open-data/api-platform.html
+        status: 200
+        note: API Platform overview page listing the documented APIs.
+      - url: https://research-collection.ethz.ch/oai/openaire_data
+        status: 200
+        note: Research Collection OAI-PMH harvesting interface (verb=Identify resolves).
+      - url: https://opendata.swiss/en/organization/eth-bibliothek
+        status: 200
+        note: ETH Library organization page on the Swiss open-data portal.
+      - url: https://ethz.ch/en/
+        status: 200
+        note: Official ETH Zurich website.
+      - url: https://www.linkedin.com/school/eth-zurich/
+        status: 999
+        note: Official LinkedIn school page; 999 is LinkedIn's standard bot block, page exists.

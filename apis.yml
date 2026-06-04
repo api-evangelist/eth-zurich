@@ -1,0 +1,151 @@
+---
+aid: eth-zurich
+name: ETH Zurich – Swiss Federal Institute of Technology
+description: >-
+  ETH Zurich (Eidgenössische Technische Hochschule Zürich) is a public science
+  and technology university founded in 1855, ranked #7 in the QS World
+  University Rankings 2025. Its most visible public developer footprint is the
+  ETH Library API Platform, an Apigee-managed developer portal exposing six
+  documented OpenAPI 3.0 REST APIs (Discovery, ETHorama, Geo, Persons, Research
+  Collection, Vector) for the library's open bibliographic, georeferenced, and
+  research-output data. The ETH Zurich Research Collection additionally offers a
+  public OAI-PMH harvesting interface, and the eth-library GitHub organization
+  publishes the OpenAPI specifications and related open-source tooling. All
+  REST APIs require a free one-time registration to obtain an API key.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/eth-zurich/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - Library
+  - Open Data
+  - Switzerland
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: eth-zurich:discovery
+    name: ETH Library Discovery API
+    description: >-
+      REST API providing access to over 30 million books, images, series,
+      journals, and other materials held by the ETH Library. Part of the ETH
+      Library API Platform; requires a free API key.
+    humanURL: https://eth-library.github.io/apiplatform-swagger/
+    tags: [ Library, Discovery, Bibliographic, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://eth-library.github.io/apiplatform-swagger/
+      - type: SignUp
+        url: https://developer.library.ethz.ch
+      - type: OpenAPI
+        url: https://eth-library.github.io/opendata-apis/
+  - aid: eth-zurich:ethorama
+    name: ETH Library ETHorama API
+    description: >-
+      REST API providing georeferenced access to digitized documents from
+      platforms such as E-Pics, E-Rara, E-Periodica, E-Manuscripta and the
+      Research Collection. Requires a free API key.
+    humanURL: https://eth-library.github.io/apiplatform-swagger/
+    tags: [ Library, Geospatial, Digitization, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://eth-library.github.io/apiplatform-swagger/
+      - type: SignUp
+        url: https://developer.library.ethz.ch
+      - type: OpenAPI
+        url: https://eth-library.github.io/opendata-apis/
+  - aid: eth-zurich:geo
+    name: ETH Library Geo Information API
+    description: >-
+      REST API returning information about points of interest (places) and
+      dossiers from the ETHorama database in GeoJSON format. Requires a free
+      API key.
+    humanURL: https://eth-library.github.io/apiplatform-swagger/
+    tags: [ Library, Geospatial, GeoJSON, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://eth-library.github.io/apiplatform-swagger/
+      - type: SignUp
+        url: https://developer.library.ethz.ch
+      - type: OpenAPI
+        url: https://eth-library.github.io/opendata-apis/
+  - aid: eth-zurich:persons
+    name: ETH Library Persons API
+    description: >-
+      REST API providing enriched information about persons, aggregated from
+      sources including Wikidata, Metagrid, DNB Entityfacts and
+      beacon.findbuch. Requires a free API key.
+    humanURL: https://eth-library.github.io/apiplatform-swagger/
+    tags: [ Library, Persons, Authority, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://eth-library.github.io/apiplatform-swagger/
+      - type: SignUp
+        url: https://developer.library.ethz.ch
+      - type: OpenAPI
+        url: https://eth-library.github.io/opendata-apis/
+  - aid: eth-zurich:research-collection
+    name: ETH Zurich Research Collection API
+    description: >-
+      REST API providing access to the ETH Zurich Research Collection
+      bibliographic metadata for scientific publications and research data
+      (v1 current, v2 preview). Requires a free API key. The Research
+      Collection also exposes a public OAI-PMH harvesting interface.
+    humanURL: https://eth-library.github.io/apiplatform-swagger/
+    tags: [ Research, Repository, Bibliographic, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://eth-library.github.io/apiplatform-swagger/
+      - type: SignUp
+        url: https://developer.library.ethz.ch
+      - type: OpenAPI
+        url: https://eth-library.github.io/opendata-apis/
+      - type: OAI-PMH
+        url: https://research-collection.ethz.ch/oai/openaire_data
+  - aid: eth-zurich:vector
+    name: ETH Library Vector API
+    description: >-
+      REST API on the ETH Library API Platform exposing vector-based access to
+      ETH Library data resources. Requires a free API key.
+    humanURL: https://eth-library.github.io/apiplatform-swagger/
+    tags: [ Library, Vector, Search, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://eth-library.github.io/apiplatform-swagger/
+      - type: SignUp
+        url: https://developer.library.ethz.ch
+      - type: OpenAPI
+        url: https://eth-library.github.io/opendata-apis/
+common:
+  - type: Website
+    url: https://ethz.ch/en/
+  - type: DeveloperPortal
+    url: https://developer.library.ethz.ch
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: GitHub
+    url: https://github.com/eth-library
+  - type: SourceCode
+    url: https://github.com/eth-library/opendata-apis
+  - type: OpenData
+    url: https://opendata.swiss/en/organization/eth-bibliothek
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/eth-zurich/
+  - type: Authentication
+    url: https://developer.library.ethz.ch
+  - type: Plans
+    url: plans/eth-zurich-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/eth-zurich-rate-limits.yml
+  - type: FinOps
+    url: finops/eth-zurich-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
