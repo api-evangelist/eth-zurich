@@ -40,7 +40,7 @@ apis:
     properties:
       - type: Documentation
         url: https://eth-library.github.io/apiplatform-swagger/
-      - type: SignUp
+      - type: Signup
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
@@ -57,7 +57,7 @@ apis:
     properties:
       - type: Documentation
         url: https://eth-library.github.io/apiplatform-swagger/
-      - type: SignUp
+      - type: Signup
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
@@ -74,7 +74,7 @@ apis:
     properties:
       - type: Documentation
         url: https://eth-library.github.io/apiplatform-swagger/
-      - type: SignUp
+      - type: Signup
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
@@ -91,7 +91,7 @@ apis:
     properties:
       - type: Documentation
         url: https://eth-library.github.io/apiplatform-swagger/
-      - type: SignUp
+      - type: Signup
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
@@ -109,7 +109,7 @@ apis:
     properties:
       - type: Documentation
         url: https://eth-library.github.io/apiplatform-swagger/
-      - type: SignUp
+      - type: Signup
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
@@ -129,7 +129,7 @@ apis:
     properties:
       - type: Documentation
         url: https://eth-library.github.io/apiplatform-swagger/
-      - type: SignUp
+      - type: Signup
         url: https://developer.library.ethz.ch
       - type: OpenAPI
         url: https://eth-library.github.io/opendata-apis/
@@ -172,7 +172,7 @@ common:
     url: rules/eth-zurich-rules.yml
   - type: Vocabulary
     url: vocabulary/eth-zurich-vocabulary.yml
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/eth-zurich-context.jsonld
 maintainers:
   - FN: Kin Lane
