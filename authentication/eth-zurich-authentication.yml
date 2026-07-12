@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/eth-zurich-discovery.yaml, openapi/eth-zurich-ethorama.yaml, openapi/eth-zurich-geo.yaml,
+  openapi/eth-zurich-persons.yaml, openapi/eth-zurich-research-collection-v1.yaml, openapi/eth-zurich-research-collection-v2.yaml,
+  openapi/eth-zurich-vector.yaml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: query
+  parameter: apikey
+  sources:
+  - openapi/eth-zurich-discovery.yaml
+  - openapi/eth-zurich-ethorama.yaml
+  - openapi/eth-zurich-geo.yaml
+  - openapi/eth-zurich-persons.yaml
+  - openapi/eth-zurich-research-collection-v1.yaml
+  - openapi/eth-zurich-research-collection-v2.yaml
+  - openapi/eth-zurich-vector.yaml

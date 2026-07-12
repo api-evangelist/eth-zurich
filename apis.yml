@@ -136,6 +136,12 @@ apis:
       - type: OpenAPI
         url: openapi/eth-zurich-vector.yaml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/eth-zurich-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/eth-zurich-domain-security.yml
+  - type: Authentication
+    url: authentication/eth-zurich-authentication.yml
   - type: Website
     url: https://ethz.ch/en/
   - type: DeveloperPortal
@@ -174,6 +180,8 @@ common:
     url: vocabulary/eth-zurich-vocabulary.yml
   - type: JSONLD
     url: json-ld/eth-zurich-context.jsonld
+  - url: https://www.ethz.ch/en/news-und-veranstaltungen/eth-news/news/_jcr_content.feed.html
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
