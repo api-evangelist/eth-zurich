@@ -1,0 +1,14 @@
+{
+  "repo": "eth-zurich",
+  "feeds": [
+    {
+      "source": "https://www.ethz.ch/en/news-und-veranstaltungen/eth-news/news/_jcr_content.feed.html",
+      "feed_url": "https://www.ethz.ch/en/news-und-veranstaltungen/eth-news/news/_jcr_content.feed.html",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 54
+}
