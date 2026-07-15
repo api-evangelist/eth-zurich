@@ -136,6 +136,8 @@ apis:
       - type: OpenAPI
         url: openapi/eth-zurich-vector.yaml
 common:
+  - type: AgenticAccess
+    url: agentic-access/eth-zurich-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/eth-zurich-vulnerability-disclosure.yml
   - type: DomainSecurity
