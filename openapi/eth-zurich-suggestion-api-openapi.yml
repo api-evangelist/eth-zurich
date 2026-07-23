@@ -1,0 +1,119 @@
+openapi: 3.0.2
+info:
+  title: Discovery bitstreams Suggestion API
+  description: "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)"
+  version: 1.0.2
+  termsOfService: https://developer.library.ethz.ch/terms
+  contact:
+    name: API Management ETH Library
+    email: api@library.ethz.ch
+    url: https://library.ethz.ch
+  license:
+    url: https://developer.library.ethz.ch/terms
+    name: Bibliographic metadata that are not specifically marked are free for general use (Public Domain). Documents, images or other digital objects linked in metadata may be subject to other copyright restrictions. Whenever possible, the licence of the referenced digital objects is indicated in the metadata. In case of doubt, the licence can be inquired at api@library.ethz.ch.
+servers:
+- url: https://api.library.ethz.ch/discovery/v1/
+  description: Production
+security:
+- ApiKeyAuth: []
+tags:
+- name: Suggestion
+paths:
+  /suggestion/querySuggestions/search/byQuery:
+    get:
+      summary: Retrieve query suggestions
+      description: Returns query suggestions based on user input.
+      parameters:
+      - name: query
+        in: query
+        description: Search term for query suggestions.
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Page number for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        description: Number of suggestions to return per page.
+        required: false
+        schema:
+          type: integer
+          default: 3
+      responses:
+        '200':
+          description: Successful response with query suggestions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query:
+                    type: string
+                  _embedded:
+                    type: object
+                    properties:
+                      queryCategories:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            suggestiontype:
+                              type: string
+                            _embedded:
+                              type: object
+                              properties:
+                                searchResult:
+                                  type: object
+                                  properties:
+                                    _embedded:
+                                      type: object
+                                      properties:
+                                        suggestions:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              label:
+                                                type: string
+                                              suggestionName:
+                                                type: string
+                                              queryParams:
+                                                type: array
+                                                items:
+                                                  type: string
+                                              count:
+                                                type: integer
+                                              type:
+                                                type: string
+                                              _links:
+                                                type: object
+                                                properties:
+                                                  searchResults:
+                                                    type: object
+                                                    properties:
+                                                      href:
+                                                        type: string
+        '400':
+          description: Bad request (invalid parameters)
+        '500':
+          description: Internal server error
+      tags:
+      - Suggestion
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+externalDocs:
+  description: OAS 3 Swagger Documentation
+  url: https://apidocs.library.ethz.ch/discovery/v1/

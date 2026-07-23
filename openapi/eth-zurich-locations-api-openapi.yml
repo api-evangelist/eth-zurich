@@ -1,0 +1,90 @@
+openapi: 3.0.2
+info:
+  title: Discovery bitstreams Locations API
+  description: "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)"
+  version: 1.0.2
+  termsOfService: https://developer.library.ethz.ch/terms
+  contact:
+    name: API Management ETH Library
+    email: api@library.ethz.ch
+    url: https://library.ethz.ch
+  license:
+    url: https://developer.library.ethz.ch/terms
+    name: Bibliographic metadata that are not specifically marked are free for general use (Public Domain). Documents, images or other digital objects linked in metadata may be subject to other copyright restrictions. Whenever possible, the licence of the referenced digital objects is indicated in the metadata. In case of doubt, the licence can be inquired at api@library.ethz.ch.
+servers:
+- url: https://api.library.ethz.ch/discovery/v1/
+  description: Production
+security:
+- ApiKeyAuth: []
+tags:
+- name: Locations
+paths:
+  /locations:
+    get:
+      tags:
+      - Locations
+      description: 'Returns locations: pois (from ETHorama), places (Marc 651 from e-rara and e-maps) and publication places.'
+      parameters:
+      - name: lat
+        schema:
+          type: number
+        in: query
+        required: false
+        description: 'Returns the pois or places (subject added entry-geographic names from marc 651) that are near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).
+
+
+          Example: lat=47.349952'
+      - name: lon
+        schema:
+          type: number
+        in: query
+        required: false
+        description: 'Returns the pois or places (subject added entry-geographic names from marc 651) that are near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).
+
+
+          Example: lon=8.490838'
+      - name: dist
+        schema:
+          type: number
+        in: query
+        required: false
+        description: 'Returns the pois or places (subject added entry-geographic names from marc 651) that are near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).
+
+
+          Example: dist=1000'
+      - name: q
+        schema:
+          type: string
+        in: query
+        required: false
+        description: 'Returns the data for the search term (q).The parameter "q" is alternative to "lat"/"lon".
+
+
+          Example: q=kyburg'
+      - name: edges
+        schema:
+          type: boolean
+        in: query
+        required: false
+        description: 'Should the edges/relations to e-rara, e-maps etc. also be returned (default: true)?
+
+
+          Example: edges=false'
+      responses:
+        '200':
+          description: Returns locations as GeoJSON
+          content:
+            application/json: {}
+        '400':
+          description: bad request
+        '500':
+          description: server error
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+externalDocs:
+  description: OAS 3 Swagger Documentation
+  url: https://apidocs.library.ethz.ch/discovery/v1/

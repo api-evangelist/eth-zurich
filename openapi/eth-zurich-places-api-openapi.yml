@@ -1,0 +1,80 @@
+openapi: 3.0.2
+info:
+  title: Discovery bitstreams Places API
+  description: "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)"
+  version: 1.0.2
+  termsOfService: https://developer.library.ethz.ch/terms
+  contact:
+    name: API Management ETH Library
+    email: api@library.ethz.ch
+    url: https://library.ethz.ch
+  license:
+    url: https://developer.library.ethz.ch/terms
+    name: Bibliographic metadata that are not specifically marked are free for general use (Public Domain). Documents, images or other digital objects linked in metadata may be subject to other copyright restrictions. Whenever possible, the licence of the referenced digital objects is indicated in the metadata. In case of doubt, the licence can be inquired at api@library.ethz.ch.
+servers:
+- url: https://api.library.ethz.ch/discovery/v1/
+  description: Production
+security:
+- ApiKeyAuth: []
+tags:
+- name: Places
+paths:
+  /places:
+    get:
+      tags:
+      - Places
+      description: Returns all places defined in the ETHorama database.
+      responses:
+        '200':
+          description: Returns Places as GeoJSON
+          content:
+            application/json: {}
+        '500':
+          description: server error
+  /places/geojson:
+    get:
+      tags:
+      - Places
+      description: Returns all or filtered places defined in the ETHorama database as GeoJSON.
+      parameters:
+      - name: nearto
+        schema:
+          type: string
+        in: query
+        required: false
+        description: "Places nearto a point, which is defined by the comma separated value: lat, lng, distance in meter (default: 1000). \n\n Example: nearto=47.383046,8.536655,2000"
+      responses:
+        '200':
+          description: Returns a geoJSON FeatureCollection
+          content:
+            application/json: {}
+        '500':
+          description: server error
+  /places/geojson/{id}:
+    get:
+      tags:
+      - Places
+      description: Returns place (by POI ID or Wikidata QID) as geoJSON
+      parameters:
+      - name: id
+        schema:
+          type: string
+        in: path
+        required: true
+        description: ID from ETHorama (2o6hEWTkOGDL35HANR5c) or Wikidata QID (Q64093)
+      responses:
+        '200':
+          description: Returns a place as geoJSON Feature
+          content:
+            application/json: {}
+        '404':
+          description: there is no place available with this id
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+externalDocs:
+  description: OAS 3 Swagger Documentation
+  url: https://apidocs.library.ethz.ch/discovery/v1/
