@@ -13,9 +13,22 @@ description: >-
   publishes the OpenAPI specifications and related open-source tooling. All
   REST APIs require a free one-time registration to obtain an API key.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/eth-zurich.png
 url: https://raw.githubusercontent.com/api-evangelist/eth-zurich/refs/heads/main/apis.yml
 tags:
   - Education
@@ -29,112 +42,577 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: eth-zurich:discovery
-    name: ETH Library Discovery API
-    description: >-
-      REST API providing access to over 30 million books, images, series,
-      journals, and other materials held by the ETH Library. Part of the ETH
-      Library API Platform; requires a free API key.
-    humanURL: https://eth-library.github.io/apiplatform-swagger/
-    tags: [ Library, Discovery, Bibliographic, Open Data ]
-    properties:
-      - type: Documentation
-        url: https://eth-library.github.io/apiplatform-swagger/
-      - type: Signup
-        url: https://developer.library.ethz.ch
-      - type: OpenAPI
-        url: https://eth-library.github.io/opendata-apis/
-      - type: OpenAPI
-        url: openapi/eth-zurich-discovery.yaml
-  - aid: eth-zurich:ethorama
-    name: ETH Library ETHorama API
-    description: >-
-      REST API providing georeferenced access to digitized documents from
-      platforms such as E-Pics, E-Rara, E-Periodica, E-Manuscripta and the
-      Research Collection. Requires a free API key.
-    humanURL: https://eth-library.github.io/apiplatform-swagger/
-    tags: [ Library, Geospatial, Digitization, Open Data ]
-    properties:
-      - type: Documentation
-        url: https://eth-library.github.io/apiplatform-swagger/
-      - type: Signup
-        url: https://developer.library.ethz.ch
-      - type: OpenAPI
-        url: https://eth-library.github.io/opendata-apis/
-      - type: OpenAPI
-        url: openapi/eth-zurich-ethorama.yaml
-  - aid: eth-zurich:geo
-    name: ETH Library Geo Information API
-    description: >-
-      REST API returning information about points of interest (places) and
-      dossiers from the ETHorama database in GeoJSON format. Requires a free
-      API key.
-    humanURL: https://eth-library.github.io/apiplatform-swagger/
-    tags: [ Library, Geospatial, GeoJSON, Open Data ]
-    properties:
-      - type: Documentation
-        url: https://eth-library.github.io/apiplatform-swagger/
-      - type: Signup
-        url: https://developer.library.ethz.ch
-      - type: OpenAPI
-        url: https://eth-library.github.io/opendata-apis/
-      - type: OpenAPI
-        url: openapi/eth-zurich-geo.yaml
-  - aid: eth-zurich:persons
-    name: ETH Library Persons API
-    description: >-
-      REST API providing enriched information about persons, aggregated from
-      sources including Wikidata, Metagrid, DNB Entityfacts and
-      beacon.findbuch. Requires a free API key.
-    humanURL: https://eth-library.github.io/apiplatform-swagger/
-    tags: [ Library, Persons, Authority, Open Data ]
-    properties:
-      - type: Documentation
-        url: https://eth-library.github.io/apiplatform-swagger/
-      - type: Signup
-        url: https://developer.library.ethz.ch
-      - type: OpenAPI
-        url: https://eth-library.github.io/opendata-apis/
-      - type: OpenAPI
-        url: openapi/eth-zurich-persons.yaml
-  - aid: eth-zurich:research-collection
-    name: ETH Zurich Research Collection API
-    description: >-
-      REST API providing access to the ETH Zurich Research Collection
-      bibliographic metadata for scientific publications and research data
-      (v1 current, v2 preview). Requires a free API key. The Research
-      Collection also exposes a public OAI-PMH harvesting interface.
-    humanURL: https://eth-library.github.io/apiplatform-swagger/
-    tags: [ Research, Repository, Bibliographic, Open Data ]
-    properties:
-      - type: Documentation
-        url: https://eth-library.github.io/apiplatform-swagger/
-      - type: Signup
-        url: https://developer.library.ethz.ch
-      - type: OpenAPI
-        url: https://eth-library.github.io/opendata-apis/
-      - type: OAI-PMH
-        url: https://research-collection.ethz.ch/oai/openaire_data
-      - type: OpenAPI
-        url: openapi/eth-zurich-research-collection-v1.yaml
-      - type: OpenAPI
-        url: openapi/eth-zurich-research-collection-v2.yaml
-  - aid: eth-zurich:vector
-    name: ETH Library Vector API
-    description: >-
-      REST API on the ETH Library API Platform exposing vector-based access to
-      ETH Library data resources. Requires a free API key.
-    humanURL: https://eth-library.github.io/apiplatform-swagger/
-    tags: [ Library, Vector, Search, Open Data ]
-    properties:
-      - type: Documentation
-        url: https://eth-library.github.io/apiplatform-swagger/
-      - type: Signup
-        url: https://developer.library.ethz.ch
-      - type: OpenAPI
-        url: https://eth-library.github.io/opendata-apis/
-      - type: OpenAPI
-        url: openapi/eth-zurich-vector.yaml
+- aid: eth-zurich:eth-zurich-bitstreams-api
+  name: ETH Zurich – Swiss Federal Institute of Technology bitstreams API
+  description: >-
+    The bitstreams API from ETH Zurich – Swiss Federal Institute of Technology — 4 operation(s) for bitstreams.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - bitstreams
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-bitstreams-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-collections-api
+  name: ETH Zurich – Swiss Federal Institute of Technology collections API
+  description: >-
+    The collections API from ETH Zurich – Swiss Federal Institute of Technology — 3 operation(s) for collections.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - collections
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-collections-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-communities-api
+  name: ETH Zurich – Swiss Federal Institute of Technology communities API
+  description: >-
+    The communities API from ETH Zurich – Swiss Federal Institute of Technology — 5 operation(s) for communities.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - communities
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-communities-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-content-item-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Content Item API
+  description: >-
+    The Content Item API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for
+    content item.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Content Item
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-content-item-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-contributors-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Contributors API
+  description: >-
+    The Contributors API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for
+    contributors.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Contributors
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-contributors-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-core-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Core API
+  description: >-
+    The Core API from ETH Zurich – Swiss Federal Institute of Technology — 9 operation(s) for core.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Core
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-core-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-discover-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Discover API
+  description: >-
+    The Discover API from ETH Zurich – Swiss Federal Institute of Technology — 7 operation(s) for discover.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Discover
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-discover-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-dossier-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Dossier API
+  description: >-
+    The Dossier API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for dossier.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Dossier
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-dossier-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-dossiers-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Dossiers API
+  description: >-
+    The Dossiers API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for dossiers.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Dossiers
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-dossiers-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-e-maps-api
+  name: ETH Zurich – Swiss Federal Institute of Technology e-maps API
+  description: >-
+    The e-maps API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for e-maps.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - e-maps
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-e-maps-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-e-pics-items-api
+  name: ETH Zurich – Swiss Federal Institute of Technology E-Pics items API
+  description: >-
+    The E-Pics items API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for
+    e-pics items.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - E-Pics items
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-e-pics-items-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-e-rara-api
+  name: ETH Zurich – Swiss Federal Institute of Technology e-rara API
+  description: >-
+    The e-rara API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for e-rara.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - e-rara
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-e-rara-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-eth-research-collection-api-v2-api
+  name: ETH Zurich – Swiss Federal Institute of Technology ETH Research Collection API V2 API
+  description: >-
+    The ETH Research Collection API V2 API from ETH Zurich – Swiss Federal Institute of Technology — 1
+    operation(s) for eth research collection api v2.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - ETH Research Collection API V2
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-eth-research-collection-api-v2-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-geo-container-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Geo Container API
+  description: >-
+    The Geo Container API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for
+    geo container.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Geo Container
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-geo-container-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-geo-topics-api
+  name: ETH Zurich – Swiss Federal Institute of Technology geo-topics API
+  description: >-
+    The geo-topics API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for geo-topics.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - geo-topics
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-geo-topics-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-geodata-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Geodata API
+  description: >-
+    The Geodata API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for geodata.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Geodata
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-geodata-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-handle-api
+  name: ETH Zurich – Swiss Federal Institute of Technology handle API
+  description: >-
+    The handle API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for handle.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - handle
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-handle-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-information-about-a-person-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Information about a person API
+  description: >-
+    The Information about a person API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s)
+    for information about a person.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Information about a person
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-information-about-a-person-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-items-api
+  name: ETH Zurich – Swiss Federal Institute of Technology items API
+  description: >-
+    The items API from ETH Zurich – Swiss Federal Institute of Technology — 5 operation(s) for items.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - items
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-items-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-list-of-persons-api
+  name: ETH Zurich – Swiss Federal Institute of Technology List of persons API
+  description: >-
+    The List of persons API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for
+    list of persons.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - List of persons
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-list-of-persons-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-locations-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Locations API
+  description: >-
+    The Locations API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for locations.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-locations-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-maps-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Maps API
+  description: >-
+    The Maps API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for maps.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Maps
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-maps-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-places-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Places API
+  description: >-
+    The Places API from ETH Zurich – Swiss Federal Institute of Technology — 3 operation(s) for places.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Places
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-places-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-poi-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Poi API
+  description: >-
+    The Poi API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for poi.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Poi
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-poi-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-poi-items-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Poi items API
+  description: >-
+    The Poi items API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for poi
+    items.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Poi items
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-poi-items-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-pois-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Pois API
+  description: >-
+    The Pois API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for pois.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Pois
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-pois-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-provenance-items-api
+  name: ETH Zurich – Swiss Federal Institute of Technology provenance items API
+  description: >-
+    The provenance items API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s)
+    for provenance items.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - provenance items
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-provenance-items-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-publication-places-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Publication places API
+  description: >-
+    The Publication places API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s)
+    for publication places.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Publication places
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-publication-places-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-route-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Route API
+  description: >-
+    The Route API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for route.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Route
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-route-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-routes-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Routes API
+  description: >-
+    The Routes API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for routes.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-routes-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-search-api
+  name: ETH Zurich – Swiss Federal Institute of Technology search API
+  description: >-
+    The search API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for search.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-search-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-search-portal-resources-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Search Portal resources API
+  description: >-
+    The Search Portal resources API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s)
+    for search portal resources.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Search Portal resources
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-search-portal-resources-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-suggestion-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Suggestion API
+  description: >-
+    The Suggestion API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for suggestion.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Suggestion
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-suggestion-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-topics-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Topics API
+  description: >-
+    The Topics API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for topics.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Topics
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-topics-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-util-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Util API
+  description: >-
+    The Util API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for util.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  tags:
+  - Util
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-util-api-openapi.yml
+  - type: Documentation
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: Signup
+    url: https://developer.library.ethz.ch
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
 common:
   - type: AgenticAccess
     url: agentic-access/eth-zurich-agentic-access.yml
