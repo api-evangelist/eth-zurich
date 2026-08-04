@@ -1,0 +1,1227 @@
+openapi: 3.0.3
+info:
+  title: ETH Research Collection API V2
+  description: |-
+    The Research Collection REST API provides access to the bibliographic metadata of the ETH Zurich Research Collection for scientific publications and research data.
+
+    &#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/research-collection/v2/)
+
+    &#x279C; [Research Collection Application](https://www.research-collection.ethz.ch/)
+    
+    &#x279C; [Research Collection Terms of use](https://www.research-collection.ethz.ch/info/terms-of-use)
+    
+    ---
+    ⚠️ **Browser-based access notice (CORS policy)**
+    
+    The ETH Research Collection API V2 is open for server-side applications (e.g. Flask, Node.js, PHP, Java), which can access the API without restriction (using an apikey).
+    
+    However, if you plan to use this API **directly in a web browser** (e.g. via JavaScript, fetch, or Axios), your website domain must be explicitly listed in our allowed origins configuration due to browser-enforced CORS (Cross-Origin Resource Sharing) restrictions.
+    
+    If your application is blocked with a 403 Invalid CORS request error, please contact us on api@library.ethz.ch to request access for your domain.
+
+  license:
+    url: https://developer.library.ethz.ch/terms
+    name: Bibliographic metadata from this API that are not specifically marked are available for reuse under a Public Domain Dedication (CC0) and may be used, modified and redistributed without prior consent. Documents (including abstracts), images or other digital objects linked or included in metadata may be subject to other copyright restrictions. Whenever possible, the licence of the referenced digital objects is indicated in the metadata. In case of doubt, the licence can be inquired at api@library.ethz.ch.
+  version: 0.1.0
+servers:
+  - url: https://api.library.ethz.ch/research-collection/v2
+    description: Production server
+paths:
+  /:
+    get:
+      summary: Retrieve API root information
+      description: Returns general information about the DSpace instance and available API endpoints.
+      responses:
+        "200":
+          description: Successful response with API root information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dspaceUI:
+                    type: string
+                  dspaceName:
+                    type: string
+                  dspaceServer:
+                    type: string
+                  dspaceVersion:
+                    type: string
+                  type:
+                    type: string
+                  _links:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        href:
+                          type: string
+  /core/bitstreams/{id}:
+    get:
+      summary: Retrieve metadata for a bitstream
+      description: Returns metadata details of a given bitstream.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the bitstream to retrieve.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with bitstream metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  uuid:
+                    type: string
+                  name:
+                    type: string
+                  sizeBytes:
+                    type: integer
+                  checkSum:
+                    type: object
+                    properties:
+                      checkSumAlgorithm:
+                        type: string
+                      value:
+                        type: string
+                  metadata:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          language:
+                            type: string
+                          authority:
+                            type: string
+                          confidence:
+                            type: integer
+                          place:
+                            type: integer
+                  bundleName:
+                    type: string
+                  _links:
+                    type: object
+                    properties:
+                      content:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      bundle:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      format:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      thumbnail:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Bitstream not found
+        "500":
+          description: Internal server error
+  /core/bitstreams/{id}/content:
+    get:
+      summary: Retrieve the content of a bitstream
+      description: Returns the actual file content of a given bitstream.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the bitstream to retrieve.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with the bitstream content
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Bitstream content not found
+        "500":
+          description: Internal server error
+  /core/bitstreams/{id}/format:
+    get:
+      summary: Retrieve format details for a bitstream
+      description: Returns the format details (e.g., MIME type, description) of a given bitstream.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the bitstream to retrieve format details for.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with bitstream format details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  shortDescription:
+                    type: string
+                  description:
+                    type: string
+                  mimetype:
+                    type: string
+                  supportLevel:
+                    type: string
+                  internal:
+                    type: boolean
+                  extensions:
+                    type: array
+                    items:
+                      type: string
+                  type:
+                    type: string
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Bitstream format not found
+        "500":
+          description: Internal server error
+  /core/items/{id}:
+    get:
+      summary: Retrieve item details
+      description: Returns metadata and relationships of a specific item in the research collection.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the item to retrieve.
+          required: true
+          schema:
+            type: string
+        - name: embed
+          in: query
+          description: Embedded relationships in the response.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with item details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  uuid:
+                    type: string
+                  name:
+                    type: string
+                  handle:
+                    type: string
+                  metadata:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          language:
+                            type: string
+                          authority:
+                            type: string
+                          confidence:
+                            type: integer
+                          place:
+                            type: integer
+                  inArchive:
+                    type: boolean
+                  discoverable:
+                    type: boolean
+                  withdrawn:
+                    type: boolean
+                  lastModified:
+                    type: string
+                    format: date-time
+                  entityType:
+                    type: string
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      relationships:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      citations:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      thumbnail:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Item not found
+        "500":
+          description: Internal server error
+  /core/items/{id}/coins:
+    get:
+      summary: Retrieve COinS metadata for an item
+      description: Returns ContextObjects in Spans (COinS) metadata for a specific item.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the item to retrieve COinS metadata for.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with COinS metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  ethz.COinS:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        value:
+                          type: string
+                        language:
+                          type: string
+                        authority:
+                          type: string
+                        confidence:
+                          type: integer
+                        place:
+                          type: integer
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Item not found
+        "500":
+          description: Internal server error
+  /core/items/{id}/leitzahl:
+    get:
+      summary: Retrieve Leitzahl classification for an item
+      description: Returns the Leitzahl classification metadata for a specific item.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the item to retrieve Leitzahl metadata for.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with Leitzahl classification metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  leitzahl:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        leitzahlID:
+                          type: string
+                        label:
+                          type: string
+                        confirmed:
+                          type: boolean
+                        type:
+                          type: string
+                  authorizations:
+                    type: array
+                    items:
+                      type: object
+                  type:
+                    type: string
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Item not found
+        "500":
+          description: Internal server error
+  /core/items/{id}/owningCollection:
+    get:
+      summary: Retrieve the owning collection of an item
+      description: Returns the collection to which a specific item belongs, including its parent community.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the item to retrieve the owning collection for.
+          required: true
+          schema:
+            type: string
+        - name: embed
+          in: query
+          description: Embedded relationships in the response.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with owning collection details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  uuid:
+                    type: string
+                  name:
+                    type: string
+                  handle:
+                    type: string
+                  metadata:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          language:
+                            type: string
+                          authority:
+                            type: string
+                          confidence:
+                            type: integer
+                          place:
+                            type: integer
+                  archivedItemsCount:
+                    type: integer
+                  type:
+                    type: string
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      parentCommunity:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Collection not found
+        "500":
+          description: Internal server error
+  /core/items/{id}/relationships:
+    get:
+      summary: Retrieve relationships for an item
+      description: Returns the relationships associated with a specific item.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the item to retrieve relationships for.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with item relationships
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      relationships:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            leftPlace:
+                              type: integer
+                            rightPlace:
+                              type: integer
+                            leftwardValue:
+                              type: string
+                              nullable: true
+                            rightwardValue:
+                              type: string
+                              nullable: true
+                            type:
+                              type: string
+                            _links:
+                              type: object
+                              properties:
+                                relationshipType:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                self:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                leftItem:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                rightItem:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                  page:
+                    type: object
+                    properties:
+                      number:
+                        type: integer
+                      size:
+                        type: integer
+                      totalPages:
+                        type: integer
+                      totalElements:
+                        type: integer
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Item not found
+        "500":
+          description: Internal server error
+  /core/items/{id}/thumbnail:
+    get:
+      summary: Retrieve thumbnail for an item
+      description: Returns the thumbnail image for a specific item.
+      parameters:
+        - name: id
+          in: path
+          description: The UUID of the item to retrieve the thumbnail for.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with the thumbnail image
+          content:
+            image/*:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: Bad request (invalid parameters)
+        "404":
+          description: Thumbnail not found
+        "500":
+          description: Internal server error
+  /discover/facets:
+    get:
+      summary: Retrieve available facets
+      description: Returns a list of available facets for filtering search results.
+      responses:
+        "200":
+          description: Successful response with available facets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  _embedded:
+                    type: object
+                    properties:
+                      facets:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              description: Name of the facet (e.g., author, itemtype).
+                            facetType:
+                              type: string
+                              description: Type of the facet (text or date).
+                            facetLimit:
+                              type: integer
+                              description: Maximum number of facet values.
+                            _links:
+                              type: object
+                              properties:
+                                self:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "500":
+          description: Internal server error
+  /discover/facets/author:
+    get:
+      summary: Retrieve author facets
+      description: Returns author facets based on the query parameter.
+      parameters:
+        - name: query
+          in: query
+          description: Search term for author facets.
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Number of facet values to return per page.
+          required: false
+          schema:
+            type: integer
+            default: 5
+      responses:
+        "200":
+          description: Successful response with author facets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  facetType:
+                    type: string
+                  facetLimit:
+                    type: integer
+                  page:
+                    type: object
+                    properties:
+                      number:
+                        type: integer
+                      size:
+                        type: integer
+                  _embedded:
+                    type: object
+                    properties:
+                      values:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                            count:
+                              type: integer
+                            _links:
+                              type: object
+                              properties:
+                                search:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "500":
+          description: Internal server error
+  /discover/facets/dateIssued:
+    get:
+      summary: Retrieve date issued facets
+      description: Returns date issued facets based on the query parameter.
+      parameters:
+        - name: query
+          in: query
+          description: Search term for date issued facets.
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Number of facet values to return per page.
+          required: false
+          schema:
+            type: integer
+            default: 5
+      responses:
+        "200":
+          description: Successful response with date issued facets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  facetType:
+                    type: string
+                  facetLimit:
+                    type: integer
+                  page:
+                    type: object
+                    properties:
+                      number:
+                        type: integer
+                      size:
+                        type: integer
+                  _embedded:
+                    type: object
+                    properties:
+                      values:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                            count:
+                              type: integer
+                            _links:
+                              type: object
+                              properties:
+                                search:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "500":
+          description: Internal server error
+  /discover/facets/ethzAvailability:
+    get:
+      summary: Retrieve ETH Zurich availability facets
+      description: Returns ETH Zurich availability facets based on the query parameter.
+      parameters:
+        - name: query
+          in: query
+          description: Search term for ETH Zurich availability facets.
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Number of facet values to return per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        "200":
+          description: Successful response with ETH Zurich availability facets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  facetType:
+                    type: string
+                  facetLimit:
+                    type: integer
+                  page:
+                    type: object
+                    properties:
+                      number:
+                        type: integer
+                      size:
+                        type: integer
+                  _embedded:
+                    type: object
+                    properties:
+                      values:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                            count:
+                              type: integer
+                            _links:
+                              type: object
+                              properties:
+                                search:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "500":
+          description: Internal server error
+  /discover/facets/ethzETHPublication:
+    get:
+      summary: Retrieve ETH Zurich publication facets
+      description: Returns ETH Zurich publication facets based on the query parameter.
+      parameters:
+        - name: query
+          in: query
+          description: Search term for ETH Zurich publication facets.
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Number of facet values to return per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        "200":
+          description: Successful response with ETH Zurich publication facets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  facetType:
+                    type: string
+                  facetLimit:
+                    type: integer
+                  page:
+                    type: object
+                    properties:
+                      number:
+                        type: integer
+                      size:
+                        type: integer
+                  _embedded:
+                    type: object
+                    properties:
+                      values:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                            count:
+                              type: integer
+                            _links:
+                              type: object
+                              properties:
+                                search:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "500":
+          description: Internal server error
+  /discover/facets/itemtype:
+    get:
+      summary: Retrieve item type facets
+      description: Returns item type facets based on the query parameter.
+      parameters:
+        - name: query
+          in: query
+          description: Search term for item type facets.
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Number of facet values to return per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        "200":
+          description: Successful response with item type facets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  facetType:
+                    type: string
+                  facetLimit:
+                    type: integer
+                  page:
+                    type: object
+                    properties:
+                      number:
+                        type: integer
+                      size:
+                        type: integer
+                  _embedded:
+                    type: object
+                    properties:
+                      values:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                            count:
+                              type: integer
+                            _links:
+                              type: object
+                              properties:
+                                search:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "500":
+          description: Internal server error
+  /discover/search/objects:
+    get:
+      summary: Search objects in the research collection
+      description: Retrieves objects matching the search query with optional sorting and embedding options.
+      parameters:
+        - name: query
+          in: query
+          description: Search term to query objects.
+          required: true
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: Sorting order (e.g., "score,DESC").
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Number of results per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - name: embed
+          in: query
+          description: Fields to embed in the response.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response with search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query:
+                    type: string
+                    description: The search query used.
+                  page:
+                    type: object
+                    properties:
+                      number:
+                        type: integer
+                      size:
+                        type: integer
+                      totalPages:
+                        type: integer
+                      totalElements:
+                        type: integer
+                  _embedded:
+                    type: object
+                    properties:
+                      searchResult:
+                        type: object
+                        properties:
+                          _embedded:
+                            type: object
+                            properties:
+                              objects:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                      description: Title of the object.
+                                    id:
+                                      type: string
+                                    handle:
+                                      type: string
+                                    metadata:
+                                      type: object
+                                      properties:
+                                        dc.title:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              value:
+                                                type: string
+                                        dc.contributor.author:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              value:
+                                                type: string
+                                        dc.date.issued:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              value:
+                                                type: string
+                                                format: date
+                                        dc.identifier.uri:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              value:
+                                                type: string
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "500":
+          description: Internal server error
+  /suggestion/querySuggestions/search/byQuery:
+    get:
+      summary: Retrieve query suggestions
+      description: Returns query suggestions based on user input.
+      parameters:
+        - name: query
+          in: query
+          description: Search term for query suggestions.
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Number of suggestions to return per page.
+          required: false
+          schema:
+            type: integer
+            default: 3
+      responses:
+        "200":
+          description: Successful response with query suggestions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query:
+                    type: string
+                  _embedded:
+                    type: object
+                    properties:
+                      queryCategories:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            suggestiontype:
+                              type: string
+                            _embedded:
+                              type: object
+                              properties:
+                                searchResult:
+                                  type: object
+                                  properties:
+                                    _embedded:
+                                      type: object
+                                      properties:
+                                        suggestions:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              label:
+                                                type: string
+                                              suggestionName:
+                                                type: string
+                                              queryParams:
+                                                type: array
+                                                items:
+                                                  type: string
+                                              count:
+                                                type: integer
+                                              type:
+                                                type: string
+                                              _links:
+                                                type: object
+                                                properties:
+                                                  searchResults:
+                                                    type: object
+                                                    properties:
+                                                      href:
+                                                        type: string
+        "400":
+          description: Bad request (invalid parameters)
+        "500":
+          description: Internal server error
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
+security:
+  - ApiKeyAuth: []
+externalDocs:
+  description: See also  DSpace REST API Contract
+  url: https://github.com/DSpace/RestContract/blob/dspace-7_x/README.md
