@@ -614,6 +614,11 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 common:
+  - type: IssueTracker
+    url: https://github.com/eth-library/opendata-apis/issues
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/eth-library/opendata-apis/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/eth-zurich-agentic-access.yml
   - type: VulnerabilityDisclosure
