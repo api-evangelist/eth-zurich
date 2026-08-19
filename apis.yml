@@ -40,7 +40,7 @@ tags:
   - Switzerland
 created: '2026-06-03'
 modified: '2026-06-03'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: eth-zurich:eth-zurich-bitstreams-api
   name: ETH Zurich – Swiss Federal Institute of Technology bitstreams API
