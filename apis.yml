@@ -2,17 +2,28 @@
 aid: eth-zurich
 name: ETH Zurich – Swiss Federal Institute of Technology
 description: >-
-  ETH Zurich (Eidgenössische Technische Hochschule Zürich) is a public science
-  and technology university founded in 1855, ranked #7 in the QS World
-  University Rankings 2025. Its most visible public developer footprint is the
-  ETH Library API Platform, an Apigee-managed developer portal exposing six
-  documented OpenAPI 3.0 REST APIs (Discovery, ETHorama, Geo, Persons, Research
-  Collection, Vector) for the library's open bibliographic, georeferenced, and
-  research-output data. The ETH Zurich Research Collection additionally offers a
-  public OAI-PMH harvesting interface, and the eth-library GitHub organization
-  publishes the OpenAPI specifications and related open-source tooling. All
-  REST APIs require a free one-time registration to obtain an API key.
+  ETH Zurich (Eidgenössische Technische Hochschule Zürich) is Switzerland's federal
+  institute of technology, founded in 1855 and part of the ETH Domain. Unlike most of the
+  university cohort, ETH operates a genuinely first-party programmable footprint rather
+  than a set of vendor contracts running under its name. The ETH Library API Platform
+  (api.library.ethz.ch) publishes seven documented OpenAPI 3.0 REST APIs — Discovery,
+  ETHorama, Geo, Persons, Research Collection v1 and v2, and Vector — written and operated
+  by ETH Library and specified in ETH's own eth-library/opendata-apis repository. The Swiss
+  National Supercomputing Centre (CSCS), an autonomous unit of ETH Zurich, operates
+  FirecREST v2, an OAuth2-secured OpenAPI 3.1 REST interface to national HPC systems at
+  api.cscs.ch. ETH also runs two live OAI-PMH endpoints on its own hosts (the Research
+  Collection and e-rara), a Shibboleth SAML 2.0 Identity Provider whose metadata is
+  published through SWITCHaai and eduGAIN, and 308 federated service-provider entities —
+  more than any other Swiss institution. What ETH does NOT publish is equally part of the
+  record: there is no public API for the VVZ course catalogue (the widely used vvzapi.ch is
+  a student project that states plainly it is not affiliated with or endorsed by ETH), no
+  campus-life or facilities API, and no central institution-wide developer portal — the
+  developer portal that exists belongs to ETH Library alone. Library discovery and open
+  data reach the public through tenant relationships on platforms ETH does not operate:
+  swisscovery (Ex Libris Alma/Primo via SLSP) and opendata.swiss (the Swiss federal CKAN).
 type: Index
+x-type: university
+x-category: Technical University
 accessModel:
   pricing: free
   onboarding: self-serve
@@ -31,18 +42,25 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/eth-zurich.png
 url: https://raw.githubusercontent.com/api-evangelist/eth-zurich/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
   - University
+  - Higher Education
+  - Education
+  - Switzerland
+  - ETH Domain
   - Research
+  - Research Data
+  - Research Computing
+  - High Performance Computing
   - Library
   - Open Data
-  - Switzerland
+  - Identity Federation
+  - Digital Collections
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 specificationVersion: '0.23'
 apis:
 - aid: eth-zurich:eth-zurich-bitstreams-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology bitstreams API
   description: >-
     The bitstreams API from ETH Zurich – Swiss Federal Institute of Technology — 4 operation(s) for bitstreams.
@@ -59,6 +77,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-collections-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology collections API
   description: >-
     The collections API from ETH Zurich – Swiss Federal Institute of Technology — 3 operation(s) for collections.
@@ -75,6 +94,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-communities-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology communities API
   description: >-
     The communities API from ETH Zurich – Swiss Federal Institute of Technology — 5 operation(s) for communities.
@@ -91,6 +111,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-content-item-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Content Item API
   description: >-
     The Content Item API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for
@@ -108,6 +129,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-contributors-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Contributors API
   description: >-
     The Contributors API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for
@@ -125,6 +147,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-core-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Core API
   description: >-
     The Core API from ETH Zurich – Swiss Federal Institute of Technology — 9 operation(s) for core.
@@ -141,6 +164,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-discover-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Discover API
   description: >-
     The Discover API from ETH Zurich – Swiss Federal Institute of Technology — 7 operation(s) for discover.
@@ -157,6 +181,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-dossier-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Dossier API
   description: >-
     The Dossier API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for dossier.
@@ -173,6 +198,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-dossiers-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Dossiers API
   description: >-
     The Dossiers API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for dossiers.
@@ -189,6 +215,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-e-maps-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology e-maps API
   description: >-
     The e-maps API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for e-maps.
@@ -205,6 +232,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-e-pics-items-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology E-Pics items API
   description: >-
     The E-Pics items API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for
@@ -222,6 +250,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-e-rara-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology e-rara API
   description: >-
     The e-rara API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for e-rara.
@@ -238,6 +267,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-eth-research-collection-api-v2-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology ETH Research Collection API V2 API
   description: >-
     The ETH Research Collection API V2 API from ETH Zurich – Swiss Federal Institute of Technology — 1
@@ -255,6 +285,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-geo-container-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Geo Container API
   description: >-
     The Geo Container API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for
@@ -272,6 +303,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-geo-topics-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology geo-topics API
   description: >-
     The geo-topics API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for geo-topics.
@@ -288,6 +320,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-geodata-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Geodata API
   description: >-
     The Geodata API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for geodata.
@@ -304,6 +337,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-handle-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology handle API
   description: >-
     The handle API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for handle.
@@ -320,6 +354,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-information-about-a-person-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Information about a person API
   description: >-
     The Information about a person API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s)
@@ -337,6 +372,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-items-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology items API
   description: >-
     The items API from ETH Zurich – Swiss Federal Institute of Technology — 5 operation(s) for items.
@@ -353,6 +389,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-list-of-persons-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology List of persons API
   description: >-
     The List of persons API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for
@@ -370,6 +407,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-locations-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Locations API
   description: >-
     The Locations API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for locations.
@@ -386,6 +424,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-maps-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Maps API
   description: >-
     The Maps API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for maps.
@@ -402,6 +441,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-places-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Places API
   description: >-
     The Places API from ETH Zurich – Swiss Federal Institute of Technology — 3 operation(s) for places.
@@ -418,6 +458,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-poi-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Poi API
   description: >-
     The Poi API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for poi.
@@ -434,6 +475,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-poi-items-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Poi items API
   description: >-
     The Poi items API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for poi
@@ -451,6 +493,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-pois-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Pois API
   description: >-
     The Pois API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for pois.
@@ -467,6 +510,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-provenance-items-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology provenance items API
   description: >-
     The provenance items API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s)
@@ -484,6 +528,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-publication-places-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Publication places API
   description: >-
     The Publication places API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s)
@@ -501,6 +546,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-route-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Route API
   description: >-
     The Route API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for route.
@@ -517,6 +563,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-routes-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Routes API
   description: >-
     The Routes API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for routes.
@@ -533,6 +580,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-search-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology search API
   description: >-
     The search API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for search.
@@ -549,6 +597,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-search-portal-resources-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Search Portal resources API
   description: >-
     The Search Portal resources API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s)
@@ -566,6 +615,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-suggestion-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Suggestion API
   description: >-
     The Suggestion API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for suggestion.
@@ -582,6 +632,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-topics-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Topics API
   description: >-
     The Topics API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for topics.
@@ -598,6 +649,7 @@ apis:
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-util-api
+  x-operator: institution
   name: ETH Zurich – Swiss Federal Institute of Technology Util API
   description: >-
     The Util API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for util.
@@ -613,6 +665,160 @@ apis:
     url: https://developer.library.ethz.ch
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
+- aid: eth-zurich:eth-zurich-firecrest-v2-api
+  x-operator: institution
+  name: ETH Zurich – CSCS FirecREST v2 HPC API
+  description: >-
+    FirecREST v2, the REST interface to the Swiss National Supercomputing Centre's HPC
+    systems. CSCS is an autonomous unit of ETH Zurich; the specification is served live from
+    the production host, declares servers[] https://api.cscs.ch/hpc/firecrest/v2, and the
+    upstream source carries "Copyright (c) 2019-2024, ETH Zurich". OpenAPI 3.1.0, 33 paths /
+    35 operations across three tags (status, compute, filesystem), secured with an OAuth 2.0
+    client-credentials flow against auth.cscs.ch. Parallel deployments exist for the ML
+    (api.cscs.ch/ml), Climate & Weather (api.cscs.ch/cw) and Beverin platforms; only the HPC
+    contract is stored here because all four are the same document with a different server.
+    This is the single strongest first-party API surface ETH Zurich operates and it was
+    entirely absent from the June 2026 profile of this institution.
+  humanURL: https://docs.cscs.ch/access/firecrest/
+  baseURL: https://api.cscs.ch/hpc/firecrest/v2
+  tags:
+  - Research Computing
+  - High Performance Computing
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-firecrest-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cscs.ch/access/firecrest/
+  - type: APIReference
+    url: https://eth-cscs.github.io/firecrest-v2/openapi/
+  - type: SourceCode
+    url: https://github.com/eth-cscs/firecrest-v2
+- aid: eth-zurich:eth-zurich-research-collection-oai-pmh
+  x-operator: institution
+  name: ETH Zurich Research Collection OAI-PMH
+  description: >-
+    OAI-PMH 2.0 harvesting interface for the ETH Zurich Research Collection, served from
+    ETH's own host. Verified live with Identify, ListMetadataFormats and ListSets on
+    2026-08-19; serves the qdc, oai_dc, oai_datacite (DataCite schema kernel-4) and xoai
+    metadata prefixes, plus a dedicated openaire_data context. The repository software is
+    DSpace, but the endpoint, the host and the handle prefix (20.500.11850) are ETH's.
+    Access is intermittently bot-mitigated: a rapid second request returned an ETH-authored
+    "Access Restricted" notice citing scraping volume, which is a rate-limit response, not a
+    dead surface.
+  humanURL: https://www.research-collection.ethz.ch/
+  baseURL: https://www.research-collection.ethz.ch/oai/request
+  tags:
+  - Research Data
+  - OAI-PMH
+  - Research Repository
+  properties:
+  - type: OAI-PMH
+    url: https://www.research-collection.ethz.ch/oai/request?verb=Identify
+  - type: OAI-PMH
+    url: https://research-collection.ethz.ch/oai/openaire_data
+  - type: Documentation
+    url: https://www.research-collection.ethz.ch/
+  - type: Conformance
+    url: conformance/eth-zurich-domain-standards.yml
+- aid: eth-zurich:eth-zurich-e-rara-oai-pmh
+  x-operator: institution
+  name: ETH Zurich – e-rara OAI-PMH
+  description: >-
+    OAI-PMH 2.0 interface for e-rara, the platform of digitized rare books held by Swiss
+    institutions, operated by ETH Library. The Identify response names adminEmail
+    issue-erara@library.ethz.ch and an earliest datestamp of 2009-11-10, confirming ETH
+    Library operation. The underlying software is a Visual Library Server; the service and
+    the contact are ETH's.
+  humanURL: https://www.e-rara.ch/
+  baseURL: https://www.e-rara.ch/oai/
+  tags:
+  - Digital Collections
+  - OAI-PMH
+  properties:
+  - type: OAI-PMH
+    url: https://www.e-rara.ch/oai?verb=Identify
+  - type: Documentation
+    url: https://www.e-rara.ch/
+- aid: eth-zurich:eth-zurich-aai-identity-federation
+  x-operator: institution
+  name: ETH Zurich Identity Provider (SWITCHaai / eduGAIN)
+  description: >-
+    ETH Zurich operates a Shibboleth SAML 2.0 Identity Provider with entityID
+    https://aai-logon.ethz.ch/idp/shibboleth, published in the signed SWITCHaai federation
+    metadata aggregate and reachable through eduGAIN. The EntityDescriptor carries an
+    IDPSSODescriptor with SAML 2.0 HTTP-Redirect, HTTP-POST, POST-SimpleSign and SOAP
+    bindings plus SAML 1.0 artifact resolution and attribute query. 308 of the 1,960 entities
+    in the aggregate sit under an ethz.ch host, making ETH the largest single institutional
+    participant in the Swiss federation. This is a machine-readable, institution-operated
+    surface and it is the surface class this cohort most consistently fails to record.
+  humanURL: https://unlimited.ethz.ch/
+  baseURL: https://aai-logon.ethz.ch/idp/
+  tags:
+  - Identity Federation
+  - SAML
+  - Shibboleth
+  properties:
+  - type: IdentityFederation
+    url: authentication/eth-zurich-identity-federation.yml
+  - type: Metadata
+    url: https://metadata.aai.switch.ch/metadata.switchaai.xml
+  - type: Conformance
+    url: conformance/eth-zurich-domain-standards.yml
+- aid: eth-zurich:eth-zurich-gitlab
+  x-operator: institution
+  name: ETH Zurich GitLab
+  description: >-
+    ETH Zurich self-hosts a GitLab instance at gitlab.ethz.ch and exposes its REST API v4
+    publicly for public projects — GET /api/v4/projects returned 200 with real ETH project
+    records on 2026-08-19, while /api/v4/version correctly requires authentication. The
+    instance is ETH-operated infrastructure on an ETH host, so the surface is theirs; the
+    API CONTRACT, however, is GitLab's upstream specification, so no OpenAPI is stored under
+    this institution. Recorded as a relationship, not as an ETH-authored contract.
+  humanURL: https://gitlab.ethz.ch/
+  baseURL: https://gitlab.ethz.ch/api/v4
+  tags:
+  - Source Code
+  - Developer Tooling
+  properties:
+  - type: Documentation
+    url: https://gitlab.ethz.ch/
+  - type: APIReference
+    url: https://docs.gitlab.com/ee/api/rest/
+- aid: eth-zurich:eth-zurich-opendata-swiss
+  x-operator: tenant
+  name: ETH Library on opendata.swiss (CKAN)
+  description: >-
+    ETH Library publishes 14 datasets as the "ETH Library" organization on opendata.swiss,
+    the Swiss federal open-government-data portal. The data is ETH's; the CKAN platform, the
+    Action API and the contract are the Swiss Confederation's. Recorded as a tenant
+    relationship — the CKAN API specification is NOT stored under this institution, and the
+    catalog credit for that contract belongs to opendata.swiss.
+  humanURL: https://opendata.swiss/en/organization/eth-bibliothek
+  baseURL: https://ckan.opendata.swiss/api/3
+  tags:
+  - Open Data
+  - CKAN
+  properties:
+  - type: OpenData
+    url: https://opendata.swiss/en/organization/eth-bibliothek
+  - type: APIReference
+    url: https://ckan.opendata.swiss/api/3/action/organization_show?id=eth-bibliothek
+- aid: eth-zurich:eth-zurich-swisscovery
+  x-operator: tenant
+  name: ETH Library @ swisscovery (Ex Libris Alma/Primo via SLSP)
+  description: >-
+    ETH Library's discovery layer runs as the 41SLSP_ETH view on swisscovery, the shared Ex
+    Libris Alma/Primo platform operated by the Swiss Library Service Platform (SLSP). The
+    holdings and the MMS identifiers surfaced by ETH's own Discovery API come from this
+    system. The tenant is ETH's; the platform, the contract and the Ex Libris APIs are not.
+    No Ex Libris specification is stored under this institution.
+  humanURL: https://eth.swisscovery.slsp.ch/discovery/search?vid=41SLSP_ETH:ETH
+  tags:
+  - Library
+  - Discovery
+  properties:
+  - type: LibraryCatalog
+    url: https://eth.swisscovery.slsp.ch/discovery/search?vid=41SLSP_ETH:ETH
 common:
   - type: IssueTracker
     url: https://github.com/eth-library/opendata-apis/issues
@@ -667,6 +873,96 @@ common:
     url: json-ld/eth-zurich-context.jsonld
   - url: https://www.ethz.ch/en/news-und-veranstaltungen/eth-news/news/_jcr_content.feed.html
     type: Blog
+  - type: APIReference
+    url: https://eth-library.github.io/apiplatform-swagger/
+  - type: TermsOfService
+    url: https://developer.library.ethz.ch/terms
+  - type: PrivacyPolicy
+    url: https://ethz.ch/en/footer/data-protection.html
+  - type: Support
+    url: https://library.ethz.ch/en/
+  - type: SecurityTxt
+    url: https://ethz.ch/.well-known/security.txt
+  - type: ResearchRepository
+    url: https://www.research-collection.ethz.ch/
+  - type: ResearchRepository
+    url: https://data-archive.ethz.ch
+  - type: LibraryCatalog
+    url: https://eth.swisscovery.slsp.ch/discovery/search?vid=41SLSP_ETH:ETH
+  - type: IdentityFederation
+    url: authentication/eth-zurich-identity-federation.yml
+  - type: ResearchComputing
+    url: https://www.cscs.ch/
+  - type: CourseCatalog
+    url: https://ethz.ch/students/en/studies/academic-support/course-catalogue.html
+  - type: AIPolicy
+    url: https://ethz.ch/content/dam/ethz/main/eth-zurich/education/ai_in_education/Generative%20AI%20in%20Teaching%20and%20Learning%20-%20Guidelines%20ETH.pdf
+  - type: AITooling
+    url: https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html
+  - type: Conformance
+    url: conformance/eth-zurich-domain-standards.yml
+  - type: Spectral
+    url: rules/eth-zurich-jsonschema-spectral-rules.yml
+  - type: Lifecycle
+    url: lifecycle/eth-zurich-lifecycle.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-coverage:
+  state: covered
+  reason: institution_operated_surfaces_verified
+  detail: >-
+    ETH Zurich is one of the few institutions in this cohort with a real first-party
+    programmable footprint, and the June 2026 profile understated it in one direction while
+    leaving the operator axis unstated in the other. The audit found ZERO vendor-attributed
+    contracts in this repo: every OpenAPI already here resolves to api.library.ethz.ch, with
+    info.contact api@library.ethz.ch and termsOfService developer.library.ethz.ch/terms, so
+    all 35 existing surfaces are correctly x-operator institution. This pass added the
+    surfaces the June run missed: CSCS FirecREST v2 (OpenAPI 3.1, 35 operations, OAuth2,
+    served live from api.cscs.ch and copyright ETH Zurich), two live OAI-PMH endpoints, and
+    the SWITCHaai/eduGAIN Shibboleth Identity Provider. It also recorded the two real tenant
+    relationships — swisscovery (Ex Libris/SLSP) and opendata.swiss (Swiss federal CKAN) —
+    as relationships, WITHOUT importing either vendor's contract. Honest absences: no public
+    course-catalogue API (vvzapi.ch is a student project that states it is unaffiliated with
+    and unendorsed by ETH, so it is not credited at any operator level), no campus-life or
+    facilities API, no institution-wide developer portal, and no ORCID, SCIM, LTI, Caliper,
+    OneRoster, Ed-Fi, QTI or Crossref surface on any ETH-operated host. Known probe
+    limitations, about US and not about ETH: www.vvz.ethz.ch answered 200 at 21:00 UTC and
+    then refused connections on three later attempts; www.e-rara.ch serves a browser
+    verification interstitial at the root while its OAI-PMH endpoint answers normally; and
+    the Research Collection returned an ETH-authored scraping rate-limit notice on a rapid
+    second request. The 35 library entries are a per-tag split of seven underlying
+    specifications, so the entry count overstates the number of distinct APIs by roughly 5x;
+    the split was left in place because it is refine-openapis output over the institution's
+    own correctly attributed contracts, not vendor inflation.
+  evidence:
+  - url: https://api.cscs.ch/hpc/firecrest/v2/openapi.json
+    status: 200
+  - url: https://www.research-collection.ethz.ch/oai/request?verb=Identify
+    status: 200
+  - url: https://www.research-collection.ethz.ch/oai/request?verb=ListMetadataFormats
+    status: 200
+  - url: https://www.e-rara.ch/oai?verb=Identify
+    status: 200
+  - url: https://metadata.aai.switch.ch/metadata.switchaai.xml
+    status: 200
+  - url: https://api.datacite.org/clients?provider-id=stdp
+    status: 200
+  - url: https://ckan.opendata.swiss/api/3/action/organization_show?id=eth-bibliothek
+    status: 200
+  - url: https://gitlab.ethz.ch/api/v4/projects?per_page=1
+    status: 200
+  - url: https://eth.swisscovery.slsp.ch/discovery/search?vid=41SLSP_ETH:ETH
+    status: 200
+  - url: https://developer.library.ethz.ch
+    status: 200
+  - url: https://ethz.ch/.well-known/security.txt
+    status: 200
+  - url: https://ethz.ch/en/the-eth-zurich/education/ai-in-education/tools.html
+    status: 200
+  - url: https://aai-logon.ethz.ch/idp/shibboleth
+    status: 404
+  - url: https://ethz.ch/en/footer/contact.html
+    status: 404
+  - url: https://www.vvz.ethz.ch/Vorlesungsverzeichnis/sucheLehrangebotPre.view?lang=en
+    status: 0
