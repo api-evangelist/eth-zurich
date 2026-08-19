@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Information about a person API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Information about a person",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /enrichment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/enrichment",
+            "params": [
+              {
+                "name": "qid",
+                "value": "Q115835",
+                "type": "query",
+                "description": "Wikidata QID"
+              },
+              {
+                "name": "gnd",
+                "value": "120179881",
+                "type": "query",
+                "description": "GND ID"
+              }
+            ]
+          },
+          "docs": "Returns enriched information about a person (from wikidata, Metagrid, DNB Entytyfacts, beacon.findbuch) by wikidata QID or GND ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

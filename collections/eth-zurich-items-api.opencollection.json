@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams items API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /poi-items/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/poi-items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "content item ID"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to dossiers, routes and pois also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns a content item (e-rara, emaps, E-Pics, e-periodica etc) of a poi defined in the ETHorama database."
+        },
+        {
+          "info": {
+            "name": "Retrieve all items from the repository.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/items",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the item."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of items shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of items to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve all items from the repository."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single item by using the internal DSpace item identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/items/:item_id",
+            "params": [
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the item."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the item."
+              }
+            ]
+          },
+          "docs": "Retrieve a single item by using the internal DSpace item identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of bitstreams for an item by using the internal DSpace item identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/items/:item_id/bitstreams",
+            "params": [
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the item."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of bitstreams shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of bitstreams to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of bitstreams for an item by using the internal DSpace item identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of metadata for an item by using the internal DSpace item identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/items/:item_id/metadata",
+            "params": [
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the item."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of metadata for an item by using the internal DSpace item identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

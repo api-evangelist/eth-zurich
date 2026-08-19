@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams E-Pics items API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "E-Pics items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /epics-items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/epics-items",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Returns the images for the search term (q).\n\nExample: q=uetliberg"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Returns the photos from the “Image Archive Online” catalog whose camera location is near a defined point. Or the point is defined for a provenance in the catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000).\n\nExample: lat=47.349952"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Returns the photos from the “Image Archive Online” catalog whose camera location is near a defined point. Or the point is defined for a provenance in the catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000)."
+              },
+              {
+                "name": "dist",
+                "value": "",
+                "type": "query",
+                "description": "Returns the photos from the “Image Archive Online” catalog whose camera location is near a defined point. Or the point is defined for a provenance in the catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000).\n\nExample: dist=1000"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to contributors also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns images from E-Pics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

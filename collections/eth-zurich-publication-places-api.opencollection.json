@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Publication places API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Publication places",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /pub-places",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/pub-places",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Returns the publication places (marc 751 or marc 264) that are near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lat=47.349952"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Returns the publication places (marc 751 or marc 264) that are near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lon=8.490838"
+              },
+              {
+                "name": "dist",
+                "value": "",
+                "type": "query",
+                "description": "Returns the publication places (marc 751 or marc 264) that are near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: dist=1000"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Returns publication places (marc 751 or marc 264) for the search term (q).The parameter \"q\" is alternative to \"lat\"/\"lon\".\n\nExample: q=kyburg"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to e-rara, e-maps also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns publication places"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

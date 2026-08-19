@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Maps API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Maps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /maps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/maps",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Returns maps from e-rara and e-maps on which the defined point is located.\n\nExample: lat=47.349952"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Returns maps from e-rara and e-maps on which the defined point is located.\n\nExample: lon=8.490838"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Returns the data for the search term (q).The parameter \"q\" is alternative to \"lat\"/\"lon\".\n\nExample: q=kyburg"
+              }
+            ]
+          },
+          "docs": "Returns maps from e-rara and e-maps."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

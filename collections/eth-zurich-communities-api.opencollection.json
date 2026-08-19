@@ -1,0 +1,262 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams communities API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "communities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of communities.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/communities",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the community."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of communities shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of communities to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of communities."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of top communities.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/communities/top-communities",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the community."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of communities shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of communities to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of top communities."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single community by using the internal DSpace community identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/communities/:community_id",
+            "params": [
+              {
+                "name": "community_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the community."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the community."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a single community by using the internal DSpace community identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of collections in a community by using the internal DSpace community identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/communities/:community_id/collections",
+            "params": [
+              {
+                "name": "community_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the community."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the collection."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of collections shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of collections to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of collections in a community by using the internal DSpace community identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of subcommunities in a community by using the internal DSpace community identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/communities/:community_id/communities",
+            "params": [
+              {
+                "name": "community_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the community."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the community."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of communities shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of communities to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of subcommunities in a community by using the internal DSpace community identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

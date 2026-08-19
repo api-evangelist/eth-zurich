@@ -1,0 +1,283 @@
+{
+  "item": [
+    {
+      "id": "441a110b-fde9-455f-82ef-1859c7955d79",
+      "name": "E-Pics items",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2921ae13-775d-4778-b191-ce7bbe543008",
+          "name": "Returns images from E-Pics.",
+          "request": {
+            "name": "Returns images from E-Pics.",
+            "description": {
+              "content": "Returns images from E-Pics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "epics-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Returns the images for the search term (q).\n\nExample: q=uetliberg"
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>",
+                  "description": "Returns the photos from the “Image Archive Online” catalog whose camera location is near a defined point. Or the point is defined for a provenance in the catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000).\n\nExample: lat=47.349952"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<number>",
+                  "description": "Returns the photos from the “Image Archive Online” catalog whose camera location is near a defined point. Or the point is defined for a provenance in the catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "dist",
+                  "value": "<number>",
+                  "description": "Returns the photos from the “Image Archive Online” catalog whose camera location is near a defined point. Or the point is defined for a provenance in the catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000).\n\nExample: dist=1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "edges",
+                  "value": "<boolean>",
+                  "description": "Should the edges/relations to contributors also be returned (default: true)?\n\nExample: edges=false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73f68ceb-ede7-45cb-8fe4-97dbb55a1a4f",
+              "name": "Returns images",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epics-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "dist",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "941de43f-5b0c-4d1b-8679-8ed2f38d35fa",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epics-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "dist",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf93ab5d-f662-4582-bdf5-f698b54476f4",
+              "name": "server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epics-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "dist",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "072d8f27-5f15-4e53-a648-b65a3758aea5",
+    "name": "Discovery bitstreams E-Pics items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

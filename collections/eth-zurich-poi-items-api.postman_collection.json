@@ -1,0 +1,229 @@
+{
+  "item": [
+    {
+      "id": "91ac8502-38d6-4f11-b30c-bf478ac726ca",
+      "name": "Poi items",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "36fe3e59-c2c1-4abc-90b8-241e7cacb8c8",
+          "name": "Returns content items (e-rara, emaps, E-Pics, e-periodica etc) of pois defined in the ETHorama database. The content items are resources of the eth library that are associated with the POI and describe it.",
+          "request": {
+            "name": "Returns content items (e-rara, emaps, E-Pics, e-periodica etc) of pois defined in the ETHorama database. The content items are resources of the eth library that are associated with the POI and describe it.",
+            "description": {
+              "content": "Returns content items (e-rara, emaps, E-Pics, e-periodica etc) of pois defined in the ETHorama database. The content items are resources of the eth library that are associated with the POI and describe it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "poi-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Returns the content items for the search term (q).\n\nExample: q=Gotthardtunnel"
+                },
+                {
+                  "disabled": false,
+                  "key": "edges",
+                  "value": "<boolean>",
+                  "description": "Should the edges/relations to dossiers, routes and pois also be returned (default: true)?\n\nExample: edges=false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7181b505-de45-4bc0-a32d-0b12a70c3172",
+              "name": "Returns content items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "poi-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddc7884b-a7f9-4e13-a0fe-f2b3395598e9",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "poi-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e11337c7-b683-4e38-a268-d397caba241f",
+              "name": "server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "poi-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d5cc8b42-46bb-450d-88dd-38c869569841",
+    "name": "Discovery bitstreams Poi items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

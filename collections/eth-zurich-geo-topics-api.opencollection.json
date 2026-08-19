@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams geo-topics API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "geo-topics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /geo-topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/geo-topics",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Returns places (subject added entry-geographic names from marc 651) and related resources near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lat=47.378169444"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Returns places (subject added entry-geographic names from marc 651) and related resources near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lon=8.540177777"
+              },
+              {
+                "name": "dist",
+                "value": "",
+                "type": "query",
+                "description": "Returns places (subject added entry-geographic names from marc 651) and related resources near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: dist=1000"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Returns places (subject added entry-geographic names from marc 651) and related resources for the search term (q).The parameter \"q\" is alternative to \"lat\"/\"lon\".\n\nExample: q=bern"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to e-rara and e-maps also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns places (subject added entry-geographic names from marc 651 of e-rara and e-maps) and related resources."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

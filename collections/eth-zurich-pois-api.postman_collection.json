@@ -1,0 +1,481 @@
+{
+  "item": [
+    {
+      "id": "24825307-4461-42e8-b779-2f231705e246",
+      "name": "Pois",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dfe7af95-623b-4320-a87e-7c8af8ceb310",
+          "name": "Returns pois and related resources from e-rara defined in the ETHorama database. References of POIs to E-Pics and other data are not yet available here.",
+          "request": {
+            "name": "Returns pois and related resources from e-rara defined in the ETHorama database. References of POIs to E-Pics and other data are not yet available here.",
+            "description": {
+              "content": "Returns pois and related resources from e-rara defined in the ETHorama database. References of POIs to E-Pics and other data are not yet available here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pois"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>",
+                  "description": "Returns the pois near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lat=47.349952"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<number>",
+                  "description": "Returns the pois near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lon=8.490838"
+                },
+                {
+                  "disabled": false,
+                  "key": "dist",
+                  "value": "<number>",
+                  "description": "Returns the pois near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: dist=1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Returns the data for the search term (q).The parameter \"q\" is alternative to \"lat\"/\"lon\".\n\nExample: q=kyburg"
+                },
+                {
+                  "disabled": false,
+                  "key": "edges",
+                  "value": "<boolean>",
+                  "description": "Should the edges/relations to content items, dossiers and routes also be returned (default: true)?\n\nExample: edges=false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce90b94b-59ef-47de-9d8f-6b39794196c4",
+              "name": "Returns geodata as GeoJSON",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pois"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "dist",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6919ce15-6886-42f9-bd6f-99763a208457",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pois"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "dist",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "851fe9b7-f4b5-4594-a2fb-f2057d0e913d",
+              "name": "server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pois"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "dist",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cd768c8-0ae8-47e4-8100-f75d01f0a63e",
+          "name": "Returns a poi and related resources defined in the ETHorama database. References of POIs to E-Pics and other data are not yet available here.",
+          "request": {
+            "name": "Returns a poi and related resources defined in the ETHorama database. References of POIs to E-Pics and other data are not yet available here.",
+            "description": {
+              "content": "Returns a poi and related resources defined in the ETHorama database. References of POIs to E-Pics and other data are not yet available here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pois",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "edges",
+                  "value": "<boolean>",
+                  "description": "Should the edges/relations to content items, dossiers and routes also be returned (default: true)?\n\nExample: edges=false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) poi ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64615a58-3e7f-4fd9-a5e4-823a6d07817d",
+              "name": "Returns geodata as GeoJSON",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pois",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) poi ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "600cc9d4-6d8b-48e3-8219-e2c76cdd31bf",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pois",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) poi ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a89e8df-bca1-4742-8b9f-efb3ad85f2ce",
+              "name": "server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pois",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) poi ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "402204d9-e21f-42b1-8b43-18d3c7050930",
+    "name": "Discovery bitstreams Pois API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

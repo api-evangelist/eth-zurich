@@ -1,0 +1,259 @@
+{
+  "item": [
+    {
+      "id": "09ed99ec-ba7e-442a-adbc-35b10b098079",
+      "name": "Suggestion",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b666b48c-82a0-443c-b1df-5c9a6ce323f1",
+          "name": "Retrieve query suggestions",
+          "request": {
+            "name": "Retrieve query suggestions",
+            "description": {
+              "content": "Returns query suggestions based on user input.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "suggestion",
+                "querySuggestions",
+                "search",
+                "byQuery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Search term for query suggestions."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "3",
+                  "description": "Number of suggestions to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54f9d148-20f7-43de-aac3-6c70e6487b78",
+              "name": "Successful response with query suggestions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "suggestion",
+                    "querySuggestions",
+                    "search",
+                    "byQuery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "3"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"query\": \"string\",\n  \"_embedded\": {\n    \"queryCategories\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"suggestiontype\": \"string\",\n        \"_embedded\": {\n          \"searchResult\": {\n            \"_embedded\": {\n              \"suggestions\": [\n                {\n                  \"label\": \"string\",\n                  \"suggestionName\": \"string\",\n                  \"queryParams\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ],\n                  \"count\": 5717,\n                  \"type\": \"string\",\n                  \"_links\": {\n                    \"searchResults\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                },\n                {\n                  \"label\": \"string\",\n                  \"suggestionName\": \"string\",\n                  \"queryParams\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ],\n                  \"count\": 7969,\n                  \"type\": \"string\",\n                  \"_links\": {\n                    \"searchResults\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                }\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"suggestiontype\": \"string\",\n        \"_embedded\": {\n          \"searchResult\": {\n            \"_embedded\": {\n              \"suggestions\": [\n                {\n                  \"label\": \"string\",\n                  \"suggestionName\": \"string\",\n                  \"queryParams\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ],\n                  \"count\": 9508,\n                  \"type\": \"string\",\n                  \"_links\": {\n                    \"searchResults\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                },\n                {\n                  \"label\": \"string\",\n                  \"suggestionName\": \"string\",\n                  \"queryParams\": [\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  ],\n                  \"count\": 1533,\n                  \"type\": \"string\",\n                  \"_links\": {\n                    \"searchResults\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                }\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eef29264-e94c-41d3-8a36-4e8633629183",
+              "name": "Bad request (invalid parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "suggestion",
+                    "querySuggestions",
+                    "search",
+                    "byQuery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "3"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9648d3e-e32d-4031-bee4-eb1ed6e1efb6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "suggestion",
+                    "querySuggestions",
+                    "search",
+                    "byQuery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "3"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fe9276ce-b2ea-4fd4-8fb6-8426bff51e4c",
+    "name": "Discovery bitstreams Suggestion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams collections API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of collections.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/collections",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the collection."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of collections shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of collections to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of collections."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single collection by using the internal DSpace collection identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the collection."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the collection."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of collections shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of collections to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a single collection by using the internal DSpace collection identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of items in a collection by using the internal DSpace collection identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/collections/:collection_id/items",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the collection."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the items."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of items shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of items to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of items in a collection by using the internal DSpace collection identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

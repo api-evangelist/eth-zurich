@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams provenance items API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "provenance items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /provenance-items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/provenance-items",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Returns the images for the search term (q).\n\nExample: q=bern"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Returns images (provenances) for a point from the E-Pics catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000).\n\nExample: lat=47.349952"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Returns images (provenances) for a point from the E-Pics catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000)."
+              },
+              {
+                "name": "dist",
+                "value": "",
+                "type": "query",
+                "description": "Returns images (provenances) for a point from the E-Pics catalog “Ex meis libris”. The point is defined by lat (latitude) and long (longitude) and optionally dist (radius) in meters (default: 1000).\n\nExample: dist=1000"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to e-rara also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns images (provenances) from E-Pics catalogue \"Ex meis libris\"."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

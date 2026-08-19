@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams e-maps API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "e-maps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /e-maps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/e-maps",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Returns maps in which the point defined by lat (latitude) and lon (longitude) is located.\n\nExample: lat=47.349952"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Returns maps in which the point defined by lat (latitude) and lon (longitude) is located.\n\nExample: lon=8.490838"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Returns maps for the search term (q).The parameter \"q\" is alternative to \"lat\"/\"lon\".\n\nExample: q=kyburg"
+              }
+            ]
+          },
+          "docs": "Returns maps from e-maps."
+        },
+        {
+          "info": {
+            "name": "GET /e-maps/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/e-maps/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "MMS ID"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to topics, contributors etc. also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns an e-map and related resources."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

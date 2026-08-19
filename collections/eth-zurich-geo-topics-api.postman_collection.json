@@ -1,0 +1,229 @@
+{
+  "item": [
+    {
+      "id": "15abfc41-1f0b-4f86-bd8e-67ad4116b60e",
+      "name": "geo-topics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "636ca0b7-5505-4398-a738-a11b2b9efbd1",
+          "name": "Returns places (subject added entry-geographic names from marc 651 of e-rara and e-maps) and related resources.",
+          "request": {
+            "name": "Returns places (subject added entry-geographic names from marc 651 of e-rara and e-maps) and related resources.",
+            "description": {
+              "content": "Returns places (subject added entry-geographic names from marc 651 of e-rara and e-maps) and related resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geo-topics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>",
+                  "description": "Returns places (subject added entry-geographic names from marc 651) and related resources near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lat=47.378169444"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<number>",
+                  "description": "Returns places (subject added entry-geographic names from marc 651) and related resources near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lon=8.540177777"
+                },
+                {
+                  "disabled": false,
+                  "key": "dist",
+                  "value": "<number>",
+                  "description": "Returns places (subject added entry-geographic names from marc 651) and related resources near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: dist=1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Returns places (subject added entry-geographic names from marc 651) and related resources for the search term (q).The parameter \"q\" is alternative to \"lat\"/\"lon\".\n\nExample: q=bern"
+                },
+                {
+                  "disabled": false,
+                  "key": "edges",
+                  "value": "<boolean>",
+                  "description": "Should the edges/relations to e-rara and e-maps also be returned (default: true)?\n\nExample: edges=false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0db1d147-4686-4533-832f-7b699b46d969",
+              "name": "Returns places (subject added entry-geographic names from marc 651) and related resources as GeoJSON",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geo-topics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "dist",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97249a4d-f1d9-4486-b001-4566fa4ac452",
+              "name": "server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geo-topics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "dist",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ada1cd77-8fe5-47e0-a268-95ca1bea056b",
+    "name": "Discovery bitstreams geo-topics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

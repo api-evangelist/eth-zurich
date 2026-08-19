@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Poi items API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Poi items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /poi-items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/poi-items",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Returns the content items for the search term (q).\n\nExample: q=Gotthardtunnel"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to dossiers, routes and pois also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns content items (e-rara, emaps, E-Pics, e-periodica etc) of pois defined in the ETHorama database. The content items are resources of the eth library that are associated with the POI and describe it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

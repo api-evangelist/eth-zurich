@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams search API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/search",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the item. Possible values are all, metadata, parentCollection, parentCollectionList, parentCommunityList, bitstreams."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of items shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of items to skip."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The search query."
+              },
+              {
+                "name": "fq",
+                "value": "",
+                "type": "query",
+                "description": "Filter queries."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the item results by fieldname|desc; ie: author|desc."
+              }
+            ]
+          },
+          "docs": "Search items."
+        },
+        {
+          "info": {
+            "name": "Retrieve a a list of authors that match the search query.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/search/authors/:query",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "path",
+                "description": "The query string of the author"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The offset of the authors shown."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of authors shown."
+              }
+            ]
+          },
+          "docs": "Retrieve a a list of authors that match the search query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

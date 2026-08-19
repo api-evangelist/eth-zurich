@@ -1,0 +1,483 @@
+{
+  "item": [
+    {
+      "id": "f06eba42-0b29-4d7b-8bdd-085a89483124",
+      "name": "bitstreams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63ac461a-5248-4244-b87d-b8b58f52e722",
+          "name": "Retrieve a list of bitstreams.",
+          "request": {
+            "name": "Retrieve a list of bitstreams.",
+            "description": {
+              "content": "Retrieve a list of bitstreams.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bitstreams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Show additional data for the bitstream."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum amount of bitstreams shown."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The amount of bitstreams to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbf5b83d-130b-4fc7-80f7-93d6b621d7ba",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "246c566f-0c36-42cb-b5cd-2657980366c0",
+          "name": "Retrieve a single bitstream by using the internal DSpace bitstream identifier.",
+          "request": {
+            "name": "Retrieve a single bitstream by using the internal DSpace bitstream identifier.",
+            "description": {
+              "content": "Retrieve a single bitstream by using the internal DSpace bitstream identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bitstreams",
+                ":bitstream_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Show additional data for the bitstream."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "bitstream_id",
+                  "description": "(Required) The identifier of the bitstream."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29f12429-47cc-45d4-8e7e-004153905ba1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams",
+                    ":bitstream_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "bitstream_id",
+                      "description": "(Required) The identifier of the bitstream."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "198870e7-d6eb-4ccb-81bf-1114e138511f",
+          "name": "Retrieve all policies for all bundles in which the bitstream is present, by using the internal DSpace bitstream identifier.",
+          "request": {
+            "name": "Retrieve all policies for all bundles in which the bitstream is present, by using the internal DSpace bitstream identifier.",
+            "description": {
+              "content": "Retrieve all policies for all bundles in which the bitstream is present, by using the internal DSpace bitstream identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bitstreams",
+                ":bitstream_id",
+                "policy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "bitstream_id",
+                  "description": "(Required) The identifier of the bitstream."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5bd9e785-5cc7-45d7-b283-a3d8e8fd32cf",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams",
+                    ":bitstream_id",
+                    "policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "bitstream_id",
+                      "description": "(Required) The identifier of the bitstream."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ff4f884-72e8-4e91-9664-bc8206e670ac",
+          "name": "Retrieve a file by using the corresponding DSpace bitstream identifier.",
+          "request": {
+            "name": "Retrieve a file by using the corresponding DSpace bitstream identifier.",
+            "description": {
+              "content": "Retrieve a file by using the corresponding DSpace bitstream identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bitstreams",
+                ":bitstream_id",
+                "retrieve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "bitstream_id",
+                  "description": "(Required) The identifier of the bitstream."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d612c0b8-f939-4b3e-bd8d-fa38e0476440",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bitstreams",
+                    ":bitstream_id",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "bitstream_id",
+                      "description": "(Required) The identifier of the bitstream."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ee2578fd-7d31-4d5e-a678-090673025b8b",
+    "name": "Discovery bitstreams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

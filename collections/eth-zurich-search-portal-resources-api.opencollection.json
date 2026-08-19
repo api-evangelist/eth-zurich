@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Search Portal resources API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search Portal resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/resources",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The query string that performs the search. E.g. 'q=any,contains,eth'. **First part of the value:**:The data field that you want to search within. The following fields are valid: any (for any field), title, creator (for author), sub (for subject). **Second part of the value:** precision: The precision operation that you want to apply to the field. The following precision operators are valid: exact (value must match the data in the field exactly), begins with (the value must be found at the beginning of the field), and contains (the value must be found anywhere in the field). **Third part of the value:** Value: The search terms, which can be a word, phrase, or exact phrase (group of words enclosed by quotes), and can include the following logical operators: AND, OR, and NOT. Multiple fields are delimited by a semicolon. (q=title,contains,pop music,AND;sub,contains,korean) For more information regarding search terms, see [Performing Basic Searches](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/Primo/New_Primo_User_Interface/End_User_Help_-_New_UI/010Performing_Basic_Searches)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The type of sort to perform on the results, which can be based on relevance or a specific field: rank, title, author, or date. Example: sort=rank"
+              },
+              {
+                "name": "library",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a library. Example: library=5503–112048630005503"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Language for language dependent strings in Primo and Aleph. Possible values: de, en"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results in one result set \n Default:10; Maximal: 100"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The offset of the results from which to start displaying the results. \n The following example skips the first bulk and displays the remaining results up to the specified limit: offset=10. \n Default:0"
+              },
+              {
+                "name": "qInclude",
+                "value": "",
+                "type": "query",
+                "description": "Filters the results by the facets that you want to include. The logical AND operation is applied between the facets. This filter uses the following format: qInclude=<facet_category_1>,exact,<facet_name_1>|,|<facet_category_n>,exact,<facet_name_n>...  Note: **Multiple categories** are delimited by the following string of characters: |,| . **facet_category:** The facet category that you want to include. The following categories are valid: facet_rtype (Resources Type), facet_topic (Subject), facet_creator (Author), facet_tlevel (Availability), facet_data_source (Data source), facet_library (library name). **facet_name:** The name of the facet to include (such as archival_materials if facet_rtype was selected). \n Same facet values as in eth.swisscovery.ethz.ch"
+              },
+              {
+                "name": "qExclude",
+                "value": "",
+                "type": "query",
+                "description": "Exclude facets. If you need more then 1 facet then split it by '|,|'. E.g. qExclude=facet_rtype,exact,books|,|facet_topic,exact,Law"
+              },
+              {
+                "name": "avail",
+                "value": "",
+                "type": "query",
+                "description": "Include availability informations from delivery (Primo VE), holdings (Alma) and/or resolver links (Link Resolver Alma-E)? Possible values: true, false"
+              }
+            ]
+          },
+          "docs": "Returns resources from the [search portal](https://eth.swisscovery.slsp.ch) \n **Examples for large data collections**\n [All resources of Hochschularchiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_Hochschularchiv)\n [All resources of Max Frisch Archiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_MaxFrischArchiv) \n [All resources of Graphische Sammlung]"
+        },
+        {
+          "info": {
+            "name": "GET /resources/{mmsid}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/resources/:mmsid",
+            "params": [
+              {
+                "name": "mmsid",
+                "value": "",
+                "type": "path",
+                "description": "Alma MMS ID"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Language for language dependent strings in Primo and Aleph. Possible values: de, en"
+              },
+              {
+                "name": "avail",
+                "value": "",
+                "type": "query",
+                "description": "Include availability informations from delivery (Primo VE), holdings (Alma) and/or resolver links (Link Resolver Alma-E)? Possible values: true, false"
+              }
+            ]
+          },
+          "docs": "Returns a single resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

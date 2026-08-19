@@ -1,0 +1,450 @@
+{
+  "item": [
+    {
+      "id": "f5a75bb5-769e-4db0-bbb0-467a28d94743",
+      "name": "collections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1aa70be-c190-4b9e-bbd8-bae57147845c",
+          "name": "Retrieve a list of collections.",
+          "request": {
+            "name": "Retrieve a list of collections.",
+            "description": {
+              "content": "Retrieve a list of collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Show additional data for the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum amount of collections shown."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The amount of collections to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d68800a2-fa40-4b29-b95c-d7173fb92ff1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e7c7388-6388-4961-b07b-e87b1b601e46",
+          "name": "Retrieve a single collection by using the internal DSpace collection identifier.",
+          "request": {
+            "name": "Retrieve a single collection by using the internal DSpace collection identifier.",
+            "description": {
+              "content": "Retrieve a single collection by using the internal DSpace collection identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                ":collection_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Show additional data for the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum amount of collections shown."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The amount of collections to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "collection_id",
+                  "description": "(Required) The identifier of the collection."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f622835-cf0b-4bbb-a618-3e955d3bcb56",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "collection_id",
+                      "description": "(Required) The identifier of the collection."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "842ea63b-1d5e-4ab4-9730-baa5416e77a1",
+          "name": "Retrieve a list of items in a collection by using the internal DSpace collection identifier.",
+          "request": {
+            "name": "Retrieve a list of items in a collection by using the internal DSpace collection identifier.",
+            "description": {
+              "content": "Retrieve a list of items in a collection by using the internal DSpace collection identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                ":collection_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Show additional data for the items."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum amount of items shown."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The amount of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "collection_id",
+                  "description": "(Required) The identifier of the collection."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ca47a50-0f3f-4017-a4cc-d76cd306c073",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collection_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "collection_id",
+                      "description": "(Required) The identifier of the collection."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2f4c6bb2-c59e-476c-9581-3d9511f99ba5",
+    "name": "Discovery bitstreams collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

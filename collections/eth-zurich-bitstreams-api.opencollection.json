@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "bitstreams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of bitstreams.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/bitstreams",
+            "params": [
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the bitstream."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum amount of bitstreams shown."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The amount of bitstreams to skip."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of bitstreams."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single bitstream by using the internal DSpace bitstream identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/bitstreams/:bitstream_id",
+            "params": [
+              {
+                "name": "bitstream_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bitstream."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the bitstream."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a single bitstream by using the internal DSpace bitstream identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieve all policies for all bundles in which the bitstream is present, by using the internal DSpace bitstream identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/bitstreams/:bitstream_id/policy",
+            "params": [
+              {
+                "name": "bitstream_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bitstream."
+              }
+            ]
+          },
+          "docs": "Retrieve all policies for all bundles in which the bitstream is present, by using the internal DSpace bitstream identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieve a file by using the corresponding DSpace bitstream identifier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/bitstreams/:bitstream_id/retrieve",
+            "params": [
+              {
+                "name": "bitstream_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bitstream."
+              },
+              {
+                "name": "userIP",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userAgent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "xforwardedfor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a file by using the corresponding DSpace bitstream identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

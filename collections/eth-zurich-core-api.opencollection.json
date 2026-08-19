@@ -1,0 +1,209 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Core API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Core",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve metadata for a bitstream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/bitstreams/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the bitstream to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns metadata details of a given bitstream."
+        },
+        {
+          "info": {
+            "name": "Retrieve the content of a bitstream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/bitstreams/:id/content",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the bitstream to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns the actual file content of a given bitstream."
+        },
+        {
+          "info": {
+            "name": "Retrieve format details for a bitstream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/bitstreams/:id/format",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the bitstream to retrieve format details for."
+              }
+            ]
+          },
+          "docs": "Returns the format details (e.g., MIME type, description) of a given bitstream."
+        },
+        {
+          "info": {
+            "name": "Retrieve item details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the item to retrieve."
+              },
+              {
+                "name": "embed",
+                "value": "",
+                "type": "query",
+                "description": "Embedded relationships in the response."
+              }
+            ]
+          },
+          "docs": "Returns metadata and relationships of a specific item in the research collection."
+        },
+        {
+          "info": {
+            "name": "Retrieve COinS metadata for an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/items/:id/coins",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the item to retrieve COinS metadata for."
+              }
+            ]
+          },
+          "docs": "Returns ContextObjects in Spans (COinS) metadata for a specific item."
+        },
+        {
+          "info": {
+            "name": "Retrieve Leitzahl classification for an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/items/:id/leitzahl",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the item to retrieve Leitzahl metadata for."
+              }
+            ]
+          },
+          "docs": "Returns the Leitzahl classification metadata for a specific item."
+        },
+        {
+          "info": {
+            "name": "Retrieve the owning collection of an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/items/:id/owningCollection",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the item to retrieve the owning collection for."
+              },
+              {
+                "name": "embed",
+                "value": "",
+                "type": "query",
+                "description": "Embedded relationships in the response."
+              }
+            ]
+          },
+          "docs": "Returns the collection to which a specific item belongs, including its parent community."
+        },
+        {
+          "info": {
+            "name": "Retrieve relationships for an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/items/:id/relationships",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the item to retrieve relationships for."
+              }
+            ]
+          },
+          "docs": "Returns the relationships associated with a specific item."
+        },
+        {
+          "info": {
+            "name": "Retrieve thumbnail for an item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/core/items/:id/thumbnail",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the item to retrieve the thumbnail for."
+              }
+            ]
+          },
+          "docs": "Returns the thumbnail image for a specific item."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,193 @@
+{
+  "item": [
+    {
+      "id": "fd912bd9-105c-477e-9d1b-6f2e0b38fb13",
+      "name": "Information about a person",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c78539ba-37c1-4839-8cdc-4f36ac5eb30c",
+          "name": "Returns enriched information about a person (from wikidata, Metagrid, DNB Entytyfacts, beacon.findbuch) by wikidata QID or GND ID.",
+          "request": {
+            "name": "Returns enriched information about a person (from wikidata, Metagrid, DNB Entytyfacts, beacon.findbuch) by wikidata QID or GND ID.",
+            "description": {
+              "content": "Returns enriched information about a person (from wikidata, Metagrid, DNB Entytyfacts, beacon.findbuch) by wikidata QID or GND ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "enrichment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "qid",
+                  "value": "<string>",
+                  "description": "Wikidata QID"
+                },
+                {
+                  "disabled": false,
+                  "key": "gnd",
+                  "value": "<string>",
+                  "description": "GND ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8eaf289-b858-412d-a6ff-6e524adb7012",
+              "name": "Returns a person",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enrichment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "qid",
+                      "value": "Q115835"
+                    },
+                    {
+                      "key": "gnd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3eb41cba-4e17-4545-8c73-419e5ff1d666",
+              "name": "there is no person for this QID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enrichment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "qid",
+                      "value": "Q115835"
+                    },
+                    {
+                      "key": "gnd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a586e71-565c-49af-948b-bec77b7abc79",
+    "name": "Discovery bitstreams Information about a person API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

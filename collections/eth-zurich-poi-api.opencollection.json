@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Poi API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Poi",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get poi by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/pois/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get poi by id"
+        },
+        {
+          "info": {
+            "name": "Get excerpt of all poi",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/pois",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageNr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "qId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "docId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "details",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "overview",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get excerpt of all poi"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

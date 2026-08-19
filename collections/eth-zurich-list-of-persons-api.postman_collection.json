@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "8420e253-d031-4401-9339-1f7992242144",
+      "name": "List of persons",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1bf15995-5a90-49cf-b62b-c45a104f26c1",
+          "name": "Provides lists of persons from a specific data resource pool with links to correspondig person pages.\n\nData resource pools and their codes:\n\n| Data resource pool                            | Code        |\n| --------------------------------------------- | ------------|\n| Hochschularchiv (HSA)                         | hsa         |     \n| E-Pics Bildarchiv (BA)                        | ba          |     \n| e-rara                                        | erara       |     \n| Max Frisch-Archiv (MFA)                       | mfa         |  \n| HSA + BA + e-rara + MFA                       | sar         |     \n       ",
+          "request": {
+            "name": "Provides lists of persons from a specific data resource pool with links to correspondig person pages.\n\nData resource pools and their codes:\n\n| Data resource pool                            | Code        |\n| --------------------------------------------- | ------------|\n| Hochschularchiv (HSA)                         | hsa         |     \n| E-Pics Bildarchiv (BA)                        | ba          |     \n| e-rara                                        | erara       |     \n| Max Frisch-Archiv (MFA)                       | mfa         |  \n| HSA + BA + e-rara + MFA                       | sar         |     \n       ",
+            "description": {
+              "content": "Provides lists of persons from a specific data resource pool with links to correspondig person pages.\n\nData resource pools and their codes:\n\n| Data resource pool                            | Code        |\n| --------------------------------------------- | ------------|\n| Hochschularchiv (HSA)                         | hsa         |     \n| E-Pics Bildarchiv (BA)                        | ba          |     \n| e-rara                                        | erara       |     \n| Max Frisch-Archiv (MFA)                       | mfa         |  \n| HSA + BA + e-rara + MFA                       | sar         |     \n       ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) Code of data resource pool"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8fd6147-acca-447e-a7a8-e7f04f1bd80e",
+              "name": "Returns a list of persons",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) Code of data resource pool"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "535d24fa-9dfb-45e3-bc41-e32e21fc8e72",
+    "name": "Discovery bitstreams List of persons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

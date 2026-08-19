@@ -1,0 +1,235 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Discover API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discover",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve available facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/discover/facets"
+          },
+          "docs": "Returns a list of available facets for filtering search results."
+        },
+        {
+          "info": {
+            "name": "Retrieve author facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/discover/facets/author",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search term for author facets."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of facet values to return per page."
+              }
+            ]
+          },
+          "docs": "Returns author facets based on the query parameter."
+        },
+        {
+          "info": {
+            "name": "Retrieve date issued facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/discover/facets/dateIssued",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search term for date issued facets."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of facet values to return per page."
+              }
+            ]
+          },
+          "docs": "Returns date issued facets based on the query parameter."
+        },
+        {
+          "info": {
+            "name": "Retrieve ETH Zurich availability facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/discover/facets/ethzAvailability",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search term for ETH Zurich availability facets."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of facet values to return per page."
+              }
+            ]
+          },
+          "docs": "Returns ETH Zurich availability facets based on the query parameter."
+        },
+        {
+          "info": {
+            "name": "Retrieve ETH Zurich publication facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/discover/facets/ethzETHPublication",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search term for ETH Zurich publication facets."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of facet values to return per page."
+              }
+            ]
+          },
+          "docs": "Returns ETH Zurich publication facets based on the query parameter."
+        },
+        {
+          "info": {
+            "name": "Retrieve item type facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/discover/facets/itemtype",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search term for item type facets."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of facet values to return per page."
+              }
+            ]
+          },
+          "docs": "Returns item type facets based on the query parameter."
+        },
+        {
+          "info": {
+            "name": "Search objects in the research collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/discover/search/objects",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search term to query objects."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting order (e.g., \"score,DESC\")."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "embed",
+                "value": "",
+                "type": "query",
+                "description": "Fields to embed in the response."
+              }
+            ]
+          },
+          "docs": "Retrieves objects matching the search query with optional sorting and embedding options."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

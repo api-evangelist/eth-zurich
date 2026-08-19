@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams handle API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "handle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a single object by using object pre- and suffix.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/handle/:prefix/:suffix",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "The object prefix."
+              },
+              {
+                "name": "suffix",
+                "value": "",
+                "type": "path",
+                "description": "The object suffix."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Show additional data for the object."
+              }
+            ]
+          },
+          "docs": "Retrieve a single object by using object pre- and suffix."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

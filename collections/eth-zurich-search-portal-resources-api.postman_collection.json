@@ -1,0 +1,329 @@
+{
+  "item": [
+    {
+      "id": "a1fdc90e-20d4-44c0-b1bb-9e004e2ef2ff",
+      "name": "Search Portal resources",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91f09b36-d3d5-4f8a-ab3e-971f0008bd25",
+          "name": "Returns resources from the [search portal](https://eth.swisscovery.slsp.ch) \n **Examples for large data collections**\n [All resources of Hochschularchiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_Hochschularchiv)\n [All resources of Max Frisch Archiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_MaxFrischArchiv) \n [All resources of Graphische Sammlung]( https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_library,exact,5503–112050480005503) \n [All maps](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_rtype,exact,maps) \n [All Open Access archival_materials](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_rtype,exact,archival_materials|,|facet_tlevel,exact,open_access)",
+          "request": {
+            "name": "Returns resources from the [search portal](https://eth.swisscovery.slsp.ch) \n **Examples for large data collections**\n [All resources of Hochschularchiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_Hochschularchiv)\n [All resources of Max Frisch Archiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_MaxFrischArchiv) \n [All resources of Graphische Sammlung]( https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_library,exact,5503–112050480005503) \n [All maps](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_rtype,exact,maps) \n [All Open Access archival_materials](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_rtype,exact,archival_materials|,|facet_tlevel,exact,open_access)",
+            "description": {
+              "content": "Returns resources from the [search portal](https://eth.swisscovery.slsp.ch) \n **Examples for large data collections**\n [All resources of Hochschularchiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_Hochschularchiv)\n [All resources of Max Frisch Archiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_MaxFrischArchiv) \n [All resources of Graphische Sammlung]( https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_library,exact,5503–112050480005503) \n [All maps](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_rtype,exact,maps) \n [All Open Access archival_materials](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_rtype,exact,archival_materials|,|facet_tlevel,exact,open_access)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The query string that performs the search. E.g. 'q=any,contains,eth'. **First part of the value:**:The data field that you want to search within. The following fields are valid: any (for any field), title, creator (for author), sub (for subject). **Second part of the value:** precision: The precision operation that you want to apply to the field. The following precision operators are valid: exact (value must match the data in the field exactly), begins with (the value must be found at the beginning of the field), and contains (the value must be found anywhere in the field). **Third part of the value:** Value: The search terms, which can be a word, phrase, or exact phrase (group of words enclosed by quotes), and can include the following logical operators: AND, OR, and NOT. Multiple fields are delimited by a semicolon. (q=title,contains,pop music,AND;sub,contains,korean) For more information regarding search terms, see [Performing Basic Searches](https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/Primo/New_Primo_User_Interface/End_User_Help_-_New_UI/010Performing_Basic_Searches)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The type of sort to perform on the results, which can be based on relevance or a specific field: rank, title, author, or date. Example: sort=rank"
+                },
+                {
+                  "disabled": false,
+                  "key": "library",
+                  "value": "<string>",
+                  "description": "Filter by a library. Example: library=5503–112048630005503"
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Language for language dependent strings in Primo and Aleph. Possible values: de, en"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Number of results in one result set \n Default:10; Maximal: 100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "The offset of the results from which to start displaying the results. \n The following example skips the first bulk and displays the remaining results up to the specified limit: offset=10. \n Default:0"
+                },
+                {
+                  "disabled": false,
+                  "key": "qInclude",
+                  "value": "<string>",
+                  "description": "Filters the results by the facets that you want to include. The logical AND operation is applied between the facets. This filter uses the following format: qInclude=<facet_category_1>,exact,<facet_name_1>|,|<facet_category_n>,exact,<facet_name_n>...  Note: **Multiple categories** are delimited by the following string of characters: |,| . **facet_category:** The facet category that you want to include. The following categories are valid: facet_rtype (Resources Type), facet_topic (Subject), facet_creator (Author), facet_tlevel (Availability), facet_data_source (Data source), facet_library (library name). **facet_name:** The name of the facet to include (such as archival_materials if facet_rtype was selected). \n Same facet values as in eth.swisscovery.ethz.ch"
+                },
+                {
+                  "disabled": false,
+                  "key": "qExclude",
+                  "value": "<string>",
+                  "description": "Exclude facets. If you need more then 1 facet then split it by '|,|'. E.g. qExclude=facet_rtype,exact,books|,|facet_topic,exact,Law"
+                },
+                {
+                  "disabled": false,
+                  "key": "avail",
+                  "value": "<string>",
+                  "description": "Include availability informations from delivery (Primo VE), holdings (Alma) and/or resolver links (Link Resolver Alma-E)? Possible values: true, false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4efc96e-4217-4c86-9a4d-225ad4bbf298",
+              "name": "Returns a list of resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "library",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qInclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qExclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "avail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a34babc-30fc-4552-af16-ff376f01fa55",
+          "name": "Returns a single resource",
+          "request": {
+            "name": "Returns a single resource",
+            "description": {
+              "content": "Returns a single resource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":mmsid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Language for language dependent strings in Primo and Aleph. Possible values: de, en"
+                },
+                {
+                  "disabled": false,
+                  "key": "avail",
+                  "value": "<string>",
+                  "description": "Include availability informations from delivery (Primo VE), holdings (Alma) and/or resolver links (Link Resolver Alma-E)? Possible values: true, false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mmsid",
+                  "description": "(Required) Alma MMS ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb8f0783-8dc5-4440-880d-5c6f700a1998",
+              "name": "Returns a resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":mmsid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "avail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mmsid",
+                      "description": "(Required) Alma MMS ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c134c1af-a1b8-4a32-a2ec-f48cab893a8f",
+    "name": "Discovery bitstreams Search Portal resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

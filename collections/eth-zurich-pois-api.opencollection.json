@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Pois API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pois",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /pois",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/pois",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Returns the pois near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lat=47.349952"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Returns the pois near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: lon=8.490838"
+              },
+              {
+                "name": "dist",
+                "value": "",
+                "type": "query",
+                "description": "Returns the pois near a point defined by lat (latitude) and lon (longitude) and optionally dist (distance) in metres (default: 1000).\n\nExample: dist=1000"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Returns the data for the search term (q).The parameter \"q\" is alternative to \"lat\"/\"lon\".\n\nExample: q=kyburg"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to content items, dossiers and routes also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns pois and related resources from e-rara defined in the ETHorama database. References of POIs to E-Pics and other data are not yet available here."
+        },
+        {
+          "info": {
+            "name": "GET /pois/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/pois/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "poi ID"
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Should the edges/relations to content items, dossiers and routes also be returned (default: true)?\n\nExample: edges=false"
+              }
+            ]
+          },
+          "docs": "Returns a poi and related resources defined in the ETHorama database. References of POIs to E-Pics and other data are not yet available here."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,702 @@
+{
+  "item": [
+    {
+      "id": "c8a1be54-cd73-4d8e-b180-0c545a158e2d",
+      "name": "items",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "193c2dec-870d-4899-850e-644605f431a2",
+          "name": "Returns a content item (e-rara, emaps, E-Pics, e-periodica etc) of a poi defined in the ETHorama database.",
+          "request": {
+            "name": "Returns a content item (e-rara, emaps, E-Pics, e-periodica etc) of a poi defined in the ETHorama database.",
+            "description": {
+              "content": "Returns a content item (e-rara, emaps, E-Pics, e-periodica etc) of a poi defined in the ETHorama database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "poi-items",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "edges",
+                  "value": "<boolean>",
+                  "description": "Should the edges/relations to dossiers, routes and pois also be returned (default: true)?\n\nExample: edges=false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) content item ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "070d2627-814d-40fb-b957-85947136e0c6",
+              "name": "Returns content item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "poi-items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) content item ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9daccae1-aceb-46f2-84be-1f2b70ead422",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "poi-items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) content item ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0c62eb6-2b9b-4603-bdd3-d9d7384e9a4b",
+              "name": "server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "poi-items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "edges",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) content item ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f141d654-1c83-4f0c-945c-e420986ba239",
+          "name": "Retrieve all items from the repository.",
+          "request": {
+            "name": "Retrieve all items from the repository.",
+            "description": {
+              "content": "Retrieve all items from the repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Show additional data for the item."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum amount of items shown."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The amount of items to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "889a128f-a6fe-4cfa-a995-65ff8550b18e",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "947dede4-34cc-46ed-9cd4-55127ccdfe47",
+          "name": "Retrieve a single item by using the internal DSpace item identifier.",
+          "request": {
+            "name": "Retrieve a single item by using the internal DSpace item identifier.",
+            "description": {
+              "content": "Retrieve a single item by using the internal DSpace item identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Show additional data for the item."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "item_id",
+                  "description": "(Required) The identifier of the item."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f99d4502-45d7-47d0-b9c0-7365f62e5283",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "item_id",
+                      "description": "(Required) The identifier of the item."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87d59ea9-5844-435d-86a0-c7f7393bcdd0",
+          "name": "Retrieve a list of bitstreams for an item by using the internal DSpace item identifier.",
+          "request": {
+            "name": "Retrieve a list of bitstreams for an item by using the internal DSpace item identifier.",
+            "description": {
+              "content": "Retrieve a list of bitstreams for an item by using the internal DSpace item identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items",
+                ":item_id",
+                "bitstreams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum amount of bitstreams shown."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The amount of bitstreams to skip."
+                },
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "item_id",
+                  "description": "(Required) The identifier of the item."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf355eeb-845b-40f8-bcf9-219b593ec722",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":item_id",
+                    "bitstreams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "item_id",
+                      "description": "(Required) The identifier of the item."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0fb5d9c-c7e9-4378-a4e7-230b40ff0ab0",
+          "name": "Retrieve a list of metadata for an item by using the internal DSpace item identifier.",
+          "request": {
+            "name": "Retrieve a list of metadata for an item by using the internal DSpace item identifier.",
+            "description": {
+              "content": "Retrieve a list of metadata for an item by using the internal DSpace item identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items",
+                ":item_id",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userIP",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userAgent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "xforwardedfor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "item_id",
+                  "description": "(Required) The identifier of the item."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df6f2a09-04ee-4b29-8078-228850b79b0a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":item_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userIP",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userAgent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "xforwardedfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "item_id",
+                      "description": "(Required) The identifier of the item."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.library.ethz.ch/discovery/v1/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5b83ca34-4556-422c-8b5c-03f54defdd29",
+    "name": "Discovery bitstreams items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)\n\nContact Support:\n Name: API Management ETH Library\n Email: api@library.ethz.ch",
+      "type": "text/plain"
+    }
+  }
+}

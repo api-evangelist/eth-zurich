@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Discovery bitstreams Util API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Util",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get documents count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.library.ethz.ch/discovery/v1/util/counters"
+          },
+          "docs": "Get documents count"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
