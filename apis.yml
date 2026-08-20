@@ -66,6 +66,8 @@ apis:
     The bitstreams API from ETH Zurich – Swiss Federal Institute of Technology — 4 operation(s) for bitstreams.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - Bitstreams
+  tags_raw:
   - bitstreams
   properties:
   - type: OpenAPI
@@ -83,6 +85,8 @@ apis:
     The collections API from ETH Zurich – Swiss Federal Institute of Technology — 3 operation(s) for collections.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - Collection
+  tags_raw:
   - collections
   properties:
   - type: OpenAPI
@@ -100,6 +104,8 @@ apis:
     The communities API from ETH Zurich – Swiss Federal Institute of Technology — 5 operation(s) for communities.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - Communities
+  tags_raw:
   - communities
   properties:
   - type: OpenAPI
@@ -343,6 +349,8 @@ apis:
     The handle API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for handle.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - Handle
+  tags_raw:
   - handle
   properties:
   - type: OpenAPI
@@ -378,6 +386,8 @@ apis:
     The items API from ETH Zurich – Swiss Federal Institute of Technology — 5 operation(s) for items.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - Item
+  tags_raw:
   - items
   properties:
   - type: OpenAPI
@@ -464,6 +474,8 @@ apis:
     The Poi API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for poi.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - POI
+  tags_raw:
   - Poi
   properties:
   - type: OpenAPI
@@ -586,6 +598,8 @@ apis:
     The search API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for search.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
