@@ -679,46 +679,16 @@ apis:
     url: https://developer.library.ethz.ch
   - type: OAI-PMH
     url: https://research-collection.ethz.ch/oai/openaire_data
-- aid: eth-zurich:eth-zurich-firecrest-v2-api
-  x-operator: institution
-  name: ETH Zurich – CSCS FirecREST v2 HPC API
-  description: >-
-    FirecREST v2, the REST interface to the Swiss National Supercomputing Centre's HPC
-    systems. CSCS is an autonomous unit of ETH Zurich; the specification is served live from
-    the production host, declares servers[] https://api.cscs.ch/hpc/firecrest/v2, and the
-    upstream source carries "Copyright (c) 2019-2024, ETH Zurich". OpenAPI 3.1.0, 33 paths /
-    35 operations across three tags (status, compute, filesystem), secured with an OAuth 2.0
-    client-credentials flow against auth.cscs.ch. Parallel deployments exist for the ML
-    (api.cscs.ch/ml), Climate & Weather (api.cscs.ch/cw) and Beverin platforms; only the HPC
-    contract is stored here because all four are the same document with a different server.
-    This is the single strongest first-party API surface ETH Zurich operates and it was
-    entirely absent from the June 2026 profile of this institution.
-  humanURL: https://docs.cscs.ch/access/firecrest/
-  baseURL: https://api.cscs.ch/hpc/firecrest/v2
-  tags:
-  - Research Computing
-  - High Performance Computing
-  properties:
-  - type: OpenAPI
-    url: openapi/eth-zurich-firecrest-v2-api-openapi.yml
-  - type: Documentation
-    url: https://docs.cscs.ch/access/firecrest/
-  - type: APIReference
-    url: https://eth-cscs.github.io/firecrest-v2/openapi/
-  - type: SourceCode
-    url: https://github.com/eth-cscs/firecrest-v2
 - aid: eth-zurich:eth-zurich-research-collection-oai-pmh
   x-operator: institution
   name: ETH Zurich Research Collection OAI-PMH
   description: >-
-    OAI-PMH 2.0 harvesting interface for the ETH Zurich Research Collection, served from
-    ETH's own host. Verified live with Identify, ListMetadataFormats and ListSets on
-    2026-08-19; serves the qdc, oai_dc, oai_datacite (DataCite schema kernel-4) and xoai
-    metadata prefixes, plus a dedicated openaire_data context. The repository software is
-    DSpace, but the endpoint, the host and the handle prefix (20.500.11850) are ETH's.
-    Access is intermittently bot-mitigated: a rapid second request returned an ETH-authored
-    "Access Restricted" notice citing scraping volume, which is a rate-limit response, not a
-    dead surface.
+    OAI-PMH 2.0 harvesting interface for the ETH Zurich Research Collection, served from ETH's own host.
+    Verified live with Identify, ListMetadataFormats and ListSets on 2026-08-19; serves the qdc, oai_dc,
+    oai_datacite (DataCite schema kernel-4) and xoai metadata prefixes, plus a dedicated openaire_data
+    context. The repository software is DSpace, but the endpoint, the host and the handle prefix (20.500.11850)
+    are ETH's. Access is intermittently bot-mitigated: a rapid second request returned an ETH-authored
+    "Access Restricted" notice citing scraping volume, which is a rate-limit response, not a dead surface.
   humanURL: https://www.research-collection.ethz.ch/
   baseURL: https://www.research-collection.ethz.ch/oai/request
   tags:
@@ -738,11 +708,10 @@ apis:
   x-operator: institution
   name: ETH Zurich – e-rara OAI-PMH
   description: >-
-    OAI-PMH 2.0 interface for e-rara, the platform of digitized rare books held by Swiss
-    institutions, operated by ETH Library. The Identify response names adminEmail
-    issue-erara@library.ethz.ch and an earliest datestamp of 2009-11-10, confirming ETH
-    Library operation. The underlying software is a Visual Library Server; the service and
-    the contact are ETH's.
+    OAI-PMH 2.0 interface for e-rara, the platform of digitized rare books held by Swiss institutions,
+    operated by ETH Library. The Identify response names adminEmail issue-erara@library.ethz.ch and an
+    earliest datestamp of 2009-11-10, confirming ETH Library operation. The underlying software is a Visual
+    Library Server; the service and the contact are ETH's.
   humanURL: https://www.e-rara.ch/
   baseURL: https://www.e-rara.ch/oai/
   tags:
@@ -757,14 +726,13 @@ apis:
   x-operator: institution
   name: ETH Zurich Identity Provider (SWITCHaai / eduGAIN)
   description: >-
-    ETH Zurich operates a Shibboleth SAML 2.0 Identity Provider with entityID
-    https://aai-logon.ethz.ch/idp/shibboleth, published in the signed SWITCHaai federation
-    metadata aggregate and reachable through eduGAIN. The EntityDescriptor carries an
-    IDPSSODescriptor with SAML 2.0 HTTP-Redirect, HTTP-POST, POST-SimpleSign and SOAP
-    bindings plus SAML 1.0 artifact resolution and attribute query. 308 of the 1,960 entities
-    in the aggregate sit under an ethz.ch host, making ETH the largest single institutional
-    participant in the Swiss federation. This is a machine-readable, institution-operated
-    surface and it is the surface class this cohort most consistently fails to record.
+    ETH Zurich operates a Shibboleth SAML 2.0 Identity Provider with entityID https://aai-logon.ethz.ch/idp/shibboleth,
+    published in the signed SWITCHaai federation metadata aggregate and reachable through eduGAIN. The
+    EntityDescriptor carries an IDPSSODescriptor with SAML 2.0 HTTP-Redirect, HTTP-POST, POST-SimpleSign
+    and SOAP bindings plus SAML 1.0 artifact resolution and attribute query. 308 of the 1,960 entities
+    in the aggregate sit under an ethz.ch host, making ETH the largest single institutional participant
+    in the Swiss federation. This is a machine-readable, institution-operated surface and it is the surface
+    class this cohort most consistently fails to record.
   humanURL: https://unlimited.ethz.ch/
   baseURL: https://aai-logon.ethz.ch/idp/
   tags:
@@ -782,12 +750,12 @@ apis:
   x-operator: institution
   name: ETH Zurich GitLab
   description: >-
-    ETH Zurich self-hosts a GitLab instance at gitlab.ethz.ch and exposes its REST API v4
-    publicly for public projects — GET /api/v4/projects returned 200 with real ETH project
-    records on 2026-08-19, while /api/v4/version correctly requires authentication. The
-    instance is ETH-operated infrastructure on an ETH host, so the surface is theirs; the
-    API CONTRACT, however, is GitLab's upstream specification, so no OpenAPI is stored under
-    this institution. Recorded as a relationship, not as an ETH-authored contract.
+    ETH Zurich self-hosts a GitLab instance at gitlab.ethz.ch and exposes its REST API v4 publicly for
+    public projects — GET /api/v4/projects returned 200 with real ETH project records on 2026-08-19, while
+    /api/v4/version correctly requires authentication. The instance is ETH-operated infrastructure on
+    an ETH host, so the surface is theirs; the API CONTRACT, however, is GitLab's upstream specification,
+    so no OpenAPI is stored under this institution. Recorded as a relationship, not as an ETH-authored
+    contract.
   humanURL: https://gitlab.ethz.ch/
   baseURL: https://gitlab.ethz.ch/api/v4
   tags:
@@ -802,11 +770,10 @@ apis:
   x-operator: tenant
   name: ETH Library on opendata.swiss (CKAN)
   description: >-
-    ETH Library publishes 14 datasets as the "ETH Library" organization on opendata.swiss,
-    the Swiss federal open-government-data portal. The data is ETH's; the CKAN platform, the
-    Action API and the contract are the Swiss Confederation's. Recorded as a tenant
-    relationship — the CKAN API specification is NOT stored under this institution, and the
-    catalog credit for that contract belongs to opendata.swiss.
+    ETH Library publishes 14 datasets as the "ETH Library" organization on opendata.swiss, the Swiss federal
+    open-government-data portal. The data is ETH's; the CKAN platform, the Action API and the contract
+    are the Swiss Confederation's. Recorded as a tenant relationship — the CKAN API specification is NOT
+    stored under this institution, and the catalog credit for that contract belongs to opendata.swiss.
   humanURL: https://opendata.swiss/en/organization/eth-bibliothek
   baseURL: https://ckan.opendata.swiss/api/3
   tags:
@@ -821,11 +788,10 @@ apis:
   x-operator: tenant
   name: ETH Library @ swisscovery (Ex Libris Alma/Primo via SLSP)
   description: >-
-    ETH Library's discovery layer runs as the 41SLSP_ETH view on swisscovery, the shared Ex
-    Libris Alma/Primo platform operated by the Swiss Library Service Platform (SLSP). The
-    holdings and the MMS identifiers surfaced by ETH's own Discovery API come from this
-    system. The tenant is ETH's; the platform, the contract and the Ex Libris APIs are not.
-    No Ex Libris specification is stored under this institution.
+    ETH Library's discovery layer runs as the 41SLSP_ETH view on swisscovery, the shared Ex Libris Alma/Primo
+    platform operated by the Swiss Library Service Platform (SLSP). The holdings and the MMS identifiers
+    surfaced by ETH's own Discovery API come from this system. The tenant is ETH's; the platform, the
+    contract and the Ex Libris APIs are not. No Ex Libris specification is stored under this institution.
   humanURL: https://eth.swisscovery.slsp.ch/discovery/search?vid=41SLSP_ETH:ETH
   tags:
   - Library
@@ -833,6 +799,57 @@ apis:
   properties:
   - type: LibraryCatalog
     url: https://eth.swisscovery.slsp.ch/discovery/search?vid=41SLSP_ETH:ETH
+- aid: eth-zurich:eth-zurich-compute-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Compute API
+  description: >-
+    The compute API from ETH Zurich – Swiss Federal Institute of Technology — 4 operation(s) for compute.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  baseURL: https://api.cscs.ch/hpc/firecrest/v2
+  tags:
+  - compute
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-compute-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cscs.ch/access/firecrest/
+  - type: APIReference
+    url: https://eth-cscs.github.io/firecrest-v2/openapi/
+  - type: SourceCode
+    url: https://github.com/eth-cscs/firecrest-v2
+- aid: eth-zurich:eth-zurich-filesystem-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Filesystem API
+  description: >-
+    The filesystem API from ETH Zurich – Swiss Federal Institute of Technology — 23 operation(s) for filesystem.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  baseURL: https://api.cscs.ch/hpc/firecrest/v2
+  tags:
+  - filesystem
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-filesystem-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cscs.ch/access/firecrest/
+  - type: APIReference
+    url: https://eth-cscs.github.io/firecrest-v2/openapi/
+  - type: SourceCode
+    url: https://github.com/eth-cscs/firecrest-v2
+- aid: eth-zurich:eth-zurich-status-api
+  name: ETH Zurich – Swiss Federal Institute of Technology Status API
+  description: >-
+    The status API from ETH Zurich – Swiss Federal Institute of Technology — 6 operation(s) for status.
+  humanURL: https://eth-library.github.io/apiplatform-swagger/
+  baseURL: https://api.cscs.ch/hpc/firecrest/v2
+  tags:
+  - status
+  properties:
+  - type: OpenAPI
+    url: openapi/eth-zurich-status-api-openapi.yml
+  - type: Documentation
+    url: https://docs.cscs.ch/access/firecrest/
+  - type: APIReference
+    url: https://eth-cscs.github.io/firecrest-v2/openapi/
+  - type: SourceCode
+    url: https://github.com/eth-cscs/firecrest-v2
 common:
   - type: IssueTracker
     url: https://github.com/eth-library/opendata-apis/issues
