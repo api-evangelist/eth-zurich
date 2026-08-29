@@ -865,6 +865,9 @@ apis:
   - type: SourceCode
     url: https://github.com/eth-cscs/firecrest-v2
 common:
+  - type: CapabilityMap
+    url: capabilities/eth-zurich-capability-edges.yml
+    name: ETH Zurich – Swiss Federal Institute of Technology Business Capability Map
   - type: IssueTracker
     url: https://github.com/eth-library/opendata-apis/issues
   - type: License

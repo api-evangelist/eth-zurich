@@ -1,0 +1,37 @@
+slug: eth-zurich
+provider: ETH Zurich – Swiss Federal Institute of Technology
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: compute
+  spec_file: eth-zurich-compute-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /compute/{system_name}/jobs post_job_submit ... schemas JobStatus, JobDescriptionModel,
+    HPC job submit/cancel/metadata
+  reason: FirecREST 'compute' submits, monitors and cancels batch jobs on named HPC systems — provisioning
+    and use of compute infrastructure, an IT infrastructure/operations capability rather than any research-domain
+    business capability.
+- tag: filesystem
+  spec_file: eth-zurich-filesystem-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /filesystem/{system_name}/transfer/upload, PUT /filesystem/{system_name}/ops/chmod, GET
+    /filesystem/{system_name}/ops/ls
+  reason: POSIX-style storage operations (ls, chmod, chown, cp, mv, rm, compress) and staged transfers
+    against HPC systems — this is storage infrastructure operation, an IT infrastructure capability, not
+    a domain business function.
