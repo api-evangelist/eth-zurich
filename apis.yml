@@ -55,6 +55,9 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/eth-zurich.png
 url: https://raw.githubusercontent.com/api-evangelist/eth-zurich/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
+x-api-posture-note: "What ETH does NOT publish is equally part of the record: there is no public API for the VVZ course catalogue (the widely used vvzapi.ch is a student project that states plainly it is not affiliated wi"
 tags:
   - University
   - Higher Education
