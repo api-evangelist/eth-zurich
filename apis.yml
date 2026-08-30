@@ -83,7 +83,7 @@ apis:
     The bitstreams API from ETH Zurich – Swiss Federal Institute of Technology — 4 operation(s) for bitstreams.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
-  - Bitstreams
+  - bitstreams
   tags_raw:
   - bitstreams
   properties:
@@ -366,7 +366,7 @@ apis:
     The handle API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for handle.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
-  - Handle
+  - handle
   tags_raw:
   - handle
   properties:
@@ -491,7 +491,7 @@ apis:
     The Poi API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for poi.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
-  - POI
+  - Poi
   tags_raw:
   - Poi
   properties:
@@ -823,6 +823,8 @@ apis:
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   baseURL: https://api.cscs.ch/hpc/firecrest/v2
   tags:
+  - Compute
+  tags_raw:
   - compute
   properties:
   - type: OpenAPI
@@ -840,6 +842,8 @@ apis:
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   baseURL: https://api.cscs.ch/hpc/firecrest/v2
   tags:
+  - Filesystem
+  tags_raw:
   - filesystem
   properties:
   - type: OpenAPI
@@ -857,6 +861,8 @@ apis:
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   baseURL: https://api.cscs.ch/hpc/firecrest/v2
   tags:
+  - Status
+  tags_raw:
   - status
   properties:
   - type: OpenAPI
