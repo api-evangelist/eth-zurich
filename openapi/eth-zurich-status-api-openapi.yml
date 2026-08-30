@@ -1,0 +1,1213 @@
+openapi: 3.2.0
+info:
+  title: FirecREST Status API
+  version: 2.5.6
+servers:
+- url: https://api.cscs.ch/hpc/firecrest/v2
+  description: HPCp Environment
+tags:
+- name: status
+paths:
+  /status/systems:
+    get:
+      tags:
+      - status
+      summary: Get Systems
+      description: Get the list of systems and health status
+      operationId: get_systems_status_systems_get
+      responses:
+        '200':
+          description: System list returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSystemsResponse'
+        4XX:
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+        5XX:
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+  /status/{system_name}/nodes:
+    get:
+      tags:
+      - status
+      summary: Get System Nodes
+      description: Get the list of nodes of a `{system_name}`
+      operationId: get_system_nodes_status__system_name__nodes_get
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      responses:
+        '200':
+          description: Nodes list returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetNodesResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+  /status/{system_name}/reservations:
+    get:
+      tags:
+      - status
+      summary: Get System Reservations
+      description: Get the list of reservations of a `{system_name}`
+      operationId: get_system_reservations_status__system_name__reservations_get
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      responses:
+        '200':
+          description: Reservations list returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetReservationsResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+  /status/{system_name}/partitions:
+    get:
+      tags:
+      - status
+      summary: Get System Partitions
+      description: Get the list of partitions of a `{system_name}`
+      operationId: get_system_partitions_status__system_name__partitions_get
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      - name: show_hidden
+        in: query
+        required: false
+        schema:
+          type: boolean
+          description: Show hidden partitions (only applies to Slurm scheduler).
+          default: false
+          title: Show Hidden
+        description: Show hidden partitions (only applies to Slurm scheduler).
+      responses:
+        '200':
+          description: Partitions list returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPartitionsResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+  /status/{system_name}/userinfo:
+    get:
+      tags:
+      - status
+      summary: Get Userinfo
+      description: Get current user information on a `{system_name}`
+      operationId: get_userinfo_status__system_name__userinfo_get
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      responses:
+        '200':
+          description: User information returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfoResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+  /status/liveness/:
+    get:
+      tags:
+      - status
+      summary: Get Liveness
+      description: Get liveness status of FirecREST
+      operationId: get_liveness_status_liveness__get
+      responses:
+        '200':
+          description: Liveness status returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLiveness'
+        4XX:
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+        5XX:
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+components:
+  schemas:
+    SSHServiceHealth:
+      properties:
+        serviceType:
+          $ref: '#/components/schemas/BackendServiceType'
+          description: Type of the service being checked.
+        lastChecked:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Lastchecked
+          description: Timestamp of the last health check.
+          nullable: true
+        latency:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Latency
+          description: Service response latency in seconds.
+          nullable: true
+        healthy:
+          type: boolean
+          title: Healthy
+          description: True if the service is healthy.
+          default: false
+          nullable: false
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+          description: Optional status message.
+          nullable: true
+      type: object
+      required:
+      - serviceType
+      title: SSHServiceHealth
+      description: Health status of SSH service.
+    UserInfoResponse:
+      properties:
+        user:
+          $ref: '#/components/schemas/PosixIdentified'
+        group:
+          $ref: '#/components/schemas/PosixIdentified'
+        groups:
+          items:
+            $ref: '#/components/schemas/PosixIdentified'
+          type: array
+          title: Groups
+        accounts:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsModel'
+            type: array
+          - type: 'null'
+          title: Accounts
+      type: object
+      required:
+      - user
+      - group
+      - groups
+      title: UserInfoResponse
+    BucketLifecycleConfiguration:
+      properties:
+        days:
+          type: integer
+          title: Days
+          description: Number of days after which objects will expire automatically.
+          default: 10
+      type: object
+      title: BucketLifecycleConfiguration
+      description: Configuration for automatic object lifecycle in storage buckets.
+    GetReservationsResponse:
+      properties:
+        reservations:
+          items:
+            $ref: '#/components/schemas/ReservationModel'
+          type: array
+          title: Reservations
+      type: object
+      required:
+      - reservations
+      title: GetReservationsResponse
+    PartitionModel:
+      properties:
+        name:
+          type: string
+          title: Name
+        cpus:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Cpus
+        totalNodes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Totalnodes
+        partition:
+          anyOf:
+          - type: string
+          - items:
+              type: string
+            type: array
+          title: Partition
+      type: object
+      required:
+      - name
+      - partition
+      title: PartitionModel
+    Scheduler:
+      properties:
+        type:
+          $ref: '#/components/schemas/SchedulerType'
+          description: Scheduler type.
+        connectionMode:
+          anyOf:
+          - $ref: '#/components/schemas/SchedulerConnectionMode'
+          - type: 'null'
+          description: Scheduler connection mode.
+          default: ssh
+        version:
+          type: string
+          title: Version
+          description: Scheduler version.
+        apiUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Apiurl
+          description: REST API endpoint for scheduler.
+          nullable: true
+        apiVersion:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Apiversion
+          description: Scheduler API version.
+          nullable: true
+        timeout:
+          type: integer
+          title: Timeout
+          description: Timeout in seconds for scheduler communication with the API.
+          default: 10
+          nullable: false
+      type: object
+      required:
+      - type
+      - version
+      title: Scheduler
+      description: Cluster job scheduler configuration.
+    SchedulerServiceHealth:
+      properties:
+        serviceType:
+          $ref: '#/components/schemas/BackendServiceType'
+          description: Type of the service being checked.
+        lastChecked:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Lastchecked
+          description: Timestamp of the last health check.
+          nullable: true
+        latency:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Latency
+          description: Service response latency in seconds.
+          nullable: true
+        healthy:
+          type: boolean
+          title: Healthy
+          description: True if the service is healthy.
+          default: false
+          nullable: false
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+          description: Optional status message.
+          nullable: true
+      type: object
+      required:
+      - serviceType
+      title: SchedulerServiceHealth
+      description: Health check result for the job scheduler.
+    SchedulerConnectionMode:
+      type: string
+      enum:
+      - hybrid
+      - rest
+      - ssh
+      title: SchedulerConnectionMode
+      description: Modes to connect to the schedulers present in the system
+    BackendServiceType:
+      type: string
+      enum:
+      - s3
+      - filesystem
+      - ssh
+      - scheduler
+      - exception
+      title: BackendServiceType
+      description: Types of services that can be health-checked.
+    AccountsModel:
+      properties:
+        name:
+          type: string
+          title: Name
+        default:
+          type: boolean
+          title: Default
+      type: object
+      required:
+      - name
+      - default
+      title: AccountsModel
+    FileSystemDataType:
+      type: string
+      enum:
+      - users
+      - store
+      - archive
+      - apps
+      - scratch
+      - project
+      title: FileSystemDataType
+      description: Data types for cluster file systems.
+    ApiResponseError:
+      properties:
+        errorType:
+          $ref: '#/components/schemas/ApResponseErrorType'
+          default: error
+        message:
+          type: string
+          title: Message
+        causedBy:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Causedby
+          nullable: true
+        data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Data
+          nullable: true
+        user:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User
+          nullable: true
+      type: object
+      required:
+      - message
+      title: ApiResponseError
+    HPCCluster:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: Unique name for the cluster. This field is case insensitive.
+        ssh:
+          $ref: '#/components/schemas/SSHClientPool'
+          description: SSH configuration for accessing the cluster nodes.
+        scheduler:
+          $ref: '#/components/schemas/Scheduler'
+          description: Job scheduler configuration.
+        servicesHealth:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/SchedulerServiceHealth'
+              - $ref: '#/components/schemas/FilesystemServiceHealth'
+              - $ref: '#/components/schemas/SSHServiceHealth'
+              - $ref: '#/components/schemas/S3ServiceHealth'
+              - $ref: '#/components/schemas/HealthCheckException'
+            type: array
+          - type: 'null'
+          title: Serviceshealth
+          description: Optional health information for different services in the cluster.
+          nullable: true
+        probing:
+          $ref: '#/components/schemas/ProbingServices'
+          description: Probing configuration for monitoring the cluster's services.
+        lastHealthCheck:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Lasthealthcheck
+          description: Timestamp of the last health check.
+        fileSystems:
+          items:
+            $ref: '#/components/schemas/FileSystem'
+          type: array
+          title: Filesystems
+          description: List of mounted file systems on the cluster, such as scratch or home directories.
+        dataOperation:
+          $ref: '#/components/schemas/DataOperation'
+          description: Data transfer backend configuration. More details in [this section](../arch/external_storage/README.md).
+          default:
+            datatransfer_jobs_directives: []
+            max_ops_file_size: 5242880
+          nullable: false
+      type: object
+      required:
+      - name
+      - ssh
+      - scheduler
+      - probing
+      title: HPCCluster
+      description: 'Definition of an HPC cluster, including SSH access, scheduling, and
+
+        filesystem layout. More info in
+
+        [the systems'' section](../arch/systems//README.md).'
+    MultipartUpload:
+      properties:
+        use_split:
+          type: boolean
+          title: Use Split
+          description: Enable or disable splitting large files into parts when uploading the file to the staging area.
+          default: false
+        max_part_size:
+          type: integer
+          title: Max Part Size
+          description: Maximum size (in bytes) for multipart data transfers. Default is 2 GB.
+          default: 2147483648
+        parallel_runs:
+          type: integer
+          title: Parallel Runs
+          description: Number of parts to upload in parallel to the staging area.
+          default: 3
+        tmp_folder:
+          type: string
+          title: Tmp Folder
+          description: Temporary folder used for storing split parts during upload.
+          default: tmp
+      type: object
+      title: MultipartUpload
+      description: Configuration for multipart upload behavior.
+    FileSystem:
+      properties:
+        path:
+          type: string
+          title: Path
+          description: Mount path for the file system.
+        dataType:
+          $ref: '#/components/schemas/FileSystemDataType'
+          description: File system purpose/type.
+        defaultWorkDir:
+          type: boolean
+          title: Defaultworkdir
+          description: Mark this as the default working directory.
+          default: false
+      type: object
+      required:
+      - path
+      - dataType
+      title: FileSystem
+      description: Defines a cluster file system and its type.
+    SchedulerType:
+      type: string
+      enum:
+      - slurm
+      - pbs
+      title: SchedulerType
+      description: Supported job scheduler types.
+    NodeModel:
+      properties:
+        sockets:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sockets
+          nullable: true
+        cores:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Cores
+          nullable: true
+        threads:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Threads
+          nullable: true
+        cpus:
+          type: integer
+          title: Cpus
+        cpuLoad:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Cpuload
+          nullable: true
+        freeMemory:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Freememory
+          nullable: true
+        features:
+          anyOf:
+          - type: string
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Features
+          nullable: true
+        name:
+          type: string
+          title: Name
+        address:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Address
+          nullable: true
+        hostname:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Hostname
+          nullable: true
+        state:
+          items:
+            $ref: '#/components/schemas/NodeState'
+          type: array
+          title: State
+        partitions:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Partitions
+          nullable: true
+        weight:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Weight
+          nullable: true
+        allocMemory:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Allocmemory
+          nullable: true
+        allocCpus:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Alloccpus
+          nullable: true
+        idleCpus:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Idlecpus
+          nullable: true
+      type: object
+      required:
+      - cpus
+      - name
+      - state
+      title: NodeModel
+    SSHClientPool:
+      properties:
+        host:
+          type: string
+          title: Host
+          description: SSH target hostname.
+        port:
+          type: integer
+          title: Port
+          description: SSH port.
+        proxyHost:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Proxyhost
+          description: Optional proxy host for tunneling.
+          nullable: true
+        proxyPort:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Proxyport
+          description: Optional proxy port.
+          nullable: true
+        maxClients:
+          type: integer
+          title: Maxclients
+          description: Maximum number of concurrent SSH clients (not a hard limit, might be temporarily exceeded under heavy load).
+          default: 100
+        timeout:
+          $ref: '#/components/schemas/SSHTimeouts'
+          description: SSH timeout settings.
+      type: object
+      required:
+      - host
+      - port
+      title: SSHClientPool
+      description: SSH connection pool configuration for remote execution.
+    S3ServiceHealth:
+      properties:
+        serviceType:
+          $ref: '#/components/schemas/BackendServiceType'
+          description: Type of the service being checked.
+        lastChecked:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Lastchecked
+          description: Timestamp of the last health check.
+          nullable: true
+        latency:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Latency
+          description: Service response latency in seconds.
+          nullable: true
+        healthy:
+          type: boolean
+          title: Healthy
+          description: True if the service is healthy.
+          default: false
+          nullable: false
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+          description: Optional status message.
+          nullable: true
+      type: object
+      required:
+      - serviceType
+      title: S3ServiceHealth
+      description: Health status of S3-compatible storage.
+    ProbingServices:
+      properties:
+        services:
+          anyOf:
+          - additionalProperties:
+              $ref: '#/components/schemas/ProbingService'
+            propertyNames:
+              $ref: '#/components/schemas/BackendServiceType'
+            type: object
+          - type: 'null'
+          title: Services
+          description: Services to be checked.
+        intervalCheck:
+          type: integer
+          title: Intervalcheck
+          description: Interval in seconds between cluster checks, if not specified the default of 120s is applied.
+          default: 120
+      type: object
+      title: ProbingServices
+      description: Health check interval and list of services.
+    FilesystemServiceHealth:
+      properties:
+        serviceType:
+          $ref: '#/components/schemas/BackendServiceType'
+          description: Type of the service being checked.
+        lastChecked:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Lastchecked
+          description: Timestamp of the last health check.
+          nullable: true
+        latency:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Latency
+          description: Service response latency in seconds.
+          nullable: true
+        healthy:
+          type: boolean
+          title: Healthy
+          description: True if the service is healthy.
+          default: false
+          nullable: false
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+          description: Optional status message.
+          nullable: true
+        path:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Path
+          description: Path of the monitored file system.
+          nullable: true
+      type: object
+      required:
+      - serviceType
+      title: FilesystemServiceHealth
+      description: Health check for a mounted file system.
+    GetNodesResponse:
+      properties:
+        nodes:
+          items:
+            $ref: '#/components/schemas/NodeModel'
+          type: array
+          title: Nodes
+      type: object
+      required:
+      - nodes
+      title: GetNodesResponse
+    NodeState:
+      type: string
+      enum:
+      - IDLE
+      - ALLOCATED
+      - MIXED
+      - DOWN
+      - DRAIN
+      - OFFLINE
+      - RESERVED
+      - COMPLETING
+      - BUSY
+      - POWERING_DOWN
+      - POWERING_UP
+      - UNKNOWN
+      title: NodeState
+    S3DataTransfer:
+      properties:
+        serviceType:
+          type: string
+          const: s3
+          title: Servicetype
+        name:
+          type: string
+          title: Name
+          description: Name identifier for the storage.
+        privateUrl:
+          type: string
+          format: password
+          title: Privateurl
+          description: Private/internal endpoint URL for the storage.
+          writeOnly: true
+        publicUrl:
+          type: string
+          title: Publicurl
+          description: Public/external URL for the storage.
+        accessKeyId:
+          type: string
+          format: password
+          title: Accesskeyid
+          description: Access key ID for S3-compatible storage.
+          writeOnly: true
+        secretAccessKey:
+          type: string
+          format: password
+          title: Secretaccesskey
+          description: Secret access key for storage. You can give directly the content or the file path using `'secret_file:/path/to/file'`.
+          writeOnly: true
+        region:
+          type: string
+          title: Region
+          description: Region of the storage bucket.
+        ttl:
+          type: integer
+          title: Ttl
+          description: Time-to-live (in seconds) for generated URLs.
+        tenant:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tenant
+          description: Optional tenant identifier for multi-tenant setups.
+          nullable: true
+        multipart:
+          $ref: '#/components/schemas/MultipartUpload'
+          description: Settings for multipart upload, including chunk size and concurrency.
+        bucketLifecycleConfiguration:
+          $ref: '#/components/schemas/BucketLifecycleConfiguration'
+          description: Lifecycle policy settings for auto-deleting files after a given number of days.
+      type: object
+      required:
+      - serviceType
+      - name
+      - privateUrl
+      - publicUrl
+      - accessKeyId
+      - secretAccessKey
+      - region
+      - ttl
+      title: S3DataTransfer
+      description: Object storage configuration, including credentials, endpoints, and upload behavior.
+    HealthCheckException:
+      properties:
+        serviceType:
+          $ref: '#/components/schemas/BackendServiceType'
+          description: Type of the service being checked.
+        lastChecked:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Lastchecked
+          description: Timestamp of the last health check.
+          nullable: true
+        latency:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Latency
+          description: Service response latency in seconds.
+          nullable: true
+        healthy:
+          type: boolean
+          title: Healthy
+          description: True if the service is healthy.
+          default: false
+          nullable: false
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+          description: Optional status message.
+          nullable: true
+      type: object
+      required:
+      - serviceType
+      title: HealthCheckException
+      description: Generic health check error placeholder.
+    PosixIdentified:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - id
+      - name
+      title: PosixIdentified
+    GetPartitionsResponse:
+      properties:
+        partitions:
+          items:
+            $ref: '#/components/schemas/PartitionModel'
+          type: array
+          title: Partitions
+      type: object
+      required:
+      - partitions
+      title: GetPartitionsResponse
+    ApResponseErrorType:
+      type: string
+      enum:
+      - error
+      - validation
+      title: ApResponseErrorType
+    DataOperation:
+      properties:
+        datatransfer_jobs_directives:
+          items:
+            type: string
+          type: array
+          title: Datatransfer Jobs Directives
+          description: Custom scheduler flags passed to data transfer jobs (e.g. `-pxfer` for a dedicated partition).
+        max_ops_file_size:
+          type: integer
+          title: Max Ops File Size
+          description: Maximum file size (in bytes) allowed for direct upload and download. Larger files will go through the staging area.
+          default: 5242880
+        data_transfer:
+          anyOf:
+          - oneOf:
+            - $ref: '#/components/schemas/S3DataTransfer'
+            - $ref: '#/components/schemas/WormholeDataTransfer'
+            - $ref: '#/components/schemas/StreamerDataTransfer'
+            discriminator:
+              propertyName: serviceType
+              mapping:
+                s3: '#/components/schemas/S3DataTransfer'
+                streamer: '#/components/schemas/StreamerDataTransfer'
+                wormhole: '#/components/schemas/WormholeDataTransfer'
+          - type: 'null'
+          title: Data Transfer
+          description: Data transfer service configuration
+          nullable: true
+      type: object
+      title: DataOperation
+    GetLiveness:
+      properties:
+        healthcheckRuns:
+          additionalProperties:
+            type: string
+            format: date-time
+          type: object
+          title: Healthcheckruns
+        lastUpdate:
+          type: integer
+          title: Lastupdate
+      type: object
+      title: GetLiveness
+    ReservationModel:
+      properties:
+        name:
+          type: string
+          title: Name
+        nodeList:
+          type: string
+          title: Nodelist
+        endTime:
+          type: integer
+          title: Endtime
+        startTime:
+          type: integer
+          title: Starttime
+        features:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Features
+          nullable: true
+        state:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: State
+          nullable: true
+      type: object
+      required:
+      - name
+      - nodeList
+      - endTime
+      - startTime
+      title: ReservationModel
+    ProbingService:
+      properties:
+        timeout:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Timeout
+          description: Timeout for specific health check, if not specified the default of 10s is applied.
+          default: 10
+      type: object
+      title: ProbingService
+      description: Health check enable settings.
+    StreamerDataTransfer:
+      properties:
+        serviceType:
+          type: string
+          const: streamer
+          title: Servicetype
+        pypiIndexUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Pypiindexurl
+          description: Optional local PyPI index URL for installing dependencies.
+        host:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Host
+          description: The interface to use for listening incoming connections
+          nullable: true
+        portRange:
+          prefixItems:
+          - type: integer
+          - type: integer
+          type: array
+          maxItems: 2
+          minItems: 2
+          title: Portrange
+          description: Port range for establishing connections.
+          default:
+          - 5665
+          - 5675
+        publicIps:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Publicips
+          description: List of public IP addresses where server can be reached.
+          nullable: true
+        waitTimeout:
+          type: integer
+          title: Waittimeout
+          description: How long to wait for a connection before exiting (in seconds)
+          default: 86400
+          nullable: false
+        inboundTransferLimit:
+          type: integer
+          title: Inboundtransferlimit
+          description: Limit how much data can be received (in bytes)
+          default: 5368709120
+          nullable: false
+      type: object
+      required:
+      - serviceType
+      title: StreamerDataTransfer
+    GetSystemsResponse:
+      properties:
+        systems:
+          items:
+            $ref: '#/components/schemas/HPCCluster'
+          type: array
+          title: Systems
+      type: object
+      required:
+      - systems
+      title: GetSystemsResponse
+    SSHTimeouts:
+      properties:
+        connection:
+          type: integer
+          title: Connection
+          description: Timeout (seconds) for initial SSH connection.
+          default: 5
+        login:
+          type: integer
+          title: Login
+          description: Timeout (seconds) for SSH login/auth.
+          default: 5
+        commandExecution:
+          type: integer
+          title: Commandexecution
+          description: Timeout (seconds) for executing commands over SSH.
+          default: 5
+        idleTimeout:
+          type: integer
+          title: Idletimeout
+          description: Max idle time (seconds) before disconnecting.
+          default: 60
+        keepAlive:
+          type: integer
+          title: Keepalive
+          description: Interval (seconds) for sending keep-alive messages.
+          default: 5
+      type: object
+      title: SSHTimeouts
+      description: Various SSH settings.
+    WormholeDataTransfer:
+      properties:
+        serviceType:
+          type: string
+          const: wormhole
+          title: Servicetype
+        pypiIndexUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Pypiindexurl
+          description: Optional local PyPI index URL for installing dependencies.
+          nullable: true
+      type: object
+      required:
+      - serviceType
+      title: WormholeDataTransfer
+  securitySchemes:
+    APIAuthDependency:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://auth.cscs.ch/auth/realms/firecrest-clients/protocol/openid-connect/token
+    HTTPBearer:
+      type: http
+      scheme: bearer

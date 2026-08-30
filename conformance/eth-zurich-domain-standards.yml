@@ -1,0 +1,118 @@
+---
+generated: '2026-08-19'
+method: probed
+source: >-
+  Live probes of ETH Zurich institution-operated endpoints on 2026-08-19, plus the
+  SWITCHaai federation metadata aggregate and the DataCite REST API. Every claim below
+  points at a fetched URL and an HTTP status; nothing here is inferred from prose.
+regime: education
+description: >-
+  Domain-standard conformance for ETH Zurich, measured against the Kin Score `education`
+  regulatory regime standards list (scim, lti, oneroster, ed-fi, caliper, qti, oai-pmh,
+  shibboleth, saml, orcid, datacite, crossref). Reward-only: standards not evidenced below
+  were probed and NOT found, and are recorded as such rather than left blank.
+conformance:
+  - standard: oai-pmh
+    status: conformant
+    x-operator: institution
+    evidence:
+      - url: https://www.research-collection.ethz.ch/oai/request?verb=Identify
+        status: 200
+        detail: >-
+          OAI-PMH 2.0 Identify response served from ETH Zurich's own host. baseURL
+          https://www.research-collection.ethz.ch/server/oai/request, protocolVersion 2.0.
+      - url: https://www.research-collection.ethz.ch/oai/request?verb=ListMetadataFormats
+        status: 200
+        detail: >-
+          metadataPrefix values served: qdc, oai_dc, oai_datacite, xoai.
+      - url: https://www.research-collection.ethz.ch/oai/request?verb=ListSets
+        status: 200
+        detail: >-
+          Sets published by community handle prefix 20.500.11850 — Books, Conference
+          Contributions, Educational Material, Journal Contributions, Patents,
+          Presentations, Research Data and others.
+      - url: https://www.research-collection.ethz.ch/oai/openaire_data?verb=Identify
+        status: 200
+        detail: Dedicated OpenAIRE data context on the same institution-operated endpoint.
+      - url: https://www.e-rara.ch/oai?verb=Identify
+        status: 200
+        detail: >-
+          Second institution-operated OAI-PMH endpoint (e-rara digitized rare books).
+          adminEmail issue-erara@library.ethz.ch confirms ETH Library operation.
+    note: >-
+      The repository software underneath research-collection.ethz.ch is DSpace and the
+      e-rara platform runs Visual Library Server, but both OAI-PMH endpoints are served
+      from hosts ETH operates, with ETH Library contact addresses in the protocol response.
+  - standard: saml
+    status: conformant
+    x-operator: institution
+    evidence:
+      - url: https://metadata.aai.switch.ch/metadata.switchaai.xml
+        status: 200
+        detail: >-
+          EntityDescriptor entityID="https://aai-logon.ethz.ch/idp/shibboleth" carries an
+          IDPSSODescriptor with SAML 2.0 HTTP-Redirect, HTTP-POST, HTTP-POST-SimpleSign and
+          SOAP bindings, plus SAML 1.0 SOAP ArtifactResolution and AttributeQuery.
+          OrganizationName "ethz.ch", OrganizationDisplayName "ETH Zurich" / "ETH Zürich".
+  - standard: shibboleth
+    status: conformant
+    x-operator: institution
+    evidence:
+      - url: https://metadata.aai.switch.ch/metadata.switchaai.xml
+        status: 200
+        detail: >-
+          ETH operates a Shibboleth Identity Provider at aai-logon.ethz.ch. Endpoint
+          https://aai-logon.ethz.ch/idp/profile/Shibboleth/SSO is published in the
+          federation aggregate, alongside a separate test IdP entity (idp_test).
+      - url: https://aai-logon.ethz.ch/idp/profile/Metadata/SAML
+        status: 200
+        detail: >-
+          Host is live and running a Shibboleth IdP (the response is the IdP's own error
+          view, not a soft-404 of some other service); direct metadata retrieval at
+          /idp/shibboleth returns 404, so the authoritative copy is the federation aggregate.
+  - standard: datacite
+    status: conformant
+    x-operator: institution
+    evidence:
+      - url: https://api.datacite.org/providers?query=ETH%20Zurich
+        status: 200
+        detail: >-
+          Two DataCite providers named ETH Zurich — `stdp` and the consortium organization
+          `ethzco`, the latter carrying ROR https://ror.org/05a28rw58 (ETH Zurich).
+      - url: https://api.datacite.org/clients?provider-id=stdp
+        status: 200
+        detail: >-
+          33 DOI-registering repositories operated under ETH Zurich, including
+          ethz.da-rd (ETHZ Data Archive - Research Data), ethz.e-manus (e-manuscripta),
+          ethz.seals (E-Periodica), ethz.epics3 (E-Pics) and ethz.tma (Thomas Mann Archiv).
+      - url: https://www.research-collection.ethz.ch/oai/request?verb=ListMetadataFormats
+        status: 200
+        detail: >-
+          The institution's own OAI-PMH endpoint serves the oai_datacite prefix against
+          DataCite schema kernel-4 (http://datacite.org/schema/kernel-4).
+not_evidenced:
+  - standard: orcid
+    reason: >-
+      12,667 ORCID records name ETH Zurich as an affiliation
+      (https://pub.orcid.org/v3.0/search/?q=affiliation-org-name:"ETH Zurich", 200), but that
+      is ORCID's data about researchers, not an ETH-operated contract. No ORCID identifier,
+      field or integration appears in any of the eight institution-operated OpenAPI
+      definitions in this repo. Not credited.
+  - standard: crossref
+    reason: >-
+      ETH registers DOIs through DataCite, not Crossref. No Crossref member prefix or
+      deposit surface found under an ETH-operated host.
+  - standard: scim
+    reason: >-
+      No SCIM 2.0 provisioning endpoint found on any ethz.ch host. Identity provisioning at
+      ETH runs through SWITCH edu-ID and SAML attribute release, not a published SCIM API.
+  - standard: lti
+    reason: No LTI tool-provider or platform registration surface found on an ETH-operated host.
+  - standard: oneroster
+    reason: Not found. OneRoster is a K-12 rostering standard with no ETH deployment evidence.
+  - standard: ed-fi
+    reason: Not found. Ed-Fi is a US K-12 data standard; not applicable to a Swiss federal institute.
+  - standard: caliper
+    reason: No Caliper Analytics event surface found on an ETH-operated host.
+  - standard: qti
+    reason: No QTI assessment-interchange surface found on an ETH-operated host.

@@ -1,0 +1,58 @@
+---
+generated: '2026-08-19'
+method: probed
+x-operator: institution
+source: https://metadata.aai.switch.ch/metadata.switchaai.xml
+description: >-
+  ETH Zurich's identity federation posture. This is a machine-readable, institution-operated
+  surface that the June 2026 profile of this repo missed entirely: the SAML 2.0 metadata that
+  describes ETH's Identity Provider and its service providers is published, signed, and
+  harvestable, and it is genuinely ETH's own engineering rather than a vendor contract running
+  under ETH's name.
+federation:
+  name: SWITCHaai
+  operator: SWITCH (Swiss Education & Research Network)
+  interfederation: eduGAIN
+  metadata_aggregate: https://metadata.aai.switch.ch/metadata.switchaai.xml
+  aggregate_entities_total: 1960
+  aggregate_probed: '2026-08-19'
+identity_provider:
+  entity_id: https://aai-logon.ethz.ch/idp/shibboleth
+  software: Shibboleth Identity Provider
+  organization_name: ethz.ch
+  organization_display_name: ETH Zurich
+  protocols:
+    - SAML 2.0
+    - SAML 1.0
+    - Shibboleth 1.x AuthnRequest
+  endpoints:
+    - https://aai-logon.ethz.ch/idp/profile/SAML2/Redirect/SSO
+    - https://aai-logon.ethz.ch/idp/profile/SAML2/POST/SSO
+    - https://aai-logon.ethz.ch/idp/profile/SAML2/POST-SimpleSign/SSO
+    - https://aai-logon.ethz.ch/idp/profile/SAML2/SOAP/ArtifactResolution
+    - https://aai-logon.ethz.ch/idp/profile/SAML2/SOAP/AttributeQuery
+    - https://aai-logon.ethz.ch/idp/profile/SAML1/SOAP/ArtifactResolution
+    - https://aai-logon.ethz.ch/idp/profile/SAML1/SOAP/AttributeQuery
+    - https://aai-logon.ethz.ch/idp/profile/Shibboleth/SSO
+  test_entity: https://aai-logon.ethz.ch/idp_test/shibboleth
+service_providers:
+  ethz_ch_entities_in_aggregate: 308
+  note: >-
+    308 of the 1,960 entities in the SWITCHaai aggregate sit under an ethz.ch host — ETH is by
+    a wide margin the largest single institutional participant in the Swiss federation. Examples
+    span the data archive (app.data-archive.ethz.ch), the student association
+    (auth.vseth.ethz.ch), research collections (collections.gta.arch.ethz.ch), the CMS
+    (cms-author.ethz.ch) and equipment booking (aai-leihs.ethz.ch).
+caveats:
+  - >-
+    Direct per-entity metadata retrieval from the IdP itself is not available:
+    https://aai-logon.ethz.ch/idp/shibboleth returns 404 and
+    https://aai-logon.ethz.ch/idp/profile/Metadata/SAML returns the Shibboleth error view (200).
+    The authoritative machine-readable copy is the SWITCH aggregate, which SWITCH operates —
+    so the metadata DISTRIBUTION is SWITCH's, while the entity, its keys and its endpoints
+    are ETH's.
+  - >-
+    A SAML federation entry is not a REST API and must not be counted as one. It is recorded
+    here, and as an IdentityFederation pointer in apis.yml, because it is a real
+    institution-operated machine-readable surface and because the education regime scores
+    saml and shibboleth as domain standards.

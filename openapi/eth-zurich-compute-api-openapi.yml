@@ -1,0 +1,702 @@
+openapi: 3.2.0
+info:
+  title: FirecREST Compute API
+  version: 2.5.6
+servers:
+- url: https://api.cscs.ch/hpc/firecrest/v2
+  description: HPCp Environment
+tags:
+- name: compute
+paths:
+  /compute/{system_name}/jobs:
+    post:
+      tags:
+      - compute
+      summary: Post Job Submit
+      description: Submit a new job
+      operationId: post_job_submit_compute__system_name__jobs_post
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostJobSubmitRequest'
+      responses:
+        '201':
+          description: Job submitted correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostJobSubmissionResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+    get:
+      tags:
+      - compute
+      summary: Get Jobs
+      description: Get status of all jobs
+      operationId: get_jobs_compute__system_name__jobs_get
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      - name: allusers
+        in: query
+        required: false
+        schema:
+          type: boolean
+          description: If set to `true` returns all jobs visible by the current user, otherwise only the current user owned jobs
+          default: false
+          title: Allusers
+        description: If set to `true` returns all jobs visible by the current user, otherwise only the current user owned jobs
+      - name: account
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: If specified, filter jobs by account name
+          title: Account
+        description: If specified, filter jobs by account name
+      responses:
+        '200':
+          description: Jobs status returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetJobResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+  /compute/{system_name}/jobs/{job_id}:
+    get:
+      tags:
+      - compute
+      summary: Get Job
+      description: Get status of a job by `{job_id}`
+      operationId: get_job_compute__system_name__jobs__job_id__get
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[a-zA-Z0-9]+$
+          description: Job id
+          title: Job Id
+        description: Job id
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      responses:
+        '200':
+          description: Jobs status returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetJobResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+    delete:
+      tags:
+      - compute
+      summary: Delete Job Cancel
+      description: Cancel a job
+      operationId: delete_job_cancel_compute__system_name__jobs__job_id__delete
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[a-zA-Z0-9]+$
+          description: Job id
+          title: Job Id
+        description: Job id
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      responses:
+        '204':
+          description: Job cancelled successfully
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+  /compute/{system_name}/jobs/{job_id}/metadata:
+    get:
+      tags:
+      - compute
+      summary: Get Job Metadata
+      description: Get metadata of a job by `{job_id}`
+      operationId: get_job_metadata_compute__system_name__jobs__job_id__metadata_get
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[a-zA-Z0-9]+$
+          description: Job id
+          title: Job Id
+        description: Job id
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      responses:
+        '200':
+          description: Jobs metadata returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetJobMetadataResponse'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+  /compute/{system_name}/jobs/{job_id}/attach:
+    put:
+      tags:
+      - compute
+      summary: Attach
+      description: Attach a procces to a job by `{job_id}`
+      operationId: attach_compute__system_name__jobs__job_id__attach_put
+      security:
+      - APIAuthDependency: []
+      - HTTPBearer: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[a-zA-Z0-9]+$
+          description: Job id
+          title: Job Id
+        description: Job id
+      - name: system_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: System Name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostJobAttachRequest'
+      responses:
+        '204':
+          description: Process attached succesfully
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Server Error
+components:
+  schemas:
+    GetJobResponse:
+      properties:
+        jobs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobModel'
+            type: array
+          - type: 'null'
+          title: Jobs
+          nullable: true
+      type: object
+      title: GetJobResponse
+    GetJobMetadataResponse:
+      properties:
+        jobs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobMetadataModel'
+            type: array
+          - type: 'null'
+          title: Jobs
+          nullable: true
+      type: object
+      title: GetJobMetadataResponse
+    JobMetadataModel:
+      properties:
+        jobId:
+          type: string
+          title: Jobid
+        script:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Script
+          nullable: true
+        standardInput:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standardinput
+          nullable: true
+        standardOutput:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standardoutput
+          nullable: true
+        standardError:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standarderror
+          nullable: true
+      type: object
+      required:
+      - jobId
+      title: JobMetadataModel
+    PostJobSubmitRequest:
+      properties:
+        job:
+          $ref: '#/components/schemas/JobDescriptionModel'
+      type: object
+      required:
+      - job
+      title: PostJobSubmitRequest
+      examples:
+      - job:
+          account: myproject
+          env:
+            LD_LIBRARY_PATH: /path/to/library
+            PATH: /path/to/bin
+          name: Example with inline script
+          partition: partition_a
+          reservation: myreservation
+          script: '#!/bin/bash
+
+            --partition=part01
+
+            for i in {1..100}
+
+            do
+
+            echo $i
+
+            sleep 1
+
+            done'
+          standardError: count_to_100.err
+          standardInput: /dev/null
+          standardOutput: count_to_100.out
+          workingDirectory: '{{home_path}}'
+      - job:
+          account: myproject
+          env:
+            LD_LIBRARY_PATH: /path/to/library
+            PATH: /path/to/bin
+          name: Example with script path
+          partition: partition_a
+          reservation: myreservation
+          script_path: /path/to/batch_file.sh
+          standardError: count_to_100.err
+          standardInput: /dev/null
+          standardOutput: count_to_100.out
+          workingDirectory: '{{home_path}}'
+    PostJobAttachRequest:
+      properties:
+        command:
+          type: string
+          title: Command
+          description: Command to attach to the job
+      type: object
+      title: PostJobAttachRequest
+      examples:
+      - command: echo 'Attached with success' > $HOME/attach.out
+    JobModel:
+      properties:
+        jobId:
+          type: string
+          title: Jobid
+        name:
+          type: string
+          title: Name
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        tasks:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobTask'
+            type: array
+          - type: 'null'
+          title: Tasks
+          nullable: true
+        time:
+          $ref: '#/components/schemas/JobTime'
+        account:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Account
+          nullable: true
+        allocationNodes:
+          type: integer
+          title: Allocationnodes
+        cluster:
+          type: string
+          title: Cluster
+        group:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group
+          nullable: true
+        nodes:
+          type: string
+          title: Nodes
+        partition:
+          type: string
+          title: Partition
+        killRequestUser:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Killrequestuser
+          nullable: true
+        user:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User
+        workingDirectory:
+          type: string
+          title: Workingdirectory
+        priority:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Priority
+          nullable: true
+      type: object
+      required:
+      - jobId
+      - name
+      - status
+      - time
+      - allocationNodes
+      - cluster
+      - nodes
+      - partition
+      - user
+      - workingDirectory
+      title: JobModel
+    JobTime:
+      properties:
+        elapsed:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Elapsed
+          nullable: true
+        start:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Start
+          nullable: true
+        end:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End
+          nullable: true
+        suspended:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Suspended
+          nullable: true
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Limit
+          nullable: true
+      type: object
+      title: JobTime
+    PostJobSubmissionResponse:
+      properties:
+        jobId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Jobid
+          nullable: true
+      type: object
+      title: PostJobSubmissionResponse
+    JobStatus:
+      properties:
+        state:
+          type: string
+          title: State
+        stateReason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Statereason
+          nullable: true
+        exitCode:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Exitcode
+          nullable: true
+        interruptSignal:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Interruptsignal
+          nullable: true
+      type: object
+      required:
+      - state
+      title: JobStatus
+    JobDescriptionModel:
+      properties:
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+          description: Name for the job
+          nullable: true
+        account:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Account
+          description: Charge job resources to specified account
+          nullable: true
+        reservation:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reservation
+          description: Reservation to be used for the job
+          nullable: true
+        partition:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Partition
+          description: Partition to be used for the job
+          nullable: true
+        workingDirectory:
+          type: string
+          title: Workingdirectory
+          description: Job working directory
+        standardInput:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standardinput
+          description: Standard input file name
+          nullable: true
+        standardOutput:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standardoutput
+          description: Standard output file name
+          nullable: true
+        standardError:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standarderror
+          description: Standard error file name
+          nullable: true
+        env:
+          anyOf:
+          - additionalProperties:
+              type: string
+            type: object
+          - items:
+              type: string
+            type: array
+          title: Env
+          description: Dictionary of environment variables to set in the job context
+          default:
+            F7T_version: v2.0.0
+          nullable: false
+        constraints:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Constraints
+          description: Job constraints
+          nullable: true
+        script:
+          type: string
+          title: Script
+          description: Script for the job
+        scriptPath:
+          type: string
+          title: Scriptpath
+          description: Path to the job in target system
+      type: object
+      required:
+      - workingDirectory
+      title: JobDescriptionModel
+    JobTask:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        time:
+          $ref: '#/components/schemas/JobTime'
+      type: object
+      required:
+      - id
+      - name
+      - status
+      - time
+      title: JobTask
+    ApResponseErrorType:
+      type: string
+      enum:
+      - error
+      - validation
+      title: ApResponseErrorType
+    ApiResponseError:
+      properties:
+        errorType:
+          $ref: '#/components/schemas/ApResponseErrorType'
+          default: error
+        message:
+          type: string
+          title: Message
+        causedBy:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Causedby
+          nullable: true
+        data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Data
+          nullable: true
+        user:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User
+          nullable: true
+      type: object
+      required:
+      - message
+      title: ApiResponseError
+  securitySchemes:
+    APIAuthDependency:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://auth.cscs.ch/auth/realms/firecrest-clients/protocol/openid-connect/token
+    HTTPBearer:
+      type: http
+      scheme: bearer
