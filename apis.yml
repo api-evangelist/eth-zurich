@@ -442,6 +442,8 @@ apis:
     The Locations API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for locations.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
@@ -671,6 +673,8 @@ apis:
     The Topics API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for topics.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
+  - Topic
+  tags_raw:
   - Topics
   properties:
   - type: OpenAPI
