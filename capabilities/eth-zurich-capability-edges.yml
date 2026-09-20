@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 5
+edge_count: 7
 edges:
 - tag: Search Portal resources
   spec_file: eth-zurich-search-portal-resources-api-openapi.yml
@@ -64,3 +64,27 @@ edges:
   reason: Retrieval of digital objects and their access policies from the library's DSpace repository,
     exposed as part of the ETH Library Discovery Portal — library/information resource collection operations.
     Moderate confidence as bitstreams are a generic DSpace file construct.
+- tag: compute
+  spec_file: eth-zurich-compute-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /compute/{system_name}/jobs post_job_submit ... schemas JobStatus, JobDescriptionModel,
+    HPC job submit/cancel/metadata
+  reason: FirecREST 'compute' submits, monitors and cancels batch jobs on named HPC systems — provisioning
+    and use of compute infrastructure, an IT infrastructure/operations capability rather than any research-domain
+    business capability.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: filesystem
+  spec_file: eth-zurich-filesystem-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /filesystem/{system_name}/transfer/upload, PUT /filesystem/{system_name}/ops/chmod, GET
+    /filesystem/{system_name}/ops/ls
+  reason: POSIX-style storage operations (ls, chmod, chown, cp, mv, rm, compress) and staged transfers
+    against HPC systems — this is storage infrastructure operation, an IT infrastructure capability, not
+    a domain business function.
+  recovered_from: sweep-20260829T005356Z-edges.json
