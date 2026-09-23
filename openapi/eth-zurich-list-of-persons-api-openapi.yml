@@ -1,8 +1,11 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Discovery bitstreams List of persons API
-  description: "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)"
-  version: 1.0.2
+  title: List of persons API
+  description: 'The Persons REST API provides enriched information about persons (from Wikidata, Metagrid, DNB Entityfacts, beacon.findbuch). The API also provides lists of people from specific data sources with links to the corresponding person pages.
+
+
+    ➜ OAS 3 Swagger Documentation'
+  version: 1.0.1
   termsOfService: https://developer.library.ethz.ch/terms
   contact:
     name: API Management ETH Library
@@ -12,7 +15,7 @@ info:
     url: https://developer.library.ethz.ch/terms
     name: Bibliographic metadata that are not specifically marked are free for general use (Public Domain). Documents, images or other digital objects linked in metadata may be subject to other copyright restrictions. Whenever possible, the licence of the referenced digital objects is indicated in the metadata. In case of doubt, the licence can be inquired at api@library.ethz.ch.
 servers:
-- url: https://api.library.ethz.ch/discovery/v1/
+- url: https://api.library.ethz.ch/persons/v1/
   description: Production
 security:
 - ApiKeyAuth: []
@@ -23,7 +26,25 @@ paths:
     get:
       tags:
       - List of persons
-      description: "Provides lists of persons from a specific data resource pool with links to correspondig person pages.\n\nData resource pools and their codes:\n\n| Data resource pool                            | Code        |\n| --------------------------------------------- | ------------|\n| Hochschularchiv (HSA)                         | hsa         |     \n| E-Pics Bildarchiv (BA)                        | ba          |     \n| e-rara                                        | erara       |     \n| Max Frisch-Archiv (MFA)                       | mfa         |  \n| HSA + BA + e-rara + MFA                       | sar         |     \n       "
+      description: 'Provides lists of persons from a specific data resource pool with links to correspondig person pages.
+
+
+        Data resource pools and their codes:
+
+
+        | Data resource pool | Code |
+
+        | --------------------------------------------- | ------------|
+
+        | Hochschularchiv (HSA) | hsa |
+
+        | E-Pics Bildarchiv (BA) | ba |
+
+        | e-rara | erara |
+
+        | Max Frisch-Archiv (MFA) | mfa |
+
+        | HSA + BA + e-rara + MFA | sar |'
       parameters:
       - name: code
         schema:
@@ -39,6 +60,10 @@ paths:
           description: Returns a list of persons
           content:
             application/json: {}
+      summary: Get by code
+      x-summary-source: derived
+      operationId: getByCode
+      x-operation-id-source: derived
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -47,4 +72,4 @@ components:
       name: apikey
 externalDocs:
   description: OAS 3 Swagger Documentation
-  url: https://apidocs.library.ethz.ch/discovery/v1/
+  url: https://apisdocs.library.ethz.ch/persons/v1/

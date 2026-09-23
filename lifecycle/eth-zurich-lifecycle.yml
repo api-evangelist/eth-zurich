@@ -1,0 +1,59 @@
+---
+generated: '2026-08-19'
+method: probed
+source: >-
+  https://docs.cscs.ch/access/firecrest/ (200), https://api.cscs.ch/hpc/firecrest/v2/openapi.json
+  (200), and the info.version fields of the seven ETH Library specifications in
+  openapi/_original/. Probed 2026-08-19.
+description: >-
+  Versioning and deprecation posture across ETH Zurich's institution-operated API surfaces.
+  Two independent programs run here with materially different lifecycle discipline, and the
+  difference is worth recording rather than averaging away.
+surfaces:
+  - name: CSCS FirecREST
+    x-operator: institution
+    versioning: path-segment major version
+    current: v2 (contract self-reports 2.5.6)
+    base: https://api.cscs.ch/hpc/firecrest/v2
+    deprecations:
+      - version: v1
+        status: decommissioned
+        date: '2025-12-05'
+        evidence: >-
+          CSCS documentation states "FirecREST version 1 was decommissioned on Alps on
+          December 5th, 2025." A dated, announced decommission with a published successor —
+          the strongest lifecycle signal on any ETH surface.
+    notes: >-
+      Four parallel deployments of the same contract exist (hpc, ml, cw, beverin), each
+      differing only in servers[].
+  - name: ETH Library API Platform
+    x-operator: institution
+    versioning: path-segment major version (/v1/, /v2/)
+    current:
+      - Discovery API 1.0.2 — /discovery/v1/
+      - ETHorama API 1.0.1 — /ethorama/v1/
+      - Geo Information API 1.0.1 — /geo/v1/
+      - Persons API 1.0.1 — /persons/v1/
+      - Research Collection API 1.0.2 — /research-collection/v1/
+      - ETH Research Collection API V2 0.1.0 — /research-collection/v2
+      - Vector API 1.0.0 — /vector/v1/
+    deprecations: []
+    notes: >-
+      No deprecation policy, sunset header, or end-of-life notice is published for any of the
+      seven library APIs. Research Collection v1 (1.0.2) and v2 (0.1.0) run side by side with
+      no stated relationship between them and no migration guidance — v2 still carries a
+      pre-1.0 version number while v1 is the mature contract.
+  - name: Research Collection OAI-PMH
+    x-operator: institution
+    versioning: OAI-PMH protocolVersion 2.0
+    current: '2.0'
+    deprecations: []
+    notes: >-
+      Protocol-versioned rather than product-versioned. earliestDatestamp on the sibling
+      e-rara endpoint is 2009-11-10, indicating a surface that has been continuously
+      operated for over fifteen years.
+gaps:
+  - No changelog, release-notes feed, or status page was found for the ETH Library API Platform.
+  - No Sunset or Deprecation HTTP headers are declared in any specification in this repo.
+  - >-
+    status.ethz.ch does not resolve; no institution-wide API status surface was found.

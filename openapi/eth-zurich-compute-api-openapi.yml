@@ -6,12 +6,12 @@ servers:
 - url: https://api.cscs.ch/hpc/firecrest/v2
   description: HPCp Environment
 tags:
-- name: compute
+- name: Compute
 paths:
   /compute/{system_name}/jobs:
     post:
       tags:
-      - compute
+      - Compute
       summary: Post Job Submit
       description: Submit a new job
       operationId: post_job_submit_compute__system_name__jobs_post
@@ -52,7 +52,7 @@ paths:
           description: Server Error
     get:
       tags:
-      - compute
+      - Compute
       summary: Get Jobs
       description: Get status of all jobs
       operationId: get_jobs_compute__system_name__jobs_get
@@ -107,7 +107,7 @@ paths:
   /compute/{system_name}/jobs/{job_id}:
     get:
       tags:
-      - compute
+      - Compute
       summary: Get Job
       description: Get status of a job by `{job_id}`
       operationId: get_job_compute__system_name__jobs__job_id__get
@@ -151,7 +151,7 @@ paths:
           description: Server Error
     delete:
       tags:
-      - compute
+      - Compute
       summary: Delete Job Cancel
       description: Cancel a job
       operationId: delete_job_cancel_compute__system_name__jobs__job_id__delete
@@ -192,7 +192,7 @@ paths:
   /compute/{system_name}/jobs/{job_id}/metadata:
     get:
       tags:
-      - compute
+      - Compute
       summary: Get Job Metadata
       description: Get metadata of a job by `{job_id}`
       operationId: get_job_metadata_compute__system_name__jobs__job_id__metadata_get
@@ -237,7 +237,7 @@ paths:
   /compute/{system_name}/jobs/{job_id}/attach:
     put:
       tags:
-      - compute
+      - Compute
       summary: Attach
       description: Attach a procces to a job by `{job_id}`
       operationId: attach_compute__system_name__jobs__job_id__attach_put
@@ -283,120 +283,40 @@ paths:
           description: Server Error
 components:
   schemas:
-    GetJobResponse:
+    JobTime:
       properties:
-        jobs:
+        elapsed:
           anyOf:
-          - items:
-              $ref: '#/components/schemas/JobModel'
-            type: array
+          - type: integer
           - type: 'null'
-          title: Jobs
+          title: Elapsed
+          nullable: true
+        start:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Start
+          nullable: true
+        end:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End
+          nullable: true
+        suspended:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Suspended
+          nullable: true
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Limit
           nullable: true
       type: object
-      title: GetJobResponse
-    GetJobMetadataResponse:
-      properties:
-        jobs:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/JobMetadataModel'
-            type: array
-          - type: 'null'
-          title: Jobs
-          nullable: true
-      type: object
-      title: GetJobMetadataResponse
-    JobMetadataModel:
-      properties:
-        jobId:
-          type: string
-          title: Jobid
-        script:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Script
-          nullable: true
-        standardInput:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Standardinput
-          nullable: true
-        standardOutput:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Standardoutput
-          nullable: true
-        standardError:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Standarderror
-          nullable: true
-      type: object
-      required:
-      - jobId
-      title: JobMetadataModel
-    PostJobSubmitRequest:
-      properties:
-        job:
-          $ref: '#/components/schemas/JobDescriptionModel'
-      type: object
-      required:
-      - job
-      title: PostJobSubmitRequest
-      examples:
-      - job:
-          account: myproject
-          env:
-            LD_LIBRARY_PATH: /path/to/library
-            PATH: /path/to/bin
-          name: Example with inline script
-          partition: partition_a
-          reservation: myreservation
-          script: '#!/bin/bash
-
-            --partition=part01
-
-            for i in {1..100}
-
-            do
-
-            echo $i
-
-            sleep 1
-
-            done'
-          standardError: count_to_100.err
-          standardInput: /dev/null
-          standardOutput: count_to_100.out
-          workingDirectory: '{{home_path}}'
-      - job:
-          account: myproject
-          env:
-            LD_LIBRARY_PATH: /path/to/library
-            PATH: /path/to/bin
-          name: Example with script path
-          partition: partition_a
-          reservation: myreservation
-          script_path: /path/to/batch_file.sh
-          standardError: count_to_100.err
-          standardInput: /dev/null
-          standardOutput: count_to_100.out
-          workingDirectory: '{{home_path}}'
-    PostJobAttachRequest:
-      properties:
-        command:
-          type: string
-          title: Command
-          description: Command to attach to the job
-      type: object
-      title: PostJobAttachRequest
-      examples:
-      - command: echo 'Attached with success' > $HOME/attach.out
+      title: JobTime
     JobModel:
       properties:
         jobId:
@@ -474,77 +394,73 @@ components:
       - user
       - workingDirectory
       title: JobModel
-    JobTime:
+    ApiResponseError:
       properties:
-        elapsed:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Elapsed
-          nullable: true
-        start:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Start
-          nullable: true
-        end:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: End
-          nullable: true
-        suspended:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Suspended
-          nullable: true
-        limit:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Limit
-          nullable: true
-      type: object
-      title: JobTime
-    PostJobSubmissionResponse:
-      properties:
-        jobId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Jobid
-          nullable: true
-      type: object
-      title: PostJobSubmissionResponse
-    JobStatus:
-      properties:
-        state:
+        errorType:
+          $ref: '#/components/schemas/ApResponseErrorType'
+          default: error
+        message:
           type: string
-          title: State
-        stateReason:
+          title: Message
+        causedBy:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Causedby
+          nullable: true
+        data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Data
+          nullable: true
+        user:
           anyOf:
           - type: string
           - type: 'null'
-          title: Statereason
-          nullable: true
-        exitCode:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Exitcode
-          nullable: true
-        interruptSignal:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Interruptsignal
+          title: User
           nullable: true
       type: object
       required:
-      - state
-      title: JobStatus
+      - message
+      title: ApiResponseError
+    GetJobResponse:
+      properties:
+        jobs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobModel'
+            type: array
+          - type: 'null'
+          title: Jobs
+          nullable: true
+      type: object
+      title: GetJobResponse
+    PostJobAttachRequest:
+      properties:
+        command:
+          type: string
+          title: Command
+          description: Command to attach to the job
+      type: object
+      title: PostJobAttachRequest
+      examples:
+      - command: echo 'Attached with success' > $HOME/attach.out
+    GetJobMetadataResponse:
+      properties:
+        jobs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobMetadataModel'
+            type: array
+          - type: 'null'
+          title: Jobs
+          nullable: true
+      type: object
+      title: GetJobMetadataResponse
     JobDescriptionModel:
       properties:
         name:
@@ -632,6 +548,16 @@ components:
       required:
       - workingDirectory
       title: JobDescriptionModel
+    PostJobSubmissionResponse:
+      properties:
+        jobId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Jobid
+          nullable: true
+      type: object
+      title: PostJobSubmissionResponse
     JobTask:
       properties:
         id:
@@ -657,39 +583,113 @@ components:
       - error
       - validation
       title: ApResponseErrorType
-    ApiResponseError:
+    JobMetadataModel:
       properties:
-        errorType:
-          $ref: '#/components/schemas/ApResponseErrorType'
-          default: error
-        message:
+        jobId:
           type: string
-          title: Message
-        causedBy:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Causedby
-          nullable: true
-        data:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Data
-          nullable: true
-        user:
+          title: Jobid
+        script:
           anyOf:
           - type: string
           - type: 'null'
-          title: User
+          title: Script
+          nullable: true
+        standardInput:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standardinput
+          nullable: true
+        standardOutput:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standardoutput
+          nullable: true
+        standardError:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standarderror
           nullable: true
       type: object
       required:
-      - message
-      title: ApiResponseError
+      - jobId
+      title: JobMetadataModel
+    PostJobSubmitRequest:
+      properties:
+        job:
+          $ref: '#/components/schemas/JobDescriptionModel'
+      type: object
+      required:
+      - job
+      title: PostJobSubmitRequest
+      examples:
+      - job:
+          account: myproject
+          env:
+            LD_LIBRARY_PATH: /path/to/library
+            PATH: /path/to/bin
+          name: Example with inline script
+          partition: partition_a
+          reservation: myreservation
+          script: '#!/bin/bash
+
+            --partition=part01
+
+            for i in {1..100}
+
+            do
+
+            echo $i
+
+            sleep 1
+
+            done'
+          standardError: count_to_100.err
+          standardInput: /dev/null
+          standardOutput: count_to_100.out
+          workingDirectory: '{{home_path}}'
+      - job:
+          account: myproject
+          env:
+            LD_LIBRARY_PATH: /path/to/library
+            PATH: /path/to/bin
+          name: Example with script path
+          partition: partition_a
+          reservation: myreservation
+          script_path: /path/to/batch_file.sh
+          standardError: count_to_100.err
+          standardInput: /dev/null
+          standardOutput: count_to_100.out
+          workingDirectory: '{{home_path}}'
+    JobStatus:
+      properties:
+        state:
+          type: string
+          title: State
+        stateReason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Statereason
+          nullable: true
+        exitCode:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Exitcode
+          nullable: true
+        interruptSignal:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Interruptsignal
+          nullable: true
+      type: object
+      required:
+      - state
+      title: JobStatus
   securitySchemes:
     APIAuthDependency:
       type: oauth2

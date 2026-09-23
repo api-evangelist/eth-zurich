@@ -1,7 +1,13 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Discovery bitstreams Search Portal resources API
-  description: "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)"
+  title: Discovery Search Portal resources API
+  description: 'The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library''s Discovery Portal.
+
+
+    ➜ OAS 3 Swagger Documentation
+
+
+    ➜ ETH Library @ swisscovery Application'
   version: 1.0.2
   termsOfService: https://developer.library.ethz.ch/terms
   contact:
@@ -23,7 +29,19 @@ paths:
     get:
       tags:
       - Search Portal resources
-      description: "Returns resources from the [search portal](https://eth.swisscovery.slsp.ch) \n **Examples for large data collections**\n [All resources of Hochschularchiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_Hochschularchiv)\n [All resources of Max Frisch Archiv](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_data_source,exact,ETH_MaxFrischArchiv) \n [All resources of Graphische Sammlung]( https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_library,exact,5503–112050480005503) \n [All maps](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_rtype,exact,maps) \n [All Open Access archival_materials](https://api.library.ethz.ch/discovery/v1/resources?q=any,contains,\"*\"&limit=100&qInclude=facet_rtype,exact,archival_materials|,|facet_tlevel,exact,open_access)"
+      description: 'Returns resources from the search portal
+
+        **Examples for large data collections**
+
+        All resources of Hochschularchiv
+
+        All resources of Max Frisch Archiv
+
+        All resources of Graphische Sammlung
+
+        All maps
+
+        All Open Access archival_materials'
       parameters:
       - name: q
         schema:
@@ -84,6 +102,10 @@ paths:
           description: Returns a list of resources
           content:
             application/json: {}
+      summary: Get resources
+      x-summary-source: derived
+      operationId: getResources
+      x-operation-id-source: derived
   /resources/{mmsid}:
     get:
       tags:
@@ -113,6 +135,10 @@ paths:
           description: Returns a resource
           content:
             application/json: {}
+      summary: Get resources by mmsid
+      x-summary-source: derived
+      operationId: getResourcesByMmsid
+      x-operation-id-source: derived
 components:
   securitySchemes:
     ApiKeyAuth:

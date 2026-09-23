@@ -1,28 +1,22 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Discovery bitstreams items API
-  description: "The Discovery REST API provides access to over 30 million books, images, series, journals, and other materials from the ETH Library's Discovery Portal. \n\n&#x279C; [OAS 3 Swagger Documentation](https://eth-library.github.io/apiplatform-swagger/discovery/v1/)\n\n&#x279C; [ETH Library @ swisscovery Application](https://eth.swisscovery.slsp.ch/)"
-  version: 1.0.2
-  termsOfService: https://developer.library.ethz.ch/terms
-  contact:
-    name: API Management ETH Library
-    email: api@library.ethz.ch
-    url: https://library.ethz.ch
-  license:
-    url: https://developer.library.ethz.ch/terms
-    name: Bibliographic metadata that are not specifically marked are free for general use (Public Domain). Documents, images or other digital objects linked in metadata may be subject to other copyright restrictions. Whenever possible, the licence of the referenced digital objects is indicated in the metadata. In case of doubt, the licence can be inquired at api@library.ethz.ch.
+  title: Eth Zurich Items API
+  version: '1.0'
+  description: 'Operations tagged items across 2 of this provider''s published API definitions: eth-zurich-geo.yaml, eth-zurich-research-collection-v1.yaml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://api.library.ethz.ch/discovery/v1/
+- url: https://api.library.ethz.ch/geo/v1/
+  description: Production
+- url: https://api.library.ethz.ch/research-collection/v1/
   description: Production
 security:
 - ApiKeyAuth: []
 tags:
-- name: items
+- name: Items
 paths:
   /poi-items/{id}:
     get:
       tags:
-      - items
+      - Items
       description: Returns a content item (e-rara, emaps, E-Pics, e-periodica etc) of a poi defined in the ETHorama database.
       parameters:
       - name: id
@@ -49,11 +43,18 @@ paths:
           description: bad request
         '500':
           description: server error
+      summary: Get poi items by id
+      x-summary-source: derived
+      operationId: getPoiItemsById
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.library.ethz.ch/geo/v1/
+      description: Production
   /items:
     get:
       tags:
-      - items
-      summary: Retrieve all items from the repository.
+      - Items
+      summary: Retrieve all items from the repository
       description: Retrieve all items from the repository.
       operationId: getItems
       parameters:
@@ -100,11 +101,14 @@ paths:
       responses:
         200:
           description: successful operation
+    servers:
+    - url: https://api.library.ethz.ch/research-collection/v1/
+      description: Production
   /items/{item_id}:
     get:
       tags:
-      - items
-      summary: Retrieve a single item by using the internal DSpace item identifier.
+      - Items
+      summary: Retrieve a single item by using the internal DSpace item identifier
       description: Retrieve a single item by using the internal DSpace item identifier.
       operationId: getItem
       parameters:
@@ -134,11 +138,14 @@ paths:
       responses:
         200:
           description: successful operation
+    servers:
+    - url: https://api.library.ethz.ch/research-collection/v1/
+      description: Production
   /items/{item_id}/bitstreams:
     get:
       tags:
-      - items
-      summary: Retrieve a list of bitstreams for an item by using the internal DSpace item identifier.
+      - Items
+      summary: Retrieve a list of bitstreams for an item by using the internal DSpace item…
       description: Retrieve a list of bitstreams for an item by using the internal DSpace item identifier.
       operationId: getItemBitstreams
       parameters:
@@ -176,11 +183,14 @@ paths:
       responses:
         200:
           description: successful operation
+    servers:
+    - url: https://api.library.ethz.ch/research-collection/v1/
+      description: Production
   /items/{item_id}/metadata:
     get:
       tags:
-      - items
-      summary: Retrieve a list of metadata for an item by using the internal DSpace item identifier.
+      - Items
+      summary: Retrieve a list of metadata for an item by using the internal DSpace item…
       description: Retrieve a list of metadata for an item by using the internal DSpace item identifier.
       operationId: getItemMetadata
       parameters:
@@ -206,12 +216,15 @@ paths:
       responses:
         200:
           description: successful operation
+    servers:
+    - url: https://api.library.ethz.ch/research-collection/v1/
+      description: Production
 components:
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: query
       name: apikey
-externalDocs:
-  description: OAS 3 Swagger Documentation
-  url: https://apidocs.library.ethz.ch/discovery/v1/
+x-refined-from:
+- eth-zurich-geo.yaml
+- eth-zurich-research-collection-v1.yaml
