@@ -283,6 +283,95 @@ paths:
           description: Server Error
 components:
   schemas:
+    PostJobAttachRequest:
+      properties:
+        command:
+          type: string
+          title: Command
+          description: Command to attach to the job
+      type: object
+      title: PostJobAttachRequest
+      examples:
+      - command: echo 'Attached with success' > $HOME/attach.out
+    ApiResponseError:
+      properties:
+        errorType:
+          $ref: '#/components/schemas/ApResponseErrorType'
+          default: error
+        message:
+          type: string
+          title: Message
+        causedBy:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Causedby
+          nullable: true
+        data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Data
+          nullable: true
+        user:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User
+          nullable: true
+      type: object
+      required:
+      - message
+      title: ApiResponseError
+    JobStatus:
+      properties:
+        state:
+          type: string
+          title: State
+        stateReason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Statereason
+          nullable: true
+        exitCode:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Exitcode
+          nullable: true
+        interruptSignal:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Interruptsignal
+          nullable: true
+      type: object
+      required:
+      - state
+      title: JobStatus
+    JobTask:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        time:
+          $ref: '#/components/schemas/JobTime'
+      type: object
+      required:
+      - id
+      - name
+      - status
+      - time
+      title: JobTask
     JobTime:
       properties:
         elapsed:
@@ -317,150 +406,6 @@ components:
           nullable: true
       type: object
       title: JobTime
-    JobModel:
-      properties:
-        jobId:
-          type: string
-          title: Jobid
-        name:
-          type: string
-          title: Name
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        tasks:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/JobTask'
-            type: array
-          - type: 'null'
-          title: Tasks
-          nullable: true
-        time:
-          $ref: '#/components/schemas/JobTime'
-        account:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Account
-          nullable: true
-        allocationNodes:
-          type: integer
-          title: Allocationnodes
-        cluster:
-          type: string
-          title: Cluster
-        group:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Group
-          nullable: true
-        nodes:
-          type: string
-          title: Nodes
-        partition:
-          type: string
-          title: Partition
-        killRequestUser:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Killrequestuser
-          nullable: true
-        user:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: User
-        workingDirectory:
-          type: string
-          title: Workingdirectory
-        priority:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Priority
-          nullable: true
-      type: object
-      required:
-      - jobId
-      - name
-      - status
-      - time
-      - allocationNodes
-      - cluster
-      - nodes
-      - partition
-      - user
-      - workingDirectory
-      title: JobModel
-    ApiResponseError:
-      properties:
-        errorType:
-          $ref: '#/components/schemas/ApResponseErrorType'
-          default: error
-        message:
-          type: string
-          title: Message
-        causedBy:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Causedby
-          nullable: true
-        data:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Data
-          nullable: true
-        user:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: User
-          nullable: true
-      type: object
-      required:
-      - message
-      title: ApiResponseError
-    GetJobResponse:
-      properties:
-        jobs:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/JobModel'
-            type: array
-          - type: 'null'
-          title: Jobs
-          nullable: true
-      type: object
-      title: GetJobResponse
-    PostJobAttachRequest:
-      properties:
-        command:
-          type: string
-          title: Command
-          description: Command to attach to the job
-      type: object
-      title: PostJobAttachRequest
-      examples:
-      - command: echo 'Attached with success' > $HOME/attach.out
-    GetJobMetadataResponse:
-      properties:
-        jobs:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/JobMetadataModel'
-            type: array
-          - type: 'null'
-          title: Jobs
-          nullable: true
-      type: object
-      title: GetJobMetadataResponse
     JobDescriptionModel:
       properties:
         name:
@@ -548,41 +493,6 @@ components:
       required:
       - workingDirectory
       title: JobDescriptionModel
-    PostJobSubmissionResponse:
-      properties:
-        jobId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Jobid
-          nullable: true
-      type: object
-      title: PostJobSubmissionResponse
-    JobTask:
-      properties:
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        time:
-          $ref: '#/components/schemas/JobTime'
-      type: object
-      required:
-      - id
-      - name
-      - status
-      - time
-      title: JobTask
-    ApResponseErrorType:
-      type: string
-      enum:
-      - error
-      - validation
-      title: ApResponseErrorType
     JobMetadataModel:
       properties:
         jobId:
@@ -663,33 +573,123 @@ components:
           standardInput: /dev/null
           standardOutput: count_to_100.out
           workingDirectory: '{{home_path}}'
-    JobStatus:
+    GetJobMetadataResponse:
       properties:
-        state:
-          type: string
-          title: State
-        stateReason:
+        jobs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobMetadataModel'
+            type: array
+          - type: 'null'
+          title: Jobs
+          nullable: true
+      type: object
+      title: GetJobMetadataResponse
+    GetJobResponse:
+      properties:
+        jobs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobModel'
+            type: array
+          - type: 'null'
+          title: Jobs
+          nullable: true
+      type: object
+      title: GetJobResponse
+    PostJobSubmissionResponse:
+      properties:
+        jobId:
           anyOf:
           - type: string
           - type: 'null'
-          title: Statereason
+          title: Jobid
           nullable: true
-        exitCode:
+      type: object
+      title: PostJobSubmissionResponse
+    JobModel:
+      properties:
+        jobId:
+          type: string
+          title: Jobid
+        name:
+          type: string
+          title: Name
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        tasks:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobTask'
+            type: array
+          - type: 'null'
+          title: Tasks
+          nullable: true
+        time:
+          $ref: '#/components/schemas/JobTime'
+        account:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Account
+          nullable: true
+        allocationNodes:
+          type: integer
+          title: Allocationnodes
+        cluster:
+          type: string
+          title: Cluster
+        group:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group
+          nullable: true
+        nodes:
+          type: string
+          title: Nodes
+        partition:
+          type: string
+          title: Partition
+        killRequestUser:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Killrequestuser
+          nullable: true
+        user:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User
+        workingDirectory:
+          type: string
+          title: Workingdirectory
+        priority:
           anyOf:
           - type: integer
           - type: 'null'
-          title: Exitcode
-          nullable: true
-        interruptSignal:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Interruptsignal
+          title: Priority
           nullable: true
       type: object
       required:
-      - state
-      title: JobStatus
+      - jobId
+      - name
+      - status
+      - time
+      - allocationNodes
+      - cluster
+      - nodes
+      - partition
+      - user
+      - workingDirectory
+      title: JobModel
+    ApResponseErrorType:
+      type: string
+      enum:
+      - error
+      - validation
+      title: ApResponseErrorType
   securitySchemes:
     APIAuthDependency:
       type: oauth2

@@ -80,7 +80,7 @@ specificationVersion: '0.23'
 apis:
 - aid: eth-zurich:eth-zurich-bitstreams-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology bitstreams API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology Bitstreams API"
   description: >-
     The bitstreams API from ETH Zurich – Swiss Federal Institute of Technology — 4 operation(s) for bitstreams.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
@@ -99,7 +99,7 @@ apis:
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-collections-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology collections API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology Collections API"
   description: >-
     The collections API from ETH Zurich – Swiss Federal Institute of Technology — 3 operation(s) for collections.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
@@ -118,14 +118,15 @@ apis:
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-communities-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology communities API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology Communities API"
   description: >-
     The communities API from ETH Zurich – Swiss Federal Institute of Technology — 5 operation(s) for communities.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
   tags:
-  - Communities
+  - Community
   tags_raw:
   - communities
+  - Communities
   properties:
   - type: OpenAPI
     url: openapi/eth-zurich-communities-api-openapi.yml
@@ -241,7 +242,7 @@ apis:
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-e-maps-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology e-maps API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology E Maps API"
   description: >-
     The e-maps API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for e-maps.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
@@ -276,7 +277,7 @@ apis:
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-e-rara-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology e-rara API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology E Rara API"
   description: >-
     The e-rara API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for e-rara.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
@@ -329,7 +330,7 @@ apis:
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-geo-topics-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology geo-topics API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology Geo Topics API"
   description: >-
     The geo-topics API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for geo-topics.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
@@ -363,7 +364,7 @@ apis:
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-handle-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology handle API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology Handle API"
   description: >-
     The handle API from ETH Zurich – Swiss Federal Institute of Technology — 1 operation(s) for handle.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
@@ -400,7 +401,7 @@ apis:
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-items-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology items API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology Items API"
   description: >-
     The items API from ETH Zurich – Swiss Federal Institute of Technology — 5 operation(s) for items.
   humanURL: https://eth-library.github.io/apiplatform-swagger/
@@ -614,7 +615,7 @@ apis:
     url: https://research-collection.ethz.ch/oai/openaire_data
 - aid: eth-zurich:eth-zurich-search-api
   x-operator: institution
-  name: ETH Zurich – Swiss Federal Institute of Technology search API
+  name: "ETH Zurich \u2013 Swiss Federal Institute of Technology Search API"
   description: >-
     The search API from ETH Zurich – Swiss Federal Institute of Technology — 2 operation(s) for search.
   humanURL: https://eth-library.github.io/apiplatform-swagger/

@@ -1120,271 +1120,6 @@ paths:
           description: Server Error
 components:
   schemas:
-    CompressionType:
-      type: string
-      enum:
-      - none
-      - bzip2
-      - gzip
-      - xz
-      title: CompressionType
-    MoveResponse:
-      properties:
-        transferJob:
-          $ref: '#/components/schemas/TransferJob'
-      type: object
-      required:
-      - transferJob
-      title: MoveResponse
-    MoveRequest:
-      properties:
-        sourcePath:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Sourcepath
-          example: /home/user/dir
-          nullable: true
-        targetPath:
-          type: string
-          title: Targetpath
-          description: Target path of the move operation
-        account:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Account
-          description: Name of the account in the scheduler
-          nullable: true
-      type: object
-      required:
-      - sourcePath
-      - targetPath
-      title: MoveRequest
-      examples:
-      - account: group
-        sourcePath: /home/user/dir/file.orig
-        targetPath: /home/user/dir/file.new
-    PutFileChownResponse:
-      properties:
-        output:
-          anyOf:
-          - $ref: '#/components/schemas/File'
-          - type: 'null'
-          nullable: true
-      type: object
-      title: PutFileChownResponse
-    UploadFileResponse:
-      properties:
-        transferJob:
-          $ref: '#/components/schemas/TransferJob'
-        transferDirectives:
-          anyOf:
-          - $ref: '#/components/schemas/WormholeTransferResponse'
-          - $ref: '#/components/schemas/S3TransferResponse'
-          - $ref: '#/components/schemas/StreamerTransferResponse'
-          title: Transferdirectives
-          description: Data transfer parameters specific to the transfer method
-      type: object
-      required:
-      - transferJob
-      - transferDirectives
-      title: UploadFileResponse
-    ExtractRequest:
-      properties:
-        sourcePath:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Sourcepath
-          example: /home/user/dir
-          nullable: true
-        targetPath:
-          type: string
-          title: Targetpath
-          description: Path to the directory where to extract the compressed file
-        account:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Account
-          description: Name of the account in the scheduler
-          nullable: true
-        compression:
-          $ref: '#/components/schemas/CompressionType'
-          description: Defines the type of compression to be used. By default gzip is used.
-          default: gzip
-          nullable: false
-      type: object
-      required:
-      - sourcePath
-      - targetPath
-      title: ExtractRequest
-      examples:
-      - account: group
-        compression: none
-        sourcePath: /home/user/dir/file.tar.gz
-        targetPath: /home/user/dir
-    TransferJob:
-      properties:
-        jobId:
-          type: string
-          title: Jobid
-        system:
-          type: string
-          title: System
-        workingDirectory:
-          type: string
-          title: Workingdirectory
-        logs:
-          $ref: '#/components/schemas/TransferJobLogs'
-      type: object
-      required:
-      - jobId
-      - system
-      - workingDirectory
-      - logs
-      title: TransferJob
-    GetFileStatResponse:
-      properties:
-        output:
-          anyOf:
-          - $ref: '#/components/schemas/FileStat'
-          - type: 'null'
-          nullable: true
-      type: object
-      title: GetFileStatResponse
-    ContentUnit:
-      type: string
-      enum:
-      - lines
-      - bytes
-      title: ContentUnit
-    StreamerTransferResponse:
-      properties:
-        transferMethod:
-          type: string
-          const: streamer
-          title: Transfermethod
-        coordinates:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Coordinates
-          nullable: true
-      type: object
-      required:
-      - transferMethod
-      title: StreamerTransferResponse
-    ExtractResponse:
-      properties:
-        transferJob:
-          $ref: '#/components/schemas/TransferJob'
-      type: object
-      required:
-      - transferJob
-      title: ExtractResponse
-    FileChecksum:
-      properties:
-        algorithm:
-          type: string
-          title: Algorithm
-          default: SHA-256
-        checksum:
-          type: string
-          title: Checksum
-      type: object
-      required:
-      - checksum
-      title: FileChecksum
-    PostExtractRequest:
-      properties:
-        sourcePath:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Sourcepath
-          example: /home/user/dir
-          nullable: true
-        targetPath:
-          type: string
-          title: Targetpath
-          description: Path to the directory where to extract the compressed file
-        compression:
-          $ref: '#/components/schemas/CompressionType'
-          description: Defines the type of compression to be used. By default gzip is used.
-          default: gzip
-          nullable: false
-      type: object
-      required:
-      - sourcePath
-      - targetPath
-      title: PostExtractRequest
-      examples:
-      - compression: none
-        sourcePath: /home/user/dir/file.tar.gz
-        targetPath: /home/user/dir
-    DownloadFileResponse:
-      properties:
-        transferJob:
-          $ref: '#/components/schemas/TransferJob'
-        transferDirectives:
-          anyOf:
-          - $ref: '#/components/schemas/WormholeTransferResponse'
-          - $ref: '#/components/schemas/S3TransferResponse'
-          - $ref: '#/components/schemas/StreamerTransferResponse'
-          title: Transferdirectives
-          description: Data transfer parameters specific to the transfer method
-      type: object
-      required:
-      - transferJob
-      - transferDirectives
-      title: DownloadFileResponse
-    WormholeTransferResponse:
-      properties:
-        transferMethod:
-          type: string
-          const: wormhole
-          title: Transfermethod
-        wormholeCode:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Wormholecode
-          nullable: true
-      type: object
-      required:
-      - transferMethod
-      title: WormholeTransferResponse
-    PutFileChownRequest:
-      properties:
-        sourcePath:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Sourcepath
-          example: /home/user/dir
-          nullable: true
-        owner:
-          type: string
-          title: Owner
-          description: User name of the new user owner of the file
-          default: ''
-          nullable: false
-        group:
-          type: string
-          title: Group
-          description: Group name of the new group owner of the file
-          default: ''
-          nullable: false
-      type: object
-      required:
-      - sourcePath
-      title: PutFileChownRequest
-      examples:
-      - group: my-group
-        owner: user
-        path: /home/user/dir/file.out
     File:
       properties:
         name:
@@ -1424,26 +1159,173 @@ components:
       - lastModified
       - size
       title: File
-    FileContent:
+    ContentUnit:
+      type: string
+      enum:
+      - lines
+      - bytes
+      title: ContentUnit
+    GetDirectoryLsResponse:
       properties:
-        content:
+        output:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/File'
+            type: array
+          - type: 'null'
+          title: Output
+          nullable: true
+      type: object
+      title: GetDirectoryLsResponse
+    PutFileChownRequest:
+      properties:
+        sourcePath:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sourcepath
+          example: /home/user/dir
+          nullable: true
+        owner:
           type: string
-          title: Content
-        contentType:
-          $ref: '#/components/schemas/ContentUnit'
-        startPosition:
-          type: integer
-          title: Startposition
-        endPosition:
-          type: integer
-          title: Endposition
+          title: Owner
+          description: User name of the new user owner of the file
+          default: ''
+          nullable: false
+        group:
+          type: string
+          title: Group
+          description: Group name of the new group owner of the file
+          default: ''
+          nullable: false
       type: object
       required:
-      - content
-      - contentType
-      - startPosition
-      - endPosition
-      title: FileContent
+      - sourcePath
+      title: PutFileChownRequest
+      examples:
+      - group: my-group
+        owner: user
+        path: /home/user/dir/file.out
+    PostMakeDirRequest:
+      properties:
+        sourcePath:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sourcepath
+          example: /home/user/dir
+          nullable: true
+        parent:
+          type: boolean
+          title: Parent
+          description: If set to `true` creates all its parent directories if they do not already exist
+          default: false
+          nullable: false
+      type: object
+      required:
+      - sourcePath
+      title: PostMakeDirRequest
+      examples:
+      - parent: 'true'
+        path: /home/user/dir/newdir
+    S3TransferResponse:
+      properties:
+        transferMethod:
+          type: string
+          const: s3
+          title: Transfermethod
+        downloadUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Downloadurl
+          nullable: true
+        partsUploadUrls:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Partsuploadurls
+          nullable: true
+        completeUploadUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Completeuploadurl
+          nullable: true
+        maxPartSize:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Maxpartsize
+          nullable: true
+      type: object
+      required:
+      - transferMethod
+      title: S3TransferResponse
+    WormholeTransferRequest:
+      properties:
+        transferMethod:
+          type: string
+          const: wormhole
+          title: Transfermethod
+      type: object
+      required:
+      - transferMethod
+      title: WormholeTransferRequest
+    FileChecksum:
+      properties:
+        algorithm:
+          type: string
+          title: Algorithm
+          default: SHA-256
+        checksum:
+          type: string
+          title: Checksum
+      type: object
+      required:
+      - checksum
+      title: FileChecksum
+    MoveResponse:
+      properties:
+        transferJob:
+          $ref: '#/components/schemas/TransferJob'
+      type: object
+      required:
+      - transferJob
+      title: MoveResponse
+    DownloadFileResponse:
+      properties:
+        transferJob:
+          $ref: '#/components/schemas/TransferJob'
+        transferDirectives:
+          anyOf:
+          - $ref: '#/components/schemas/WormholeTransferResponse'
+          - $ref: '#/components/schemas/S3TransferResponse'
+          - $ref: '#/components/schemas/StreamerTransferResponse'
+          title: Transferdirectives
+          description: Data transfer parameters specific to the transfer method
+      type: object
+      required:
+      - transferJob
+      - transferDirectives
+      title: DownloadFileResponse
+    ApResponseErrorType:
+      type: string
+      enum:
+      - error
+      - validation
+      title: ApResponseErrorType
+    GetFileStatResponse:
+      properties:
+        output:
+          anyOf:
+          - $ref: '#/components/schemas/FileStat'
+          - type: 'null'
+          nullable: true
+      type: object
+      title: GetFileStatResponse
     S3TransferRequest:
       properties:
         transferMethod:
@@ -1461,7 +1343,39 @@ components:
       required:
       - transferMethod
       title: S3TransferRequest
-    PostFileUploadRequest:
+    StreamerTransferRequest:
+      properties:
+        transferMethod:
+          type: string
+          const: streamer
+          title: Transfermethod
+      type: object
+      required:
+      - transferMethod
+      title: StreamerTransferRequest
+    PostFileSymlinkResponse:
+      properties:
+        output:
+          anyOf:
+          - $ref: '#/components/schemas/File'
+          - type: 'null'
+          nullable: true
+      type: object
+      title: PostFileSymlinkResponse
+    TransferJobLogs:
+      properties:
+        outputLog:
+          type: string
+          title: Outputlog
+        errorLog:
+          type: string
+          title: Errorlog
+      type: object
+      required:
+      - outputLog
+      - errorLog
+      title: TransferJobLogs
+    ExtractRequest:
       properties:
         sourcePath:
           anyOf:
@@ -1470,13 +1384,10 @@ components:
           title: Sourcepath
           example: /home/user/dir
           nullable: true
-        transferDirectives:
-          anyOf:
-          - $ref: '#/components/schemas/WormholeTransferUploadRequest'
-          - $ref: '#/components/schemas/S3TransferRequest'
-          - $ref: '#/components/schemas/StreamerTransferRequest'
-          title: Transferdirectives
-          description: Data transfer parameters specific to the transfer method
+        targetPath:
+          type: string
+          title: Targetpath
+          description: Path to the directory where to extract the compressed file
         account:
           anyOf:
           - type: string
@@ -1484,36 +1395,54 @@ components:
           title: Account
           description: Name of the account in the scheduler
           nullable: true
+        compression:
+          $ref: '#/components/schemas/CompressionType'
+          description: Defines the type of compression to be used. By default gzip is used.
+          default: gzip
+          nullable: false
       type: object
       required:
       - sourcePath
-      - transferDirectives
-      title: PostFileUploadRequest
+      - targetPath
+      title: ExtractRequest
       examples:
       - account: group
-        sourcePath: /home/user/dir/file
-        transferDirectives:
-          fileSize: '7340032'
-          transferMethod: s3
-    DeleteResponse:
+        compression: none
+        sourcePath: /home/user/dir/file.tar.gz
+        targetPath: /home/user/dir
+    ApiResponseError:
       properties:
-        transferJob:
-          $ref: '#/components/schemas/TransferJob'
-      type: object
-      required:
-      - transferJob
-      title: DeleteResponse
-    Body_post_upload_filesystem__system_name__ops_upload_post:
-      properties:
-        file:
+        errorType:
+          $ref: '#/components/schemas/ApResponseErrorType'
+          default: error
+        message:
           type: string
-          contentMediaType: application/octet-stream
-          title: File
-          description: File to be uploaded as `multipart/form-data`
+          title: Message
+        causedBy:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Causedby
+          nullable: true
+        data:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Data
+          nullable: true
+        user:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User
+          nullable: true
       type: object
       required:
-      - file
-      title: Body_post_upload_filesystem__system_name__ops_upload_post
+      - message
+      title: ApiResponseError
     CopyRequest:
       properties:
         sourcePath:
@@ -1550,59 +1479,22 @@ components:
         dereference: 'true'
         sourcePath: /home/user/dir/file.orig
         targetPath: /home/user/dir/file.new
-    GetFileTypeResponse:
+    CompressionType:
+      type: string
+      enum:
+      - none
+      - bzip2
+      - gzip
+      - xz
+      title: CompressionType
+    DeleteResponse:
       properties:
-        output:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Output
-          example: directory
-          nullable: true
-      type: object
-      title: GetFileTypeResponse
-    ApiResponseError:
-      properties:
-        errorType:
-          $ref: '#/components/schemas/ApResponseErrorType'
-          default: error
-        message:
-          type: string
-          title: Message
-        causedBy:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Causedby
-          nullable: true
-        data:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Data
-          nullable: true
-        user:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: User
-          nullable: true
+        transferJob:
+          $ref: '#/components/schemas/TransferJob'
       type: object
       required:
-      - message
-      title: ApiResponseError
-    PostFileSymlinkResponse:
-      properties:
-        output:
-          anyOf:
-          - $ref: '#/components/schemas/File'
-          - type: 'null'
-          nullable: true
-      type: object
-      title: PostFileSymlinkResponse
+      - transferJob
+      title: DeleteResponse
     PutFileChmodRequest:
       properties:
         sourcePath:
@@ -1624,6 +1516,114 @@ components:
       examples:
       - mode: '777'
         path: /home/user/dir/file.out
+    GetFileTailResponse:
+      properties:
+        output:
+          anyOf:
+          - $ref: '#/components/schemas/FileContent'
+          - type: 'null'
+          nullable: true
+      type: object
+      title: GetFileTailResponse
+    MoveRequest:
+      properties:
+        sourcePath:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sourcepath
+          example: /home/user/dir
+          nullable: true
+        targetPath:
+          type: string
+          title: Targetpath
+          description: Target path of the move operation
+        account:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Account
+          description: Name of the account in the scheduler
+          nullable: true
+      type: object
+      required:
+      - sourcePath
+      - targetPath
+      title: MoveRequest
+      examples:
+      - account: group
+        sourcePath: /home/user/dir/file.orig
+        targetPath: /home/user/dir/file.new
+    UploadFileResponse:
+      properties:
+        transferJob:
+          $ref: '#/components/schemas/TransferJob'
+        transferDirectives:
+          anyOf:
+          - $ref: '#/components/schemas/WormholeTransferResponse'
+          - $ref: '#/components/schemas/S3TransferResponse'
+          - $ref: '#/components/schemas/StreamerTransferResponse'
+          title: Transferdirectives
+          description: Data transfer parameters specific to the transfer method
+      type: object
+      required:
+      - transferJob
+      - transferDirectives
+      title: UploadFileResponse
+    PostFileUploadRequest:
+      properties:
+        sourcePath:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sourcepath
+          example: /home/user/dir
+          nullable: true
+        transferDirectives:
+          anyOf:
+          - $ref: '#/components/schemas/WormholeTransferUploadRequest'
+          - $ref: '#/components/schemas/S3TransferRequest'
+          - $ref: '#/components/schemas/StreamerTransferRequest'
+          title: Transferdirectives
+          description: Data transfer parameters specific to the transfer method
+        account:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Account
+          description: Name of the account in the scheduler
+          nullable: true
+      type: object
+      required:
+      - sourcePath
+      - transferDirectives
+      title: PostFileUploadRequest
+      examples:
+      - account: group
+        sourcePath: /home/user/dir/file
+        transferDirectives:
+          fileSize: '7340032'
+          transferMethod: s3
+    TransferJob:
+      properties:
+        jobId:
+          type: string
+          title: Jobid
+        system:
+          type: string
+          title: System
+        workingDirectory:
+          type: string
+          title: Workingdirectory
+        logs:
+          $ref: '#/components/schemas/TransferJobLogs'
+      type: object
+      required:
+      - jobId
+      - system
+      - workingDirectory
+      - logs
+      title: TransferJob
     FileStat:
       properties:
         mode:
@@ -1690,31 +1690,16 @@ components:
       examples:
       - link_path: /home/user/newlink
         path: /home/user/dir
-    ApResponseErrorType:
-      type: string
-      enum:
-      - error
-      - validation
-      title: ApResponseErrorType
-    WormholeTransferRequest:
-      properties:
-        transferMethod:
-          type: string
-          const: wormhole
-          title: Transfermethod
-      type: object
-      required:
-      - transferMethod
-      title: WormholeTransferRequest
-    PutFileChmodResponse:
+    GetViewFileResponse:
       properties:
         output:
           anyOf:
-          - $ref: '#/components/schemas/File'
+          - type: string
           - type: 'null'
+          title: Output
           nullable: true
       type: object
-      title: PutFileChmodResponse
+      title: GetViewFileResponse
     GetFileHeadResponse:
       properties:
         output:
@@ -1724,6 +1709,60 @@ components:
           nullable: true
       type: object
       title: GetFileHeadResponse
+    ExtractResponse:
+      properties:
+        transferJob:
+          $ref: '#/components/schemas/TransferJob'
+      type: object
+      required:
+      - transferJob
+      title: ExtractResponse
+    GetFileChecksumResponse:
+      properties:
+        output:
+          anyOf:
+          - $ref: '#/components/schemas/FileChecksum'
+          - type: 'null'
+          nullable: true
+      type: object
+      title: GetFileChecksumResponse
+    PutFileChmodResponse:
+      properties:
+        output:
+          anyOf:
+          - $ref: '#/components/schemas/File'
+          - type: 'null'
+          nullable: true
+      type: object
+      title: PutFileChmodResponse
+    CompressResponse:
+      properties:
+        transferJob:
+          $ref: '#/components/schemas/TransferJob'
+      type: object
+      required:
+      - transferJob
+      title: CompressResponse
+    FileContent:
+      properties:
+        content:
+          type: string
+          title: Content
+        contentType:
+          $ref: '#/components/schemas/ContentUnit'
+        startPosition:
+          type: integer
+          title: Startposition
+        endPosition:
+          type: integer
+          title: Endposition
+      type: object
+      required:
+      - content
+      - contentType
+      - startPosition
+      - endPosition
+      title: FileContent
     PostMkdirResponse:
       properties:
         output:
@@ -1733,18 +1772,6 @@ components:
           nullable: true
       type: object
       title: PostMkdirResponse
-    GetDirectoryLsResponse:
-      properties:
-        output:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/File'
-            type: array
-          - type: 'null'
-          title: Output
-          nullable: true
-      type: object
-      title: GetDirectoryLsResponse
     CopyResponse:
       properties:
         transferJob:
@@ -1753,41 +1780,49 @@ components:
       required:
       - transferJob
       title: CopyResponse
-    TransferJobLogs:
+    GetFileTypeResponse:
       properties:
-        outputLog:
-          type: string
-          title: Outputlog
-        errorLog:
-          type: string
-          title: Errorlog
-      type: object
-      required:
-      - outputLog
-      - errorLog
-      title: TransferJobLogs
-    PostMakeDirRequest:
-      properties:
-        sourcePath:
+        output:
           anyOf:
           - type: string
           - type: 'null'
-          title: Sourcepath
-          example: /home/user/dir
+          title: Output
+          example: directory
           nullable: true
-        parent:
-          type: boolean
-          title: Parent
-          description: If set to `true` creates all its parent directories if they do not already exist
-          default: false
+      type: object
+      title: GetFileTypeResponse
+    WormholeTransferResponse:
+      properties:
+        transferMethod:
+          type: string
+          const: wormhole
+          title: Transfermethod
+        wormholeCode:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Wormholecode
+          nullable: true
+      type: object
+      required:
+      - transferMethod
+      title: WormholeTransferResponse
+    WormholeTransferUploadRequest:
+      properties:
+        transferMethod:
+          type: string
+          const: wormhole
+          title: Transfermethod
+        wormholeCode:
+          type: string
+          title: Wormholecode
+          description: Wormhole code to use for the transfer
           nullable: false
       type: object
       required:
-      - sourcePath
-      title: PostMakeDirRequest
-      examples:
-      - parent: 'true'
-        path: /home/user/dir/newdir
+      - transferMethod
+      - wormholeCode
+      title: WormholeTransferUploadRequest
     CompressRequest:
       properties:
         sourcePath:
@@ -1871,15 +1906,69 @@ components:
         sourcePath: /home/user/dir/file
         transferDirectives:
           transferMethod: s3
-    GetFileChecksumResponse:
+    PostExtractRequest:
+      properties:
+        sourcePath:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sourcepath
+          example: /home/user/dir
+          nullable: true
+        targetPath:
+          type: string
+          title: Targetpath
+          description: Path to the directory where to extract the compressed file
+        compression:
+          $ref: '#/components/schemas/CompressionType'
+          description: Defines the type of compression to be used. By default gzip is used.
+          default: gzip
+          nullable: false
+      type: object
+      required:
+      - sourcePath
+      - targetPath
+      title: PostExtractRequest
+      examples:
+      - compression: none
+        sourcePath: /home/user/dir/file.tar.gz
+        targetPath: /home/user/dir
+    Body_post_upload_filesystem__system_name__ops_upload_post:
+      properties:
+        file:
+          type: string
+          contentMediaType: application/octet-stream
+          title: File
+          description: File to be uploaded as `multipart/form-data`
+      type: object
+      required:
+      - file
+      title: Body_post_upload_filesystem__system_name__ops_upload_post
+    PutFileChownResponse:
       properties:
         output:
           anyOf:
-          - $ref: '#/components/schemas/FileChecksum'
+          - $ref: '#/components/schemas/File'
           - type: 'null'
           nullable: true
       type: object
-      title: GetFileChecksumResponse
+      title: PutFileChownResponse
+    StreamerTransferResponse:
+      properties:
+        transferMethod:
+          type: string
+          const: streamer
+          title: Transfermethod
+        coordinates:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Coordinates
+          nullable: true
+      type: object
+      required:
+      - transferMethod
+      title: StreamerTransferResponse
     PostCompressRequest:
       properties:
         sourcePath:
@@ -1922,95 +2011,6 @@ components:
         matchPattern: '*./[ab].*\.txt'
         sourcePath: /home/user/dir
         targetPath: /home/user/file.tar.gz
-    GetViewFileResponse:
-      properties:
-        output:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Output
-          nullable: true
-      type: object
-      title: GetViewFileResponse
-    GetFileTailResponse:
-      properties:
-        output:
-          anyOf:
-          - $ref: '#/components/schemas/FileContent'
-          - type: 'null'
-          nullable: true
-      type: object
-      title: GetFileTailResponse
-    StreamerTransferRequest:
-      properties:
-        transferMethod:
-          type: string
-          const: streamer
-          title: Transfermethod
-      type: object
-      required:
-      - transferMethod
-      title: StreamerTransferRequest
-    S3TransferResponse:
-      properties:
-        transferMethod:
-          type: string
-          const: s3
-          title: Transfermethod
-        downloadUrl:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Downloadurl
-          nullable: true
-        partsUploadUrls:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Partsuploadurls
-          nullable: true
-        completeUploadUrl:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Completeuploadurl
-          nullable: true
-        maxPartSize:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Maxpartsize
-          nullable: true
-      type: object
-      required:
-      - transferMethod
-      title: S3TransferResponse
-    WormholeTransferUploadRequest:
-      properties:
-        transferMethod:
-          type: string
-          const: wormhole
-          title: Transfermethod
-        wormholeCode:
-          type: string
-          title: Wormholecode
-          description: Wormhole code to use for the transfer
-          nullable: false
-      type: object
-      required:
-      - transferMethod
-      - wormholeCode
-      title: WormholeTransferUploadRequest
-    CompressResponse:
-      properties:
-        transferJob:
-          $ref: '#/components/schemas/TransferJob'
-      type: object
-      required:
-      - transferJob
-      title: CompressResponse
   securitySchemes:
     APIAuthDependency:
       type: oauth2
