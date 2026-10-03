@@ -293,6 +293,126 @@ components:
       title: PostJobAttachRequest
       examples:
       - command: echo 'Attached with success' > $HOME/attach.out
+    GetJobMetadataResponse:
+      properties:
+        jobs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobMetadataModel'
+            type: array
+          - type: 'null'
+          title: Jobs
+          nullable: true
+      type: object
+      title: GetJobMetadataResponse
+    GetJobResponse:
+      properties:
+        jobs:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobModel'
+            type: array
+          - type: 'null'
+          title: Jobs
+          nullable: true
+      type: object
+      title: GetJobResponse
+    PostJobSubmissionResponse:
+      properties:
+        jobId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Jobid
+          nullable: true
+      type: object
+      title: PostJobSubmissionResponse
+    JobMetadataModel:
+      properties:
+        jobId:
+          type: string
+          title: Jobid
+        script:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Script
+          nullable: true
+        standardInput:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standardinput
+          nullable: true
+        standardOutput:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standardoutput
+          nullable: true
+        standardError:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Standarderror
+          nullable: true
+      type: object
+      required:
+      - jobId
+      title: JobMetadataModel
+    PostJobSubmitRequest:
+      properties:
+        job:
+          $ref: '#/components/schemas/JobDescriptionModel'
+      type: object
+      required:
+      - job
+      title: PostJobSubmitRequest
+      examples:
+      - job:
+          account: myproject
+          env:
+            LD_LIBRARY_PATH: /path/to/library
+            PATH: /path/to/bin
+          name: Example with inline script
+          partition: partition_a
+          reservation: myreservation
+          script: '#!/bin/bash
+
+            --partition=part01
+
+            for i in {1..100}
+
+            do
+
+            echo $i
+
+            sleep 1
+
+            done'
+          standardError: count_to_100.err
+          standardInput: /dev/null
+          standardOutput: count_to_100.out
+          workingDirectory: '{{home_path}}'
+      - job:
+          account: myproject
+          env:
+            LD_LIBRARY_PATH: /path/to/library
+            PATH: /path/to/bin
+          name: Example with script path
+          partition: partition_a
+          reservation: myreservation
+          script_path: /path/to/batch_file.sh
+          standardError: count_to_100.err
+          standardInput: /dev/null
+          standardOutput: count_to_100.out
+          workingDirectory: '{{home_path}}'
+    ApResponseErrorType:
+      type: string
+      enum:
+      - error
+      - validation
+      title: ApResponseErrorType
     ApiResponseError:
       properties:
         errorType:
@@ -326,52 +446,83 @@ components:
       required:
       - message
       title: ApiResponseError
-    JobStatus:
+    JobModel:
       properties:
-        state:
+        jobId:
           type: string
-          title: State
-        stateReason:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Statereason
-          nullable: true
-        exitCode:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Exitcode
-          nullable: true
-        interruptSignal:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Interruptsignal
-          nullable: true
-      type: object
-      required:
-      - state
-      title: JobStatus
-    JobTask:
-      properties:
-        id:
-          type: string
-          title: Id
+          title: Jobid
         name:
           type: string
           title: Name
         status:
           $ref: '#/components/schemas/JobStatus'
+        tasks:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/JobTask'
+            type: array
+          - type: 'null'
+          title: Tasks
+          nullable: true
         time:
           $ref: '#/components/schemas/JobTime'
+        account:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Account
+          nullable: true
+        allocationNodes:
+          type: integer
+          title: Allocationnodes
+        cluster:
+          type: string
+          title: Cluster
+        group:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group
+          nullable: true
+        nodes:
+          type: string
+          title: Nodes
+        partition:
+          type: string
+          title: Partition
+        killRequestUser:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Killrequestuser
+          nullable: true
+        user:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User
+        workingDirectory:
+          type: string
+          title: Workingdirectory
+        priority:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Priority
+          nullable: true
       type: object
       required:
-      - id
+      - jobId
       - name
       - status
       - time
-      title: JobTask
+      - allocationNodes
+      - cluster
+      - nodes
+      - partition
+      - user
+      - workingDirectory
+      title: JobModel
     JobTime:
       properties:
         elapsed:
@@ -406,6 +557,33 @@ components:
           nullable: true
       type: object
       title: JobTime
+    JobStatus:
+      properties:
+        state:
+          type: string
+          title: State
+        stateReason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Statereason
+          nullable: true
+        exitCode:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Exitcode
+          nullable: true
+        interruptSignal:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Interruptsignal
+          nullable: true
+      type: object
+      required:
+      - state
+      title: JobStatus
     JobDescriptionModel:
       properties:
         name:
@@ -493,203 +671,25 @@ components:
       required:
       - workingDirectory
       title: JobDescriptionModel
-    JobMetadataModel:
+    JobTask:
       properties:
-        jobId:
+        id:
           type: string
-          title: Jobid
-        script:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Script
-          nullable: true
-        standardInput:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Standardinput
-          nullable: true
-        standardOutput:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Standardoutput
-          nullable: true
-        standardError:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Standarderror
-          nullable: true
-      type: object
-      required:
-      - jobId
-      title: JobMetadataModel
-    PostJobSubmitRequest:
-      properties:
-        job:
-          $ref: '#/components/schemas/JobDescriptionModel'
-      type: object
-      required:
-      - job
-      title: PostJobSubmitRequest
-      examples:
-      - job:
-          account: myproject
-          env:
-            LD_LIBRARY_PATH: /path/to/library
-            PATH: /path/to/bin
-          name: Example with inline script
-          partition: partition_a
-          reservation: myreservation
-          script: '#!/bin/bash
-
-            --partition=part01
-
-            for i in {1..100}
-
-            do
-
-            echo $i
-
-            sleep 1
-
-            done'
-          standardError: count_to_100.err
-          standardInput: /dev/null
-          standardOutput: count_to_100.out
-          workingDirectory: '{{home_path}}'
-      - job:
-          account: myproject
-          env:
-            LD_LIBRARY_PATH: /path/to/library
-            PATH: /path/to/bin
-          name: Example with script path
-          partition: partition_a
-          reservation: myreservation
-          script_path: /path/to/batch_file.sh
-          standardError: count_to_100.err
-          standardInput: /dev/null
-          standardOutput: count_to_100.out
-          workingDirectory: '{{home_path}}'
-    GetJobMetadataResponse:
-      properties:
-        jobs:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/JobMetadataModel'
-            type: array
-          - type: 'null'
-          title: Jobs
-          nullable: true
-      type: object
-      title: GetJobMetadataResponse
-    GetJobResponse:
-      properties:
-        jobs:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/JobModel'
-            type: array
-          - type: 'null'
-          title: Jobs
-          nullable: true
-      type: object
-      title: GetJobResponse
-    PostJobSubmissionResponse:
-      properties:
-        jobId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Jobid
-          nullable: true
-      type: object
-      title: PostJobSubmissionResponse
-    JobModel:
-      properties:
-        jobId:
-          type: string
-          title: Jobid
+          title: Id
         name:
           type: string
           title: Name
         status:
           $ref: '#/components/schemas/JobStatus'
-        tasks:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/JobTask'
-            type: array
-          - type: 'null'
-          title: Tasks
-          nullable: true
         time:
           $ref: '#/components/schemas/JobTime'
-        account:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Account
-          nullable: true
-        allocationNodes:
-          type: integer
-          title: Allocationnodes
-        cluster:
-          type: string
-          title: Cluster
-        group:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Group
-          nullable: true
-        nodes:
-          type: string
-          title: Nodes
-        partition:
-          type: string
-          title: Partition
-        killRequestUser:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Killrequestuser
-          nullable: true
-        user:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: User
-        workingDirectory:
-          type: string
-          title: Workingdirectory
-        priority:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Priority
-          nullable: true
       type: object
       required:
-      - jobId
+      - id
       - name
       - status
       - time
-      - allocationNodes
-      - cluster
-      - nodes
-      - partition
-      - user
-      - workingDirectory
-      title: JobModel
-    ApResponseErrorType:
-      type: string
-      enum:
-      - error
-      - validation
-      title: ApResponseErrorType
+      title: JobTask
   securitySchemes:
     APIAuthDependency:
       type: oauth2
